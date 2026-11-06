@@ -16,7 +16,7 @@ export interface ProductInfo {
   minQuantity?: string;
   price?: string;
   faqs?: { question: string; answer: string }[];
-  relatedProducts?: { title: string; category: string; description: string; href: string }[];
+  relatedProducts?: { title: string; category: string; description: string; href?: string; ctaText?: string }[];
 }
 
 interface ProductDetailProps {
@@ -118,6 +118,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 category={rel.category}
                 description={rel.description}
                 href={rel.href}
+                ctaText={rel.ctaText}
               />
             ))}
           </div>

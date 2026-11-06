@@ -32,19 +32,20 @@ export default function RemerasPersonalizadasPage() {
         title: "Camperas",
         category: "Indumentaria",
         description: "Camperas de abrigo y rompevientos con logo bordado.",
-        href: "/productos/indumentaria/camperas"
+        ctaText: "Ficha en desarrollo"
       },
       {
         title: "Conjuntos Deportivos",
         category: "Indumentaria",
         description: "Equipos completos de fútbol, básquet o vóley.",
-        href: "/productos/indumentaria/conjuntos-deportivos"
+        ctaText: "Ficha en desarrollo"
       },
       {
-        title: "Bolsos Botineros",
-        category: "Indumentaria",
+        title: "Botineros",
+        category: "Merchandising",
         description: "Complemento perfecto para tu equipo deportivo.",
-        href: "/productos/indumentaria/bolsos-botineros"
+        href: "/productos/merchandising",
+        ctaText: "Ver Merchandising"
       }
     ]
   };

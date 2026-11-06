@@ -5,11 +5,12 @@ interface ProductCardProps {
   title: string;
   description: string;
   imageUrl?: string;
-  href: string;
+  href?: string;
   category: string;
+  ctaText?: string;
 }
 
-export default function ProductCard({ title, description, imageUrl, href, category }: ProductCardProps) {
+export default function ProductCard({ title, description, imageUrl, href, category, ctaText }: ProductCardProps) {
   return (
     <div className="group border border-divider flex flex-col h-full bg-white hover:border-brand transition-colors duration-300">
       {/* Image Container */}
@@ -41,12 +42,18 @@ export default function ProductCard({ title, description, imageUrl, href, catego
         </p>
         
         {/* CTA */}
-        <Link 
-          href={href}
-          className="inline-flex items-center text-xs font-bold uppercase tracking-widest hover:text-brand transition-colors mt-auto"
-        >
-          Ver producto <span className="ml-2 font-normal">→</span>
-        </Link>
+        {href ? (
+          <Link 
+            href={href}
+            className="inline-flex items-center text-xs font-bold uppercase tracking-widest hover:text-brand transition-colors mt-auto"
+          >
+            {ctaText || 'Ver producto'} <span className="ml-2 font-normal">→</span>
+          </Link>
+        ) : (
+          <span className="inline-flex items-center text-xs font-mono uppercase tracking-widest text-gray-400 mt-auto">
+            {ctaText || 'Ficha en desarrollo'}
+          </span>
+        )}
       </div>
     </div>
   );

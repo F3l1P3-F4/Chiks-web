@@ -5,6 +5,17 @@
   --foreground: #111111;
   --brand: #e63920; /* Industrial red/orange from PDF */
   --divider: #e5e5e5;
+
+  /*
+   * PROPUESTA PROVISIONAL de degradado azul eléctrico -> celeste.
+   * NO son códigos oficiales de marca: reemplazar cuando la empresa entregue su paleta.
+   * Los tres primeros mantienen contraste >= 3:1 sobre blanco (aptos para texto grande);
+   * --sky (celeste) es solo decorativo, NO usar para texto sobre fondo claro.
+   */
+  --electric-deep: #0a2a9e;
+  --electric: #1f4bff;
+  --electric-bright: #2d7bff;
+  --sky: #4cc3ff;
 }
 
 @theme inline {
@@ -12,6 +23,10 @@
   --color-foreground: var(--foreground);
   --color-brand: var(--brand);
   --color-divider: var(--divider);
+  --color-electric-deep: var(--electric-deep);
+  --color-electric: var(--electric);
+  --color-electric-bright: var(--electric-bright);
+  --color-sky: var(--sky);
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -32,4 +47,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-striped {
   background-image: repeating-linear-gradient(-45deg, var(--color-divider), var(--color-divider) 1px, transparent 1px, transparent 12px);
+}
+
+/* Texto con degradado azul (sin celeste, para conservar contraste sobre fondo claro). */
+.text-gradient-electric {
+  background-image: linear-gradient(100deg, var(--electric-deep) 0%, var(--electric) 55%, var(--electric-bright) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Halo decorativo con profundidad (azul eléctrico -> celeste). Se desvanece dentro de la caja. */
+.bg-depth {
+  background-image:
+    radial-gradient(ellipse 34% 48% at 66% 48%, rgba(76, 195, 255, 0.30) 0%, rgba(76, 195, 255, 0) 100%),
+    radial-gradient(ellipse 24% 38% at 74% 58%, rgba(31, 75, 255, 0.16) 0%, rgba(31, 75, 255, 0) 100%);
 }

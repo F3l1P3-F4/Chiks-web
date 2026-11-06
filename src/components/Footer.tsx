@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-3xl font-extrabold tracking-tighter uppercase mb-6 bg-clip-text text-transparent bg-gradient-to-tr from-[#00FF33] via-[#FF00CC] to-[#6600FF]">Chik's</h3>
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tighter uppercase mb-6 text-gradient-electric w-fit">Las Chikas Design</h3>
             <p className="text-gray-500 font-mono text-sm max-w-sm mb-6 leading-relaxed">
               Gráfica integral. Impresión, sublimación, indumentaria, cartelería y merchandising con producción propia.
             </p>
@@ -39,7 +39,7 @@ export default function Footer() {
 
         <div className="mt-24 pt-8 border-t border-divider flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">
-            © {currentYear} Chik's — Buenos Aires, Argentina
+            © {currentYear} Las Chikas Design — Buenos Aires, Argentina
           </p>
           <div className="flex gap-4">
             {/* Social Links can go here */}

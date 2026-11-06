@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@/components/Button';
 import SectionDivider from '@/components/SectionDivider';
-import ProductCard from '@/components/ProductCard';
 import SolutionCard from '@/components/SolutionCard';
 
 export default function Home() {
@@ -9,13 +8,14 @@ export default function Home() {
     <div className="container mx-auto px-4 lg:px-8 py-12">
       
       {/* HERO */}
-      <section className="mb-32 mt-12">
+      <section className="relative isolate mb-32 mt-12">
+        <div aria-hidden="true" className="bg-depth pointer-events-none absolute inset-0 -z-10" />
         <SectionDivider text="GRÁFICA INTEGRAL" metadata="BUENOS AIRES, AR" />
         <div className="max-w-6xl">
           <h1 className="text-[12vw] sm:text-8xl md:text-9xl lg:text-[180px] font-extrabold tracking-tighter uppercase leading-[0.8] mb-12 text-foreground">
-            Tinta<br />
+            Tintas<br />
             <span className="text-transparent" style={{ WebkitTextStroke: '2px var(--color-brand)' }}>Que</span><br />
-            Habla
+            Hablan
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 max-w-2xl mb-12 leading-relaxed">
             Imprimimos, sublimamos y vestimos ideas. Producción propia de punta a punta: de la remera al cartel de seis metros, sin intermediarios.
@@ -27,71 +27,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ¿QUÉ ESTÁS BUSCANDO? */}
+      {/* SOLUCIONES POR PERFIL */}
       <section className="mb-32">
-        <SectionDivider text="NAVEGACIÓN RÁPIDA" metadata="¿QUÉ ESTÁS BUSCANDO?" />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-divider border border-divider">
-          {[
-            { label: 'Indumentaria', href: '/productos/indumentaria' },
-            { label: 'Merchandising', href: '/productos/merchandising' },
-            { label: 'Gráfica', href: '/productos/grafica' },
-            { label: 'Comercios', href: '/soluciones/comercios' },
-            { label: 'Eventos', href: '/soluciones/eventos' },
-            { label: 'Clubes', href: '/soluciones/clubes-y-equipos' },
-          ].map((cat) => (
-            <a 
-              key={cat.label} 
-              href={cat.href}
-              className="bg-white p-8 aspect-square flex flex-col items-center justify-center text-center hover:bg-foreground hover:text-white transition-colors duration-300 group"
-            >
-              <span className="font-bold uppercase tracking-widest text-xs md:text-sm">{cat.label}</span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* PRODUCTOS DESTACADOS */}
-      <section className="mb-32">
-        <div className="flex justify-between items-end mb-12">
-          <div className="flex-grow">
-            <SectionDivider text="CATÁLOGO" metadata="PRODUCTOS DESTACADOS" />
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <ProductCard 
-            title="Remeras Personalizadas"
-            category="Indumentaria"
-            description="Algodón o poliéster. Estampadas en serigrafía o sublimación sin límite de colores."
-            href="/productos/indumentaria/remeras-personalizadas"
-          />
-          <ProductCard 
-            title="Conjuntos Deportivos"
-            category="Indumentaria"
-            description="Camisetas y shorts diseñados a medida para clubes y equipos."
-            href="/productos/indumentaria/conjuntos-deportivos"
-          />
-          <ProductCard 
-            title="Banderas"
-            category="Merchandising"
-            description="Telas sublimadas full color de alta resistencia para exterior e interior."
-            href="/productos/merchandising/banderas"
-          />
-          <ProductCard 
-            title="Banners y Roll Ups"
-            category="Gráfica"
-            description="Lona frontlit impresa en alta definición. Ideal para eventos y puntos de venta."
-            href="/productos/grafica/banners"
-          />
-        </div>
-        <div className="mt-12 text-center">
-          <Button href="/productos">Ver todo el catálogo</Button>
-        </div>
-      </section>
-
-      {/* SOLUCIONES PARA TU PROYECTO */}
-      <section className="mb-32">
-        <SectionDivider text="PERFILES" metadata="SOLUCIONES PARA TU PROYECTO" />
+        <SectionDivider text="SOLUCIONES POR PERFIL" metadata="CLUBES, EMPRESAS, COMERCIOS, EVENTOS Y OBRAS" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <SolutionCard 
             title="Clubes y Equipos"
@@ -107,6 +45,16 @@ export default function Home() {
             title="Comercios"
             items={['Ploteo de vidrieras', 'Marquesinas y cartelería', 'Decoración interior', 'Uniformes para staff']}
             href="/soluciones/comercios"
+          />
+          <SolutionCard 
+            title="Eventos"
+            items={['Banners y fly banners', 'Armado de stands', 'Acreditaciones y pulseras', 'Souvenirs']}
+            href="/soluciones/eventos"
+          />
+          <SolutionCard 
+            title="Obras"
+            items={['Frentes de obra en lona', 'Cartelería de seguridad', 'Mallas microperforadas']}
+            href="/soluciones/obras"
           />
         </div>
       </section>
@@ -138,7 +86,7 @@ export default function Home() {
         <h2 className="text-4xl md:text-6xl font-extrabold tracking-tighter uppercase mb-16 max-w-2xl">
           De la idea a la calle en 4 pasos
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
           {[
             { step: '01', title: 'Briefing', desc: 'Nos contás qué necesitás. Cantidades, materiales y fecha.' },
             { step: '02', title: 'Arte y Prueba', desc: 'Preparamos el arte y definimos los detalles técnicos.' },
@@ -151,12 +99,6 @@ export default function Home() {
               <p className="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
             </div>
           ))}
-        </div>
-        <div className="bg-gray-50 p-8 border border-divider text-center">
-          <p className="text-lg md:text-xl font-bold uppercase tracking-tight mb-6">
-            Producción propia. Sin intermediarios.
-          </p>
-          <Button href="/contacto" variant="solid">Solicitar Presupuesto</Button>
         </div>
       </section>
       

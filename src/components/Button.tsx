@@ -14,6 +14,7 @@ export default function Button({
   children, 
   showArrow = true,
   className = '',
+  type = 'button',
   ...props 
 }: ButtonProps) {
   const baseStyles = "inline-flex items-center justify-center uppercase font-bold tracking-widest text-xs py-4 px-8 border transition-colors duration-200";
@@ -39,7 +40,7 @@ export default function Button({
   }
 
   return (
-    <button className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
+    <button type={type} className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
       {content}
     </button>
   );

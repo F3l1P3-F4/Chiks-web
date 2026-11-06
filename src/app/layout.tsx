@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Chik's | Gráfica, sublimación e impresión",
+  title: "Las Chikas Design | Gráfica, sublimación e impresión",
   description: "Imprimimos, sublimamos y vestimos ideas. Producción propia de punta a punta: de la remera al cartel de seis metros.",
 };
 
