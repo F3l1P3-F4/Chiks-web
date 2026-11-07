@@ -1,7 +1,10 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Button from './Button';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import logo from '../../public/images/logo/20231028_172144_0000 (1).png';
+import styles from './Header.module.css';
 
 const PRODUCT_LINKS = [
   { href: '/productos/indumentaria', label: 'Indumentaria' },
@@ -10,6 +13,8 @@ const PRODUCT_LINKS = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+  const navClass = (href: string) => `${styles.navLink} ${pathname === href || (href !== '/' && pathname.startsWith(`${href}/`)) ? styles.active : ''}`;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const productsRef = useRef<HTMLDivElement>(null);
@@ -20,6 +25,9 @@ export default function Header() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        if (document.getElementById('submenu-productos')?.contains(document.activeElement)) {
+          productsRef.current?.querySelector('button')?.focus();
+        }
         setIsProductsOpen(false);
         setIsMenuOpen(false);
       }
@@ -38,24 +46,20 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full border-b border-divider relative z-50 bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <header className={`${styles.header} w-full relative z-50`}>
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-6">
+        <div className="flex items-center justify-between gap-5 h-20">
           
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-2 group">
-              <span className="text-lg sm:text-xl whitespace-nowrap font-extrabold uppercase tracking-tighter text-gradient-electric">
-                Las Chikas Design
-              </span>
-              <span className="text-xs font-mono text-gray-500 uppercase tracking-widest hidden 2xl:inline ml-4">
-                Gráfica · Est. 1998
-              </span>
+            <Link href="/" className={styles.logo} aria-label="Las Chikas Design — Inicio">
+              <Image src={logo} alt="Las Chikas Design" priority sizes="132px" className={styles.logoImage} />
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <nav aria-label="Principal" className="hidden xl:flex items-center gap-8 text-sm font-bold uppercase tracking-widest">
+          <nav aria-label="Principal" className="hidden xl:flex items-center gap-6 2xl:gap-9 text-base font-bold">
+            <Link href="/" className={navClass('/')} aria-current={pathname === '/' ? 'page' : undefined}>Inicio</Link>
             <div
               ref={productsRef}
               className="relative flex items-center gap-1"
@@ -65,14 +69,14 @@ export default function Header() {
                 if (!e.currentTarget.contains(e.relatedTarget as Node)) setIsProductsOpen(false);
               }}
             >
-              <Link href="/productos" onClick={() => setIsProductsOpen(false)} className="hover:text-brand transition-colors">Productos</Link>
+              <Link href="/productos" onClick={() => setIsProductsOpen(false)} className={navClass('/productos')}>Catálogo</Link>
               <button
                 type="button"
                 aria-label="Mostrar categorías de productos"
                 aria-expanded={isProductsOpen}
                 aria-controls="submenu-productos"
-                onClick={() => setIsProductsOpen((v) => !v)}
-                className="p-1 hover:text-brand transition-colors"
+                onClick={(e) => setIsProductsOpen((open) => e.detail === 0 ? !open : true)}
+                className="p-2 hover:text-[#df007c] transition-colors"
               >
                 <svg className={`w-3 h-3 transition-transform ${isProductsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -80,13 +84,13 @@ export default function Header() {
               </button>
               {isProductsOpen && (
                 <div id="submenu-productos" className="absolute left-0 top-full pt-2 min-w-56 z-50">
-                  <ul className="flex flex-col bg-background border border-divider shadow-lg">
+                  <ul className="flex flex-col bg-white border border-divider rounded-lg shadow-lg">
                     {PRODUCT_LINKS.map((item) => (
                       <li key={item.href}>
                         <Link
                           href={item.href}
                           onClick={() => setIsProductsOpen(false)}
-                          className="block px-5 py-3 hover:bg-gray-50 hover:text-brand transition-colors whitespace-nowrap"
+                          className="block px-5 py-3 hover:bg-gray-50 hover:text-[#df007c] transition-colors whitespace-nowrap"
                         >
                           {item.label}
                         </Link>
@@ -96,7 +100,7 @@ export default function Header() {
                       <Link
                         href="/productos"
                         onClick={() => setIsProductsOpen(false)}
-                        className="block px-5 py-3 text-xs font-mono text-gray-500 hover:text-brand transition-colors whitespace-nowrap"
+                          className="block px-5 py-3 text-sm text-gray-600 hover:text-[#df007c] transition-colors whitespace-nowrap"
                       >
                         Ver todo el catálogo →
                       </Link>
@@ -105,20 +109,26 @@ export default function Header() {
                 </div>
               )}
             </div>
-            <Link href="/soluciones" className="hover:text-brand transition-colors">Soluciones</Link>
-            <Link href="/trabajos-realizados" className="hover:text-brand transition-colors">Trabajos</Link>
-            <Link href="/nosotros" className="hover:text-brand transition-colors">Nosotros</Link>
-            <Link href="/faq" className="hover:text-brand transition-colors">FAQ</Link>
+            <Link href="/soluciones" className={navClass('/soluciones')}>Soluciones</Link>
+            <Link href="/trabajos-realizados" className={navClass('/trabajos-realizados')}>Trabajos</Link>
+            <Link href="/nosotros" className={navClass('/nosotros')}>Nosotros</Link>
+            <Link href="/faq" className={navClass('/faq')}>Preguntas Frecuentes</Link>
           </nav>
 
           {/* CTA & Mobile Toggle */}
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:block">
-              <Button href="/contacto" showArrow>Solicitar Pedido</Button>
+          <div className="flex items-center gap-3 sm:gap-6">
+            <div className={`${styles.contactGroup} hidden sm:block`}>
+              <Link href="/contacto" className={styles.contact}>
+                <svg width="22" height="18" viewBox="0 0 22 18" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+                  <rect x="1" y="1" width="20" height="16" rx="1" />
+                  <path d="m2 2 9 7 9-7M2 16l6-6m12 6-6-6" />
+                </svg>
+                Contacto
+              </Link>
             </div>
             <button 
               type="button"
-              className="xl:hidden p-2 uppercase text-xs font-bold tracking-widest flex items-center gap-2"
+              className="xl:hidden p-3 text-sm font-bold flex items-center gap-2 rounded-lg border border-[#07134b]/20 hover:text-[#df007c]"
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
               aria-controls="menu-movil"
@@ -132,24 +142,24 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div id="menu-movil" className="xl:hidden absolute top-full left-0 w-full bg-background border-b border-divider shadow-lg max-h-[calc(100vh-5rem)] overflow-y-auto">
-          <nav aria-label="Principal móvil" className="flex flex-col px-4 py-8 gap-6 text-sm font-bold uppercase tracking-widest">
-            <Link href="/" onClick={toggleMenu} className="hover:text-brand transition-colors">Inicio</Link>
+        <div id="menu-movil" className="xl:hidden absolute top-full left-0 w-full bg-white border-b border-divider shadow-lg max-h-[calc(100dvh-5rem)] overflow-y-auto">
+          <nav aria-label="Principal móvil" className="flex flex-col px-6 py-6 gap-4 text-base font-bold">
+            <Link href="/" onClick={toggleMenu} className={navClass('/')}>Inicio</Link>
             <div className="flex flex-col gap-4">
-              <Link href="/productos" onClick={toggleMenu} className="hover:text-brand transition-colors">Productos</Link>
+              <Link href="/productos" onClick={toggleMenu} className={navClass('/productos')}>Catálogo</Link>
               <ul className="flex flex-col gap-4 pl-4 border-l border-divider text-xs">
                 {PRODUCT_LINKS.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} onClick={toggleMenu} className="block py-1 text-gray-600 hover:text-brand transition-colors">{item.label}</Link>
+                    <Link href={item.href} onClick={toggleMenu} className="block py-1 text-gray-600 hover:text-[#df007c] transition-colors">{item.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
-            <Link href="/soluciones" onClick={toggleMenu} className="hover:text-brand transition-colors">Soluciones</Link>
-            <Link href="/trabajos-realizados" onClick={toggleMenu} className="hover:text-brand transition-colors">Trabajos Realizados</Link>
-            <Link href="/nosotros" onClick={toggleMenu} className="hover:text-brand transition-colors">Nosotros</Link>
-            <Link href="/faq" onClick={toggleMenu} className="hover:text-brand transition-colors">FAQ</Link>
-            <Link href="/contacto" onClick={toggleMenu} className="hover:text-brand transition-colors">Contacto</Link>
+            <Link href="/soluciones" onClick={toggleMenu} className={navClass('/soluciones')}>Soluciones</Link>
+            <Link href="/trabajos-realizados" onClick={toggleMenu} className={navClass('/trabajos-realizados')}>Trabajos</Link>
+            <Link href="/nosotros" onClick={toggleMenu} className={navClass('/nosotros')}>Nosotros</Link>
+            <Link href="/faq" onClick={toggleMenu} className={navClass('/faq')}>Preguntas Frecuentes</Link>
+            <Link href="/contacto" onClick={toggleMenu} className={`${styles.contact} self-start`}>Contacto</Link>
           </nav>
         </div>
       )}

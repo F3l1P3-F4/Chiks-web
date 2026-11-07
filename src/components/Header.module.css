@@ -1,0 +1,75 @@
+.header {
+  color: #07134b;
+  background: #fff;
+  border-bottom: 1px solid #e5e9f1;
+}
+
+/* El archivo original es cuadrado; se encuadra su margen vacío sin deformarlo. */
+.logo {
+  position: relative;
+  display: block;
+  width: 132px;
+  aspect-ratio: 1080 / 650;
+  overflow: hidden;
+}
+
+.logoImage {
+  position: absolute;
+  top: -25%;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.navLink {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  padding-block: 8px;
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+.navLink:hover {
+  color: #d00073;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: #ed0084;
+}
+
+.contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 9px 26px;
+  border-radius: 15px;
+  color: #fff;
+  background: linear-gradient(180deg, #f00087, #b00064);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.contact:hover {
+  background: linear-gradient(180deg, #d90079, #970055);
+}
+
+.header a:focus-visible,
+.header button:focus-visible {
+  outline: 2px solid #df007c;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1280px) {
+  .contactGroup {
+    border-left: 2px solid #07134b;
+    padding-left: 24px;
+  }
+}

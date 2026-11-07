@@ -63,3 +63,60 @@ h1, h2, h3, h4, h5, h6 {
     radial-gradient(ellipse 34% 48% at 66% 48%, rgba(76, 195, 255, 0.30) 0%, rgba(76, 195, 255, 0) 100%),
     radial-gradient(ellipse 24% 38% at 74% 58%, rgba(31, 75, 255, 0.16) 0%, rgba(31, 75, 255, 0) 100%);
 }
+
+/* Fondo exclusivo de la portada: azul profundo y barridos amplios de luz. */
+.bg-portada {
+  background-color: #031b50;
+  background-image:
+    radial-gradient(ellipse 80% 34% at 50% 8%, #073e91 0%, transparent 75%),
+    radial-gradient(ellipse 70% 40% at 100% 60%, #063b95 0%, transparent 78%),
+    linear-gradient(180deg, #031b50 0%, #042664 35%, #021747 75%, #04245b 100%);
+}
+
+.bg-portada .bg-portada-curvas {
+  height: clamp(680px, 58vw, 960px);
+  background-repeat: no-repeat;
+  background-image:
+    /* Curva izquierda: luz cian exterior y centro despejado. */
+    radial-gradient(ellipse 95% 90% at 68% 100%, transparent 89%, #00b9ed99 89.3%, #0069c480 93%, transparent 100%),
+    radial-gradient(ellipse 45% 38% at 88% 35%, #0644ad80 0%, transparent 75%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
+}
+
+/* Luz lateral derecha, desvanecida antes de alcanzar el centro. */
+.bg-portada::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: clamp(680px, 58vw, 960px);
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 100% 110% at 25% -50%, transparent 85%, #064ac4 85.2%, #0079d6 89%, #00b9ed99 91%, transparent 91.3%);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 75%);
+  mask-image: linear-gradient(90deg, transparent, #000 75%);
+}
+
+/* El barrido inferior acompaña el final de la portada, también en móvil. */
+.bg-portada::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: clamp(260px, 30vw, 500px);
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 100% at 48% -45%, transparent 95%, #0058b5 95.3%, #033678 100%, transparent 125%);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 35%, #000);
+  mask-image: linear-gradient(180deg, transparent, #000 35%, #000);
+}
+
+@media (max-width: 767px) {
+  .bg-portada .bg-portada-curvas {
+    background-size: 180% 100%;
+    background-position: center top;
+    opacity: 0.65;
+  }
+}

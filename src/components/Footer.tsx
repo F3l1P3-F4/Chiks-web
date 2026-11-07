@@ -1,49 +1,83 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../../public/images/logo/20231028_172144_0000 (1).png';
+import styles from './Footer.module.css';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-background mt-24 border-t border-divider">
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className={`${styles.footer} w-full mt-24`}>
+      <div className={`${styles.inner} mx-auto px-4 lg:px-6`}>
+        <div className={styles.columns}>
           
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tighter uppercase mb-6 text-gradient-electric w-fit">Las Chikas Design</h3>
-            <p className="text-gray-500 font-mono text-sm max-w-sm mb-6 leading-relaxed">
-              Gráfica integral. Impresión, sublimación, indumentaria, cartelería y merchandising con producción propia.
+          <div className={styles.brand}>
+            <Link href="/" className={styles.logo} aria-label="Las Chikas Design — Inicio">
+              <Image src={logo} alt="Las Chikas Design" sizes="144px" className={styles.logoImage} />
+            </Link>
+            <p className={styles.description}>
+              Indumentaria, gráfica y merchandising para clubes, empresas, comercios, eventos y obras.
             </p>
           </div>
 
-          <div>
-            <h4 className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-6">Navegación</h4>
-            <nav className="flex flex-col gap-4 text-sm font-bold uppercase tracking-widest">
-              <Link href="/productos" className="hover:text-brand transition-colors">Productos</Link>
-              <Link href="/soluciones" className="hover:text-brand transition-colors">Soluciones</Link>
-              <Link href="/trabajos-realizados" className="hover:text-brand transition-colors">Trabajos</Link>
-              <Link href="/nosotros" className="hover:text-brand transition-colors">El Taller</Link>
+          <div className={styles.column}>
+            <h3 className={styles.heading}>Enlaces rápidos</h3>
+            <nav aria-label="Enlaces del pie de página" className={styles.links}>
+              <Link href="/">Inicio</Link>
+              <Link href="/trabajos-realizados">Trabajos</Link>
+              <Link href="/productos">Catálogo</Link>
+              <Link href="/nosotros">Nosotros</Link>
+              <Link href="/soluciones">Soluciones</Link>
+              <Link href="/faq">Preguntas Frecuentes</Link>
             </nav>
           </div>
 
-          <div>
-            <h4 className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-6">Contacto</h4>
-            <div className="flex flex-col gap-4 text-sm font-bold uppercase tracking-widest">
-              <a href="https://wa.me/5491155553300" target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">+54 9 11 5555-3300</a>
-              <a href="mailto:hola@laschikas.com.ar" className="hover:text-brand transition-colors">hola@laschikas.com.ar</a>
-              <span className="text-gray-500">Av. Falsa 1234, CABA</span>
-              <span className="text-gray-500">Lun a Vie · 9 a 18h</span>
+          <div className={styles.column}>
+            <h3 className={styles.heading}>Contacto</h3>
+            <Link href="/contacto" className={styles.contactLink}>
+              <svg width="21" height="18" viewBox="0 0 22 18" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                <rect x="1" y="1" width="20" height="16" rx="2" />
+                <path d="m2 2 9 7 9-7" />
+              </svg>
+              Ir a Contacto
+            </Link>
+            <p className={styles.pending}>Datos de contacto pendientes de confirmación.</p>
+          </div>
+
+          <div className={styles.column}>
+            <h3 className={styles.heading}>Redes sociales</h3>
+            <div className={styles.socials}>
+              {/* Íconos informativos: incorporar enlaces solo al confirmar los perfiles. */}
+              <span role="img" aria-label="Instagram: perfil pendiente de confirmación" className={styles.socialIcon}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                </svg>
+              </span>
+              <span role="img" aria-label="Facebook: perfil pendiente de confirmación" className={styles.socialIcon}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M14 22v-9h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.4A23 23 0 0 0 15 1c-3 0-5 1.8-5 5v3H7v4h3v9Z" />
+                </svg>
+              </span>
+              <span role="img" aria-label="TikTok: perfil pendiente de confirmación" className={styles.socialIcon}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M14 3v13a4 4 0 1 1-4-4M14 3c0 4 3 6 6 6" />
+                </svg>
+              </span>
+              <span role="img" aria-label="YouTube: perfil pendiente de confirmación" className={styles.socialIcon}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                  <rect x="2" y="5" width="20" height="14" rx="4" /><path d="m10 9 5 3-5 3Z" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
             </div>
+            <p className={styles.pending}>Perfiles pendientes de confirmación.</p>
           </div>
         </div>
 
-        <div className="mt-24 pt-8 border-t border-divider flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">
-            © {currentYear} Las Chikas Design — Buenos Aires, Argentina
+        <div className={styles.bottom}>
+          <p>
+            © {currentYear} Las Chikas Design
           </p>
-          <div className="flex gap-4">
-            {/* Social Links can go here */}
-          </div>
         </div>
       </div>
     </footer>

@@ -1,0 +1,140 @@
+.hero {
+  max-width: 1400px;
+  margin-inline: auto;
+  color: #fff;
+}
+
+.copy {
+  min-width: 0;
+  padding-left: 22px;
+}
+
+.eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: clamp(10px, 0.95vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.title {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 18px;
+  color: #fff;
+  font-size: clamp(44px, 5.1vw, 80px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-transform: none;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  top: 7%;
+  bottom: 4%;
+  left: -18px;
+  width: 4px;
+  background: linear-gradient(#ff8a37, #ffd3ed 50%, #ff71d1);
+  transform: skew(-16deg);
+}
+
+.firstLine {
+  display: block;
+  white-space: nowrap;
+}
+
+.highlight {
+  display: block;
+  width: fit-content;
+  margin-top: 4px;
+  padding: 0 24px 6px;
+  background: #ed0084;
+  transform: skew(-16deg);
+}
+
+.highlight > span {
+  display: block;
+  transform: skew(16deg);
+}
+
+.subtitle {
+  max-width: 410px;
+  margin-bottom: 22px;
+  font-size: clamp(17px, 1.4vw, 21px);
+  font-weight: 500;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+/* Mayor especificidad que las utilidades del botón, solo dentro de este hero. */
+.hero .button {
+  min-height: 44px;
+  gap: 10px;
+  padding: 9px 18px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  text-transform: none;
+}
+
+.hero .button svg {
+  flex-shrink: 0;
+}
+
+.hero .button:hover {
+  color: #07134b;
+  background: #fff;
+}
+
+.hero .button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.products {
+  min-width: 0;
+  aspect-ratio: 16 / 10;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 340px;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 639px) {
+  .copy {
+    padding-left: 14px;
+  }
+
+  .eyebrow {
+    gap: 6px;
+    letter-spacing: 0.07em;
+  }
+
+  .title {
+    font-size: clamp(42px, 10.5vw, 64px);
+  }
+
+  .title::before {
+    left: -12px;
+    width: 3px;
+  }
+
+  .highlight {
+    padding-inline: 18px;
+  }
+}
