@@ -1,10 +1,10 @@
-// Copiar las fotografías originales a public/images/trabajos/ con estos nombres.
+// Fotografías locales de public/images/trabajos/ y su encuadre en la galería.
 // Si cambia una extensión o un nombre, editar únicamente esta configuración.
-// Completar los textos alternativos con la descripción real y volver a compilar.
+// Volver a compilar después de sustituir una fotografía.
 export const trabajos = [
-  { fileName: 'trabajo-01.jpg', alt: 'Trabajo realizado 1' },
-  { fileName: 'trabajo-02.jpg', alt: 'Trabajo realizado 2' },
-  { fileName: 'trabajo-03.jpg', alt: 'Trabajo realizado 3' },
-  { fileName: 'trabajo-04.jpg', alt: 'Trabajo realizado 4' },
-  { fileName: 'trabajo-05.jpg', alt: 'Trabajo realizado 5' },
+  { fileName: 'trabajo-01-textil.webp', alt: 'Remeras con estampados personalizados', position: '50% 60%' },
+  { fileName: 'trabajo-02-vidriera.webp', alt: 'Gráfica aplicada a una vidriera comercial', position: '50% 30%' },
+  { fileName: 'trabajo-03-stand.webp', alt: 'Stand con paneles gráficos para un evento', position: '50% 60%' },
+  { fileName: 'trabajo-04-vehiculo.webp', alt: 'Vehículo con ploteo gráfico', position: '50% 50%' },
+  { fileName: 'trabajo-05-merchandising.webp', alt: 'Taza y cintas de merchandising deportivo', position: '50% 25%' },
 ];

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Breadcrumb from '@/components/Breadcrumb';
 import SectionDivider from '@/components/SectionDivider';
 import ProductCard from '@/components/ProductCard';
+import { catalogEntries, catalogEntryHref } from '@/data/catalogEntries';
 import Button from '@/components/Button';
 
 export const metadata: Metadata = {
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
 
 export default function MerchandisingPage() {
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb items={[
+    <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
+      <Breadcrumb wrap items={[
         { label: 'Productos', href: '/productos' },
         { label: 'Merchandising' }
       ]} />
@@ -32,36 +33,13 @@ export default function MerchandisingPage() {
       <section id="articulos-generales" className="mb-24">
         <SectionDivider text="ARTÍCULOS GENERALES" metadata="PROMOCIONALES, EMPRESAS Y EVENTOS" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <ProductCard 
-            title="Gorras"
-            category="Merchandising"
-            description="Gorras personalizadas con estampado o bordado para marcas, eventos o merchandising promocional."
-            ctaText="Ficha en desarrollo"
-          />
-          <ProductCard 
-            title="Tazas"
-            category="Merchandising"
-            description="Tazas personalizadas con logo o diseño full color. Ideales para regalos empresariales, souvenirs o venta."
-            ctaText="Ficha en desarrollo"
-          />
-          <ProductCard 
-            title="Buzos y Hoodies"
-            category="Merchandising"
-            description="Buzos clásicos y hoodies con capucha, personalizados con estampado o bordado para marcas o eventos."
-            ctaText="Ficha en desarrollo"
-          />
-          <ProductCard 
-            title="Llaveros"
-            category="Merchandising"
-            description="Llaveros personalizados para promociones, souvenirs y difusión de marca en diversos formatos."
-            ctaText="Ficha en desarrollo"
-          />
-          <ProductCard 
-            title="Neceseres"
-            category="Merchandising"
-            description="Organizadores y neceseres multiuso personalizados para kits de bienvenida, viajes o regalos."
-            ctaText="Ficha en desarrollo"
-          />
+          <ProductCard {...catalogEntries['gorras']} href={catalogEntryHref('gorras')} />
+          <ProductCard {...catalogEntries['tazas']} href={catalogEntryHref('tazas')} />
+          <ProductCard {...catalogEntries['buzos-y-hoodies']} href={catalogEntryHref('buzos-y-hoodies')} />
+          <ProductCard {...catalogEntries['llaveros']} href={catalogEntryHref('llaveros')} />
+          <ProductCard {...catalogEntries['neceseres']} href={catalogEntryHref('neceseres')} />
+          <ProductCard {...catalogEntries['banderas']} href={catalogEntryHref('banderas')} />
+          <ProductCard {...catalogEntries['regalos-empresariales']} href={catalogEntryHref('regalos-empresariales')} />
         </div>
       </section>
 
@@ -69,36 +47,16 @@ export default function MerchandisingPage() {
       <section id="articulos-clubes" className="mb-24">
         <SectionDivider text="ARTÍCULOS PARA CLUBES" metadata="LÍNEA DEPORTIVA E INSTITUCIONAL" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <ProductCard 
-            title="Botineros"
-            category="Merchandising"
-            description="Bolsos botineros personalizados con escudo y colores para planteles, socios y torneos."
-            ctaText="Ficha en desarrollo"
-          />
-          <ProductCard 
-            title="Mochilas"
-            category="Merchandising"
-            description="Mochilas deportivas personalizadas para traslados, entrenamientos y delegaciones de clubes."
-            ctaText="Ficha en desarrollo"
-          />
-          <ProductCard 
-            title="Toallones"
-            category="Merchandising"
-            description="Toallones deportivos estampados a medida para disciplinas acuáticas, vestuarios y gimnasios."
-            ctaText="Ficha en desarrollo"
-          />
-          <ProductCard 
-            title="Banderas"
-            category="Merchandising"
-            description="Banderas, tirantes y estandartes sublimados full color para clubes, hinchadas y eventos deportivos."
-            ctaText="Ficha en desarrollo"
-          />
+          <ProductCard {...catalogEntries['botineros']} href={catalogEntryHref('botineros')} />
+          <ProductCard {...catalogEntries['mochilas']} href={catalogEntryHref('mochilas')} />
+          <ProductCard {...catalogEntries['toallones']} href={catalogEntryHref('toallones')} />
+          <ProductCard {...catalogEntries['banderas-deportivas']} href={catalogEntryHref('banderas-deportivas')} />
         </div>
       </section>
 
       {/* ASESORAMIENTO Y PRESUPUESTOS */}
       <section className="border-t border-divider pt-16 mb-16">
-        <div className="bg-gray-50 p-8 md:p-12 border border-divider flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="internal-surface p-8 md:p-12 border border-divider flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-2xl">
             <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-tight mb-3">
               ¿Buscás merchandising para tu marca o club?
@@ -107,7 +65,7 @@ export default function MerchandisingPage() {
               Producimos accesorios y artículos personalizados en volumen con entregas coordinadas y asesoramiento directo.
             </p>
           </div>
-          <Button href="/contacto" variant="solid" className="whitespace-nowrap">
+          <Button href="/contacto" variant="solid" className="w-full sm:w-auto min-w-0 max-w-full text-center">
             Solicitar Presupuesto
           </Button>
         </div>

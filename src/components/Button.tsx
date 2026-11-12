@@ -33,14 +33,14 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href} className={`${baseStyles} ${variants[variant]} ${className}`}>
+      <Link href={href} data-button-variant={variant} className={`${baseStyles} ${variants[variant]} ${className}`}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button type={type} className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
+    <button type={type} data-button-variant={variant} className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
       {content}
     </button>
   );

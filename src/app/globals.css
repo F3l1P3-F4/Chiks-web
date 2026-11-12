@@ -64,13 +64,90 @@ h1, h2, h3, h4, h5, h6 {
     radial-gradient(ellipse 24% 38% at 74% 58%, rgba(31, 75, 255, 0.16) 0%, rgba(31, 75, 255, 0) 100%);
 }
 
-/* Fondo exclusivo de la portada: azul profundo y barridos amplios de luz. */
-.bg-portada {
+/* Base azul compartida entre la portada y las páginas internas. */
+.bg-portada,
+main:has(> .internal-page) {
   background-color: #031b50;
   background-image:
     radial-gradient(ellipse 80% 34% at 50% 8%, #073e91 0%, transparent 75%),
     radial-gradient(ellipse 70% 40% at 100% 60%, #063b95 0%, transparent 78%),
     linear-gradient(180deg, #031b50 0%, #042664 35%, #021747 75%, #04245b 100%);
+}
+
+main:has(> .catalog-background) {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-background nav[aria-label='Ruta de navegación'] {
+  font-family: var(--font-sans);
+  letter-spacing: 0.04em;
+}
+
+/* Tema de las páginas internas, separado de la portada y de la navegación. */
+.internal-page {
+  --foreground: #fff;
+  --background: #031b50;
+  --brand: #8aeaff;
+  --divider: #6385af;
+  --color-gray-400: #bacdea;
+  --color-gray-500: #c8daf2;
+  --color-gray-600: #dce9fb;
+  --color-gray-700: #e6efff;
+  color: var(--foreground);
+}
+
+.internal-page h1 {
+  font-size: clamp(1.875rem, 5.1vw, 4.25rem);
+  line-height: 1.04;
+  overflow-wrap: anywhere;
+}
+
+.internal-page h1::after {
+  content: '';
+  display: block;
+  width: 6rem;
+  height: 3px;
+  margin-top: 1rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00d8f4, #ed0084 62%, #ffe000);
+}
+
+.internal-page .internal-surface {
+  --foreground: #07134b;
+  --background: #fff;
+  --brand: #a90062;
+  --divider: #b5c8e4;
+  --color-gray-400: #52617a;
+  --color-gray-500: #495974;
+  --color-gray-600: #354560;
+  --color-gray-700: #283952;
+  color: var(--foreground);
+  background-color: var(--background);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgb(2 17 53 / 25%);
+  overflow: hidden;
+}
+
+.internal-page [data-button-variant] {
+  border-radius: 999px;
+}
+
+.internal-page [data-button-variant='solid'] {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(180deg, #d00075, #970055);
+}
+
+.internal-page [data-button-variant='solid']:hover {
+  background: #970055;
+}
+
+.internal-page a:focus-visible,
+.internal-page summary:focus-visible,
+.internal-page button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
 }
 
 .bg-portada .bg-portada-curvas {

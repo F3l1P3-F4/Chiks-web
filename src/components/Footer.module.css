@@ -7,7 +7,7 @@
 }
 
 /* La portada azul debe continuar hasta el footer, sin margen exterior blanco. */
-:global(main:has(> .bg-portada)) + .footer {
+:global(main:has(> .bg-portada, > .internal-page)) + .footer {
   margin-top: 0;
 }
 

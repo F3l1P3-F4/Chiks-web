@@ -1,59 +1,43 @@
 import React from 'react';
 import Link from 'next/link';
+import CatalogImage from './CatalogImage';
+import type { CatalogPhoto } from '@/data/productImages';
 
 interface ProductCardProps {
   title: string;
   description: string;
-  imageUrl?: string;
+  photo?: CatalogPhoto;
   href?: string;
   category: string;
   ctaText?: string;
 }
 
-export default function ProductCard({ title, description, imageUrl, href, category, ctaText }: ProductCardProps) {
+export default function ProductCard({ title, description, photo, href, category, ctaText }: ProductCardProps) {
   return (
-    <div className="group border border-divider flex flex-col h-full bg-white hover:border-brand transition-colors duration-300">
-      {/* Image Container */}
-      <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden border-b border-divider">
-        {imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img 
-            src={imageUrl} 
-            alt={title}
-            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center font-mono text-xs uppercase tracking-widest bg-striped">
-            <span className="bg-white px-2 py-1 border border-divider text-gray-400">[ IMG ]</span>
-          </div>
-        )}
+    <div className="internal-surface flex h-full min-w-0 flex-col border-2 border-divider transition-colors hover:border-brand focus-within:border-brand">
+      <div className="relative aspect-[4/3] overflow-hidden border-b border-divider bg-[#f6f8fc]">
+        <CatalogImage photo={photo} sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
       </div>
       
       {/* Content */}
-      <div className="p-6 flex flex-col flex-grow">
-        <span className="text-xs font-mono text-brand uppercase tracking-widest mb-3">
+      <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
+        <span className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand">
           {category}
         </span>
-        <h3 className="text-xl font-bold uppercase tracking-tight mb-2">
+        <h3 className="text-xl font-bold uppercase tracking-tight mb-2 break-words">
           {title}
         </h3>
-        <p className="text-sm text-gray-600 mb-6 flex-grow">
+        <p className="mb-5 flex-grow text-sm leading-relaxed text-gray-600">
           {description}
         </p>
         
         {/* CTA */}
-        {href ? (
-          <Link 
-            href={href}
-            className="inline-flex items-center text-xs font-bold uppercase tracking-widest hover:text-brand transition-colors mt-auto"
-          >
-            {ctaText || 'Ver producto'} <span className="ml-2 font-normal">→</span>
-          </Link>
-        ) : (
-          <span className="inline-flex items-center text-xs font-mono uppercase tracking-widest text-gray-400 mt-auto">
-            {ctaText || 'Ficha en desarrollo'}
-          </span>
-        )}
+        <Link
+          href={href ?? '/contacto'}
+          className="mt-auto inline-flex items-center self-start py-2 text-sm font-bold uppercase tracking-wide transition-colors hover:text-brand"
+        >
+          {ctaText || (href ? 'Ver ficha' : 'Consultar en Contacto')} <span className="ml-2 font-normal">→</span>
+        </Link>
       </div>
     </div>
   );

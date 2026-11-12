@@ -1,4 +1,9 @@
 import React from 'react';
+import Image from 'next/image';
+import indumentariaHero from '../../public/images/hero/indumentaria-corporativa.webp';
+import bolsasHero from '../../public/images/hero/bolsas-personalizadas.webp';
+import gorrasHero from '../../public/images/hero/gorras-indumentaria.webp';
+import merchandisingHero from '../../public/images/hero/merchandising-deportivo.webp';
 import Button from '@/components/Button';
 import SolutionCard from '@/components/SolutionCard';
 import styles from './Hero.module.css';
@@ -39,10 +44,23 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        {/* Espacio para la composición original de productos de public/images/hero/.
-            Falta el recurso: no se muestran productos inventados ni imágenes rotas.
-            Al incorporarlo, usar next/image con import estático y object-fit: contain. */}
-        <div aria-hidden="true" className={`${styles.products} hidden lg:block`} />
+        <div className={styles.products}>
+          {[
+            { image: indumentariaHero, alt: 'Remeras con estampados corporativos' },
+            { image: bolsasHero, alt: 'Bolsas textiles personalizadas' },
+            { image: gorrasHero, alt: 'Gorras e indumentaria personalizadas' },
+            { image: merchandisingHero, alt: 'Taza y cintas personalizadas de merchandising deportivo' },
+          ].map(({ image, alt }, index) => (
+            <Image
+              key={image.src}
+              src={image}
+              alt={alt}
+              preload={index === 0}
+              sizes="(min-width: 1024px) 25vw, 50vw"
+              className={styles.productPhoto}
+            />
+          ))}
+        </div>
       </section>
 
       {/* SOLUCIONES POR PERFIL */}

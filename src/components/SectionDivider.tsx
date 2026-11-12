@@ -1,24 +1,16 @@
-import React from 'react';
+import styles from './WorkGallery.module.css';
 
 interface SectionDividerProps {
-  text?: string;
+  text: string;
   metadata?: string;
+  id?: string;
 }
 
-export default function SectionDivider({ text, metadata }: SectionDividerProps) {
+export default function SectionDivider({ text, metadata, id }: SectionDividerProps) {
   return (
-    <div className="w-full border-t border-divider pt-4 pb-12 mb-4">
-      {text && (
-        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 text-xs font-mono tracking-widest uppercase text-gray-500">
-          <span>[ {text} ]</span>
-          {metadata && (
-            <>
-              <span className="hidden md:inline">—</span>
-              <span>{metadata}</span>
-            </>
-          )}
-        </div>
-      )}
+    <div className="mb-8 w-full text-center">
+      <h2 id={id} className={styles.title}><span className="min-w-0 wrap-break-word">{text}</span></h2>
+      {metadata && <p className="text-sm font-semibold tracking-wide text-gray-600">{metadata}</p>}
     </div>
   );
 }

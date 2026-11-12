@@ -1,108 +1,102 @@
 import React from 'react';
 import Breadcrumb from './Breadcrumb';
-import Button from './Button';
 import SectionDivider from './SectionDivider';
 import ProductCard from './ProductCard';
+import ProductGallery from './ProductGallery';
+import ProductConsultation from './ProductConsultation';
+import type { CatalogPhoto } from '@/data/productImages';
 
 export interface ProductInfo {
+  photo?: CatalogPhoto;
+  additionalPhotos?: CatalogPhoto[];
+  subcategory?: { label: string; href: string };
   title: string;
   category: string;
   categorySlug: string;
-  description: string;
-  features: string[];
-  materials: string[];
-  sizes: string[];
-  customization: string;
+  description?: string;
+  applications?: string;
+  features?: string[];
+  materials?: string[];
+  variants?: string[];
+  sizes?: string[];
+  customization?: string;
   minQuantity?: string;
-  price?: string;
-  faqs?: { question: string; answer: string }[];
-  relatedProducts?: { title: string; category: string; description: string; href?: string; ctaText?: string }[];
+  faqs?: { question: string; answer?: string }[];
+  relatedProducts?: { title: string; category: string; description: string; href: string; photo?: CatalogPhoto; ctaText?: string }[];
 }
+
+const pending = 'Pendiente de confirmación.';
+const placeholderDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 
 interface ProductDetailProps {
   product: ProductInfo;
 }
 
 export default function ProductDetail({ product }: ProductDetailProps) {
+  const specifications = [
+    { title: 'Especificaciones', values: product.features },
+    { title: 'Materiales', values: product.materials },
+    { title: 'Talles / Tamaños', values: product.sizes },
+    { title: 'Modelos y variantes', values: product.variants },
+  ];
+  const photos = product.photo ? [product.photo, ...(product.additionalPhotos ?? [])] : [];
+  const description = product.description?.trim();
+  const faqs = product.faqs ?? [
+    { question: `¿Cómo solicito un presupuesto para ${product.title.toLocaleLowerCase('es')}?`, answer: 'Usá el botón «Solicitar presupuesto» para abrir la página de Contacto y enviar tu consulta por los canales indicados.' },
+    { question: '¿Cuál es el plazo de producción para este producto?', answer: pending },
+  ];
+
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb items={[
+    <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
+      <Breadcrumb wrap items={[
         { label: 'Productos', href: '/productos' },
-        { label: product.category, href: `/productos/${product.categorySlug}` },
+        { label: product.categorySlug === 'grafica' ? 'Gráfica' : product.category, href: `/productos/${product.categorySlug}` },
+        ...(product.subcategory ? [product.subcategory] : []),
         { label: product.title }
       ]} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-32">
-        {/* Gallery Section */}
-        <div className="space-y-4">
-          <div className="aspect-[4/3] bg-striped border border-divider flex items-center justify-center font-mono text-gray-400 uppercase tracking-widest relative">
-            <span className="bg-white px-3 py-1 border border-divider">[ IMAGEN PRINCIPAL ]</span>
-            <div className="absolute bottom-4 right-4 text-xs bg-white px-2 border border-divider">FIG. 01</div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="aspect-[4/3] bg-striped border border-divider flex items-center justify-center font-mono text-xs text-gray-400 uppercase tracking-widest">
-              <span className="bg-white px-2 py-1 border border-divider">[ DETALLE 1 ]</span>
-            </div>
-            <div className="aspect-[4/3] bg-striped border border-divider flex items-center justify-center font-mono text-xs text-gray-400 uppercase tracking-widest">
-              <span className="bg-white px-2 py-1 border border-divider">[ DETALLE 2 ]</span>
-            </div>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 gap-12 mb-24 lg:grid-cols-2 lg:gap-24">
+        <ProductGallery key={product.title} photos={photos} />
 
         {/* Info Section */}
-        <div className="flex flex-col">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tighter mb-6 leading-none">
+        <div className="flex flex-col min-w-0">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tighter mb-6 leading-none break-words">
             {product.title}
           </h1>
           
-          <div className="text-2xl font-mono text-brand mb-8">
-            {product.price ? product.price : 'PRECIO: CONSULTAR'}
+          <p className="mb-8 text-xl font-bold text-brand">Precio: Consultar</p>
+
+          <div className="mb-8">
+            <h2 className="text-xl mb-3">Descripción general</h2>
+            {!description && <p className="text-sm font-bold mb-2">Texto de muestra · pendiente de revisión</p>}
+            <p className="text-lg text-gray-700 leading-relaxed">{description || placeholderDescription}</p>
           </div>
 
-          <p className="text-lg text-gray-700 mb-12 leading-relaxed">
-            {product.description}
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div>
-              <h3 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-4 border-b border-divider pb-2">Especificaciones</h3>
-              <ul className="space-y-2 text-sm text-gray-700">
-                {product.features.map((feat, i) => (
-                  <li key={i} className="flex items-start">
-                    <span className="text-brand mr-2">✳</span> {feat}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-4 border-b border-divider pb-2">Materiales</h3>
-              <p className="text-sm text-gray-700">{product.materials.join(' · ')}</p>
-              
-              <h3 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-4 border-b border-divider pb-2 mt-6">Talles / Tamaños</h3>
-              <p className="text-sm text-gray-700">{product.sizes.join(' · ')}</p>
-            </div>
+          <div className="mb-8">
+            <h2 className="text-xl mb-3">Usos y aplicaciones</h2>
+            <p className="text-gray-700 leading-relaxed">{product.applications ?? pending}</p>
           </div>
 
-          <div className="bg-gray-50 p-6 border border-divider mb-12 text-sm text-gray-700 space-y-2">
-            <p><strong className="uppercase font-bold">Personalización:</strong> {product.customization}</p>
-            {product.minQuantity && (
-              <p><strong className="uppercase font-bold">Cantidad Mínima:</strong> {product.minQuantity}</p>
-            )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+            {specifications.map(({ title, values }) => (
+              <div key={title}>
+                <h2 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-4 border-b border-divider pb-2">{title}</h2>
+                {values?.length ? (
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                    {values.map((value) => <li key={value}>{value}</li>)}
+                  </ul>
+                ) : <p className="text-sm text-gray-700">{pending}</p>}
+              </div>
+            ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-auto">
-            <Button variant="solid" className="w-full sm:w-auto text-center" href="/contacto">
-              Solicitar Pedido
-            </Button>
-            <a 
-              href="https://wa.me/5491155553300" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center uppercase font-bold tracking-widest text-xs py-4 px-8 border border-green-500 text-green-700 hover:bg-green-500 hover:text-white transition-colors duration-200"
-            >
-              Consultar WhatsApp
-            </a>
+          <div className="internal-surface p-6 border border-divider mb-12 text-sm text-gray-700 space-y-2">
+            <h2 className="text-base mb-2">Opciones de personalización</h2>
+            <p>{product.customization ?? pending}</p>
+            <p><strong>Cantidad mínima de pedido:</strong> {product.minQuantity ?? pending}</p>
           </div>
+
+          <ProductConsultation />
         </div>
       </div>
 
@@ -111,34 +105,25 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         <section className="mb-32">
           <SectionDivider text="TE PUEDE INTERESAR" metadata="PRODUCTOS RELACIONADOS" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {product.relatedProducts.map((rel, i) => (
-              <ProductCard 
-                key={i}
-                title={rel.title}
-                category={rel.category}
-                description={rel.description}
-                href={rel.href}
-                ctaText={rel.ctaText}
-              />
+            {product.relatedProducts.map((related) => (
+              <ProductCard key={related.href} {...related} />
             ))}
           </div>
         </section>
       )}
 
       {/* FAQ Específica */}
-      {product.faqs && product.faqs.length > 0 && (
-        <section className="mb-24">
-          <SectionDivider text="DUDAS FRECUENTES" metadata="SOBRE ESTE PRODUCTO" />
-          <div className="max-w-3xl">
-            {product.faqs.map((faq, i) => (
-              <div key={i} className="mb-8 border-b border-divider pb-6">
-                <h4 className="text-lg font-bold uppercase tracking-tight mb-2">Q: {faq.question}</h4>
-                <p className="text-gray-700">A: {faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+      <section className="mb-24">
+        <SectionDivider text="DUDAS FRECUENTES" metadata="SOBRE ESTE PRODUCTO" />
+        <div className="max-w-3xl">
+          {faqs.map(({ question, answer }) => (
+            <div key={question} className="mb-8 border-b border-divider pb-6">
+              <h3 className="text-lg font-bold uppercase tracking-tight mb-2">{question}</h3>
+              <p className="text-gray-700">{answer ?? pending}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
