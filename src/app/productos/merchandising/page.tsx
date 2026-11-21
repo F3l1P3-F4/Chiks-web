@@ -5,6 +5,7 @@ import SectionDivider from '@/components/SectionDivider';
 import ProductCard from '@/components/ProductCard';
 import { catalogEntries, catalogEntryHref } from '@/data/catalogEntries';
 import Button from '@/components/Button';
+import CatalogIntro from '@/components/CatalogIntro';
 
 
 export const metadata = pageMetadata('/productos/merchandising');
@@ -17,15 +18,9 @@ export default function MerchandisingPage() {
         { label: 'Merchandising' }
       ]} />
       
-      <div className="max-w-4xl mb-16">
-        <SectionDivider heading="p" text="MERCHANDISING INTEGRAL" metadata="ARTÍCULOS Y ACCESORIOS PERSONALIZADOS" />
-        <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8 break-words">
-          Merchandising
-        </h1>
-        <p className="text-xl text-gray-600 leading-relaxed">
+      <CatalogIntro title="Merchandising" context="MERCHANDISING INTEGRAL" metadata="ARTÍCULOS Y ACCESORIOS PERSONALIZADOS">
           Desarrollo y producción de artículos promocionales y accesorios personalizados para empresas, eventos, marcas y entidades deportivas.
-        </p>
-      </div>
+      </CatalogIntro>
 
       <p className="text-sm text-gray-600 mb-8">Para preparar un presupuesto, abrí una ficha y agregá el producto a Mi consulta con la cantidad y las observaciones que necesites.</p>
       {/* 1. ARTÍCULOS GENERALES */}

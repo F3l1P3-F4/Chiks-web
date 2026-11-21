@@ -22,7 +22,7 @@ function CatalogImageContent({ photo, sizes, thumbnail }: {
 
   if (!photo || failed) {
     return (
-      <span className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[#eef3fa] p-2 text-center text-[#354560]">
+      <span data-image-placeholder className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[#eef3fa] p-2 text-center text-[#354560]">
         <svg aria-hidden="true" className={thumbnail ? 'size-5' : 'size-9'} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="4" width="18" height="16" rx="3" />
           <circle cx="8.5" cy="9.5" r="1.5" />

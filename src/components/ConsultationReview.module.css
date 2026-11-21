@@ -1,0 +1,29 @@
+.review {
+  max-width: 64rem;
+}
+
+@media (max-width: 639px) {
+  .review section[aria-labelledby^='seleccion-'],
+  .review section[aria-labelledby='tus-datos-title'],
+  .review section[aria-labelledby='resumen-solicitud-title'] {
+    padding: 20px 16px;
+  }
+}
+
+@media (min-width: 640px) {
+  .review form[id^='seleccion-form-'] {
+    display: grid;
+    grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
+    align-items: start;
+    gap: 20px;
+  }
+
+  .review form[id^='seleccion-form-'] > * {
+    margin-block: 0;
+    min-width: 0;
+  }
+
+  .review form[id^='seleccion-form-'] > button {
+    grid-column: 1 / -1;
+  }
+}

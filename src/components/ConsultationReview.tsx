@@ -9,6 +9,7 @@ import CatalogImage from './CatalogImage';
 import Button from './Button';
 import ConsultationRequest from './ConsultationRequest';
 import type { CatalogPhoto } from '@/data/productImages';
+import styles from './ConsultationReview.module.css';
 
 export default function ConsultationReview({ photos }: { photos: Record<string, CatalogPhoto | undefined> }) {
   const { items, ready, remove, pendingIds, conflicts } = useConsultation();
@@ -32,7 +33,7 @@ export default function ConsultationReview({ photos }: { photos: Record<string, 
   }
 
   return (
-    <div>
+    <div className={styles.review}>
       <p role="status" aria-live="polite" className="mb-4 text-sm font-semibold">{feedback}</p>
       {!ready ? <p role="status" className="mb-8">Cargando tu consulta…</p> : reviewItems.length === 0 ? (
         <p className="mb-8 text-lg text-gray-600">Tu consulta está vacía. Explorá el catálogo y agregá los productos que te interesan.</p>

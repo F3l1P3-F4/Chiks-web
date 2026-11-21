@@ -3,6 +3,7 @@ import { pageMetadata } from '@/lib/seo';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
 import { faqGroups } from '@/data/faqs';
+import styles from './Faq.module.css';
 
 export const metadata = pageMetadata('/faq');
 
@@ -14,15 +15,18 @@ export default function Page() {
         <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8 break-words">Preguntas frecuentes</h1>
         <p className="text-xl text-gray-600 leading-relaxed">Información para preparar tu consulta y conocer qué condiciones necesitamos confirmar para cada trabajo.</p>
       </div>
-      <div className="max-w-4xl space-y-12">
+      <div className="max-w-4xl space-y-10">
         {faqGroups.map((group) => (
           <section key={group.title}>
             <h2 className="text-2xl mb-6">{group.title}</h2>
-            <div className="space-y-3">
+            <div className="internal-surface border border-divider">
               {group.items.map((item) => (
-                <details key={item.question} className="internal-surface border border-divider px-5 py-4">
-                  <summary className="cursor-pointer py-2 pr-2 font-bold text-lg leading-relaxed focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">{item.question}</summary>
-                  <div className="pt-3 pb-2">
+                <details key={item.question} className={styles.item}>
+                  <summary className={styles.question}>
+                    {item.question}
+                    <svg className={styles.chevron} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                  </summary>
+                  <div className={styles.answer}>
                     {'pending' in item && item.pending && <p className="text-sm font-bold mb-3">Pendiente de confirmación</p>}
                     <p className="text-gray-600 leading-relaxed">{item.answer}</p>
                   </div>

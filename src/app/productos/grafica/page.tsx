@@ -5,6 +5,7 @@ import SectionDivider from '@/components/SectionDivider';
 import ProductCard from '@/components/ProductCard';
 import { catalogEntries, catalogEntryHref } from '@/data/catalogEntries';
 import Button from '@/components/Button';
+import CatalogIntro from '@/components/CatalogIntro';
 
 
 export const metadata = pageMetadata('/productos/grafica');
@@ -17,15 +18,9 @@ export default function GraficaPage() {
         { label: 'Gráfica' }
       ]} />
       
-      <div className="max-w-4xl mb-16">
-        <SectionDivider heading="p" text="GRÁFICA Y GRAN FORMATO" metadata="PRODUCCIÓN DIRECTA EN TALLER" />
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8 break-words">
-          Gráfica
-        </h1>
-        <p className="text-xl text-gray-600 leading-relaxed">
+      <CatalogIntro title="Gráfica" context="GRÁFICA Y GRAN FORMATO" metadata="PRODUCCIÓN DIRECTA EN TALLER">
           Impresión gráfica de gran formato, cartelería y señalética comercial con tecnología de plotter ecosolvente. Soluciones a medida para locales, vía pública, vehículos y eventos.
-        </p>
-      </div>
+      </CatalogIntro>
 
       <p className="text-sm text-gray-600 mb-8">Para preparar un presupuesto, abrí una ficha y agregá el producto a Mi consulta con la cantidad y las observaciones que necesites.</p>
       {/* 1. IMPRESIÓN ECOSOLVENTE */}

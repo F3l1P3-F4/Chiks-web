@@ -5,6 +5,7 @@ import SectionDivider from '@/components/SectionDivider';
 import ProductCard from '@/components/ProductCard';
 import { indumentariaGroups, indumentariaGroupHref, type IndumentariaGroupSlug } from '@/data/indumentariaGroups';
 import Button from '@/components/Button';
+import CatalogIntro from '@/components/CatalogIntro';
 import Link from 'next/link';
 import { catalogEntries, catalogEntryHref, catalogProductSlugs } from '@/data/catalogEntries';
 
@@ -19,15 +20,9 @@ export default function IndumentariaPage() {
         { label: 'Indumentaria' }
       ]} />
       
-      <div className="max-w-4xl mb-16">
-        <SectionDivider heading="p" text="CATÁLOGO TEXTIL" metadata="CONFECCIÓN Y ESTAMPADO PROPIO" />
-        <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8 break-words">
-          Indumentaria
-        </h1>
-        <p className="text-xl text-gray-600 leading-relaxed">
+      <CatalogIntro title="Indumentaria" context="CATÁLOGO TEXTIL" metadata="CONFECCIÓN Y ESTAMPADO PROPIO">
           Prendas confeccionadas y estampadas en nuestro taller para colegios, clubes, empresas y proyectos independientes. Producción directa sin intermediarios.
-        </p>
-      </div>
+      </CatalogIntro>
 
       <p className="text-sm text-gray-600 mb-8">Para preparar un presupuesto, abrí una ficha y agregá el producto a Mi consulta con la cantidad y las observaciones que necesites.</p>
       <nav aria-label="Productos de Indumentaria" className="mb-12">

@@ -23,9 +23,9 @@ export default function Breadcrumb({ items, wrap = false, currentPath }: Breadcr
     })),
   };
   return (
-    <nav aria-label="Ruta de navegación" className={`flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-500 mb-8 pb-2 ${wrap ? 'flex-wrap min-w-0 break-words' : 'overflow-x-auto whitespace-nowrap'}`}>
+    <nav aria-label="Ruta de navegación" className={`flex items-center gap-x-2 gap-y-1 text-sm font-sans font-medium text-gray-500 mb-4 pb-2 ${wrap ? 'flex-wrap min-w-0 break-words' : 'overflow-x-auto whitespace-nowrap'}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }} />
-      <Link href="/" className="hover:text-foreground transition-colors">
+      <Link href="/" className="inline-flex min-h-8 items-center hover:text-foreground transition-colors">
         Inicio
       </Link>
       
@@ -33,7 +33,7 @@ export default function Breadcrumb({ items, wrap = false, currentPath }: Breadcr
         <React.Fragment key={index}>
           <span aria-hidden="true">/</span>
           {item.href ? (
-            <Link href={item.href} className="hover:text-foreground transition-colors">
+            <Link href={item.href} className="inline-flex min-h-8 items-center hover:text-foreground transition-colors">
               {item.label}
             </Link>
           ) : (

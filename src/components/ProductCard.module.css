@@ -1,0 +1,27 @@
+.card {
+  border-width: 1px;
+}
+
+.title {
+  line-height: 1.25;
+  text-wrap: pretty;
+}
+
+.link {
+  min-height: 44px;
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* En una sola columna, el estado sin foto acompaña al contenido sin dominarlo.
+   En grillas se mantiene el mismo encabezado para alinear todas las tarjetas. */
+@media (max-width: 767px) {
+  .media:has([data-image-placeholder]) {
+    aspect-ratio: 2 / 1;
+  }
+}

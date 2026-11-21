@@ -79,11 +79,6 @@ main:has(> .catalog-background) {
   flex-direction: column;
 }
 
-.catalog-background nav[aria-label='Ruta de navegación'] {
-  font-family: var(--font-sans);
-  letter-spacing: 0.04em;
-}
-
 /* Tema de las páginas internas, separado de la portada y de la navegación. */
 .internal-page {
   --foreground: #fff;
@@ -148,6 +143,17 @@ main:has(> .catalog-background) {
 .internal-page button:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: 4px;
+}
+
+.internal-page input:focus-visible,
+.internal-page textarea:focus-visible {
+  outline: 2px solid #005bea;
+  outline-offset: 2px;
+}
+
+.internal-page ::selection {
+  color: #fff;
+  background: #970055;
 }
 
 .bg-portada .bg-portada-curvas {
