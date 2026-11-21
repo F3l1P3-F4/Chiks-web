@@ -87,6 +87,26 @@
   background: #ed0084;
 }
 
+.serviceLink {
+  min-width: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.serviceLink:hover {
+  text-decoration-thickness: 2px;
+}
+
+.serviceLink:focus-visible,
+.cta:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.cta:focus-visible {
+  outline-color: #07134b;
+}
+
 .cta {
   display: flex;
   align-items: center;

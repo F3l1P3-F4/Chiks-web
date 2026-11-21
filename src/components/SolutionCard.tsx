@@ -7,15 +7,16 @@ import { PROFILE_PHOTOS } from '@/data/solutionProfiles';
 interface SolutionCardProps {
   title: string;
   items: string[];
+  itemHrefs?: readonly [string, string, string];
   href: string;
   variant?: 'default' | 'clubes' | 'empresas' | 'comercios' | 'eventos' | 'obras';
 }
 
-export default function SolutionCard({ title, items, href, variant = 'default' }: SolutionCardProps) {
+export default function SolutionCard({ title, items, itemHrefs, href, variant = 'default' }: SolutionCardProps) {
   if (variant !== 'default') {
     const photo = PROFILE_PHOTOS[variant];
     return (
-      <Link href={href} className={`${styles.profileCard} ${styles[variant]}`}>
+      <div className={`${styles.profileCard} ${styles[variant]}`}>
         <div className={styles.photograph}>
           <Image
             src={photo.src}
@@ -33,20 +34,26 @@ export default function SolutionCard({ title, items, href, variant = 'default' }
           </svg>
           <h3 className={styles.title}>{title}</h3>
           <ul className={styles.services}>
-            {items.map((item) => <li key={item}>{item}</li>)}
+            {items.map((item, index) => (
+              <li key={item}>
+                {itemHrefs?.[index]
+                  ? <Link href={itemHrefs[index]} className={styles.serviceLink}>{item}</Link>
+                  : item}
+              </li>
+            ))}
           </ul>
-          <span className={styles.cta}>Ver solución <span aria-hidden="true">→</span></span>
+          <Link href={href} className={styles.cta}>Ver solución <span aria-hidden="true">→</span></Link>
         </div>
-      </Link>
+      </div>
     );
   }
 
   return (
     <Link href={href} className="block group">
       <div className="internal-surface border border-divider p-8 h-full bg-white hover:border-brand hover:shadow-sm transition-all duration-300">
-        <h3 className="text-2xl font-extrabold uppercase tracking-tighter mb-6 group-hover:text-brand transition-colors">
+        <h2 className="text-2xl font-extrabold uppercase tracking-tighter mb-6 group-hover:text-brand transition-colors">
           {title}
-        </h3>
+        </h2>
         
         <ul className="space-y-3 mb-8">
           {items.map((item, index) => (

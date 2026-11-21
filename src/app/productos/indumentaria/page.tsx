@@ -1,26 +1,26 @@
+import { pageMetadata } from '@/lib/seo';
 import React from 'react';
-import type { Metadata } from 'next';
 import Breadcrumb from '@/components/Breadcrumb';
 import SectionDivider from '@/components/SectionDivider';
 import ProductCard from '@/components/ProductCard';
 import { indumentariaGroups, indumentariaGroupHref, type IndumentariaGroupSlug } from '@/data/indumentariaGroups';
 import Button from '@/components/Button';
+import Link from 'next/link';
+import { catalogEntries, catalogEntryHref, catalogProductSlugs } from '@/data/catalogEntries';
 
-export const metadata: Metadata = {
-  title: "Indumentaria | Las Chikas Design",
-  description: "Líneas de indumentaria textil: egresados, deportiva, empresarial, bandas y personalizada. Confección y estampado propio.",
-};
+
+export const metadata = pageMetadata('/productos/indumentaria');
 
 export default function IndumentariaPage() {
   return (
     <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb wrap items={[
+      <Breadcrumb currentPath="/productos/indumentaria" wrap items={[
         { label: 'Productos', href: '/productos' },
         { label: 'Indumentaria' }
       ]} />
       
       <div className="max-w-4xl mb-16">
-        <SectionDivider text="CATÁLOGO TEXTIL" metadata="CONFECCIÓN Y ESTAMPADO PROPIO" />
+        <SectionDivider heading="p" text="CATÁLOGO TEXTIL" metadata="CONFECCIÓN Y ESTAMPADO PROPIO" />
         <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8 break-words">
           Indumentaria
         </h1>
@@ -28,6 +28,20 @@ export default function IndumentariaPage() {
           Prendas confeccionadas y estampadas en nuestro taller para colegios, clubes, empresas y proyectos independientes. Producción directa sin intermediarios.
         </p>
       </div>
+
+      <p className="text-sm text-gray-600 mb-8">Para preparar un presupuesto, abrí una ficha y agregá el producto a Mi consulta con la cantidad y las observaciones que necesites.</p>
+      <nav aria-label="Productos de Indumentaria" className="mb-12">
+        <h2 className="text-xl mb-4">Productos disponibles</h2>
+        <ul className="flex flex-wrap gap-x-6 gap-y-2">
+          {catalogProductSlugs.filter((slug) => catalogEntries[slug].categorySlug === 'indumentaria').map((slug) => (
+            <li key={slug}>
+              <Link href={catalogEntryHref(slug)} className="inline-block py-2 text-sm font-bold underline underline-offset-4 hover:text-brand">
+                {catalogEntries[slug].title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* 5 SUBCATEGORÍAS */}
       <section className="mb-24">
@@ -51,7 +65,7 @@ export default function IndumentariaPage() {
             </p>
           </div>
           <Button href="/contacto" variant="solid" className="w-full sm:w-auto min-w-0 max-w-full text-center">
-            Solicitar Presupuesto
+            Consulta general
           </Button>
         </div>
       </section>

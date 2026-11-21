@@ -3,8 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import logo from '../../public/images/logo/20231028_172144_0000 (1).png';
+import { visualAssets } from '@/data/visualAssets';
 import styles from './Header.module.css';
+import ConsultationIndicator from './ConsultationIndicator';
 
 const PRODUCT_LINKS = [
   { href: '/productos/indumentaria', label: 'Indumentaria' },
@@ -18,13 +19,18 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const productsRef = useRef<HTMLDivElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   // Escape cierra menús; clic fuera cierra el submenú de escritorio.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        if (document.getElementById('menu-movil')?.contains(document.activeElement)) {
+          mobileMenuButtonRef.current?.focus();
+        }
         if (document.getElementById('submenu-productos')?.contains(document.activeElement)) {
           productsRef.current?.querySelector('button')?.focus();
         }
@@ -53,7 +59,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className={styles.logo} aria-label="Las Chikas Design — Inicio">
-              <Image src={logo} alt="Las Chikas Design" priority sizes="132px" className={styles.logoImage} />
+              <Image src={visualAssets.logo} alt="Las Chikas Design" priority sizes="132px" className={styles.logoImage} />
             </Link>
           </div>
 
@@ -127,6 +133,7 @@ export default function Header() {
               </Link>
             </div>
             <button 
+              ref={mobileMenuButtonRef}
               type="button"
               className="xl:hidden p-3 text-sm font-bold flex items-center gap-2 rounded-lg border border-[#07134b]/20 hover:text-[#df007c]"
               onClick={toggleMenu}
@@ -140,26 +147,30 @@ export default function Header() {
         </div>
       </div>
 
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-6 pb-2 flex justify-end">
+        <ConsultationIndicator onNavigate={closeMenu} />
+      </div>
+
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div id="menu-movil" className="xl:hidden absolute top-full left-0 w-full bg-white border-b border-divider shadow-lg max-h-[calc(100dvh-5rem)] overflow-y-auto">
+        <div id="menu-movil" className="xl:hidden absolute top-full left-0 w-full bg-white border-b border-divider shadow-lg max-h-[calc(100dvh-8rem)] overflow-y-auto">
           <nav aria-label="Principal móvil" className="flex flex-col px-6 py-6 gap-4 text-base font-bold">
-            <Link href="/" onClick={toggleMenu} className={navClass('/')}>Inicio</Link>
+            <Link href="/" onClick={closeMenu} className={navClass('/')}>Inicio</Link>
             <div className="flex flex-col gap-4">
-              <Link href="/productos" onClick={toggleMenu} className={navClass('/productos')}>Catálogo</Link>
+              <Link href="/productos" onClick={closeMenu} className={navClass('/productos')}>Catálogo</Link>
               <ul className="flex flex-col gap-4 pl-4 border-l border-divider text-xs">
                 {PRODUCT_LINKS.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} onClick={toggleMenu} className="block py-1 text-gray-600 hover:text-[#df007c] transition-colors">{item.label}</Link>
+                    <Link href={item.href} onClick={closeMenu} className="block py-1 text-gray-600 hover:text-[#df007c] transition-colors">{item.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
-            <Link href="/soluciones" onClick={toggleMenu} className={navClass('/soluciones')}>Soluciones</Link>
-            <Link href="/trabajos-realizados" onClick={toggleMenu} className={navClass('/trabajos-realizados')}>Trabajos</Link>
-            <Link href="/nosotros" onClick={toggleMenu} className={navClass('/nosotros')}>Nosotros</Link>
-            <Link href="/faq" onClick={toggleMenu} className={navClass('/faq')}>Preguntas Frecuentes</Link>
-            <Link href="/contacto" onClick={toggleMenu} className={`${styles.contact} self-start`}>Contacto</Link>
+            <Link href="/soluciones" onClick={closeMenu} className={navClass('/soluciones')}>Soluciones</Link>
+            <Link href="/trabajos-realizados" onClick={closeMenu} className={navClass('/trabajos-realizados')}>Trabajos</Link>
+            <Link href="/nosotros" onClick={closeMenu} className={navClass('/nosotros')}>Nosotros</Link>
+            <Link href="/faq" onClick={closeMenu} className={navClass('/faq')}>Preguntas Frecuentes</Link>
+            <Link href="/contacto" onClick={closeMenu} className={`${styles.contact} self-start`}>Contacto</Link>
           </nav>
         </div>
       )}

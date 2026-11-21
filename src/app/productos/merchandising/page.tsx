@@ -1,26 +1,24 @@
+import { pageMetadata } from '@/lib/seo';
 import React from 'react';
-import type { Metadata } from 'next';
 import Breadcrumb from '@/components/Breadcrumb';
 import SectionDivider from '@/components/SectionDivider';
 import ProductCard from '@/components/ProductCard';
 import { catalogEntries, catalogEntryHref } from '@/data/catalogEntries';
 import Button from '@/components/Button';
 
-export const metadata: Metadata = {
-  title: "Merchandising | Las Chikas Design",
-  description: "Artículos promocionales y merchandising para marcas y clubes: tazas, gorras, botineros, mochilas, banderas y más.",
-};
+
+export const metadata = pageMetadata('/productos/merchandising');
 
 export default function MerchandisingPage() {
   return (
     <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb wrap items={[
+      <Breadcrumb currentPath="/productos/merchandising" wrap items={[
         { label: 'Productos', href: '/productos' },
         { label: 'Merchandising' }
       ]} />
       
       <div className="max-w-4xl mb-16">
-        <SectionDivider text="MERCHANDISING INTEGRAL" metadata="ARTÍCULOS Y ACCESORIOS PERSONALIZADOS" />
+        <SectionDivider heading="p" text="MERCHANDISING INTEGRAL" metadata="ARTÍCULOS Y ACCESORIOS PERSONALIZADOS" />
         <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8 break-words">
           Merchandising
         </h1>
@@ -29,6 +27,7 @@ export default function MerchandisingPage() {
         </p>
       </div>
 
+      <p className="text-sm text-gray-600 mb-8">Para preparar un presupuesto, abrí una ficha y agregá el producto a Mi consulta con la cantidad y las observaciones que necesites.</p>
       {/* 1. ARTÍCULOS GENERALES */}
       <section id="articulos-generales" className="mb-24">
         <SectionDivider text="ARTÍCULOS GENERALES" metadata="PROMOCIONALES, EMPRESAS Y EVENTOS" />
@@ -66,7 +65,7 @@ export default function MerchandisingPage() {
             </p>
           </div>
           <Button href="/contacto" variant="solid" className="w-full sm:w-auto min-w-0 max-w-full text-center">
-            Solicitar Presupuesto
+            Consulta general
           </Button>
         </div>
       </section>

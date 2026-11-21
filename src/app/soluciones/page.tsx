@@ -1,12 +1,15 @@
+import { pageMetadata } from '@/lib/seo';
 import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import SolutionCard from '@/components/SolutionCard';
 import { solutionProfiles } from '@/data/solutionProfiles';
 
+export const metadata = pageMetadata('/soluciones');
+
 export default function SolucionesPage() {
   return (
     <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb items={[{ label: 'Soluciones' }]} />
+      <Breadcrumb currentPath="/soluciones" items={[{ label: 'Soluciones' }]} />
       
       <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8">
         Soluciones por Perfil

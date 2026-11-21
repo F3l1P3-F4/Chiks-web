@@ -2,21 +2,42 @@ import { catalogEntries, catalogEntryHref } from './catalogEntries';
 import { catalogPhotos } from './productImages';
 
 const remeras = {
-  title: 'Remeras Personalizadas',
-  category: 'Indumentaria',
+  ...catalogEntries['remeras-personalizadas'],
   description: 'Remeras personalizadas con tu logo o diseño para uniformes, egresados y eventos.',
-  photo: catalogPhotos.remeras,
-  href: '/productos/indumentaria/remeras-personalizadas',
+  href: catalogEntryHref('remeras-personalizadas'),
 };
 
 export const indumentariaGroups = {
-  egresados: { ...catalogEntries.egresados, products: [remeras] },
+  egresados: {
+    title: "Egresados",
+    category: "Indumentaria",
+    categorySlug: "indumentaria",
+    description: "Buzos, camperas, remeras y chombas para egresados de todos los niveles. Diseños exclusivos con bordado y serigrafía.",
+    products: [remeras],
+  },
   deportiva: {
-    ...catalogEntries.deportiva,
+    title: "Deportiva",
+    category: "Indumentaria",
+    categorySlug: "indumentaria",
+    description: "Camisetas, shorts y conjuntos técnicos para clubes y equipos. Confección en Dry Fit y telas de alto rendimiento con sublimación full color.",
+    photo: catalogPhotos.deportiva,
     products: [{ ...catalogEntries['conjuntos-deportivos'], href: catalogEntryHref('conjuntos-deportivos') }],
   },
-  empresarial: { ...catalogEntries.empresarial, products: [remeras] },
-  bandas: { ...catalogEntries.bandas, products: [] },
+  empresarial: {
+    title: "Empresarial",
+    category: "Indumentaria",
+    categorySlug: "indumentaria",
+    description: "Uniformes de trabajo, chombas, remeras de staff y ropa de abrigo corporativa con identificación duradera de marca.",
+    photo: catalogPhotos.empresarial,
+    products: [remeras],
+  },
+  bandas: {
+    title: "Bandas",
+    category: "Indumentaria",
+    categorySlug: "indumentaria",
+    description: "Remeras, buzos y merchandising textil para bandas, músicos y eventos culturales. Estampados de alta resolución y fidelidad de color.",
+    products: [],
+  },
   personalizada: {
     title: 'Personalizada',
     category: 'Indumentaria',

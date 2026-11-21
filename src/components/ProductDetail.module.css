@@ -1,0 +1,21 @@
+.info {
+  container-type: inline-size;
+}
+
+.info .title {
+  /* Respaldo para navegadores sin unidades de contenedor. */
+  font-size: clamp(1.625rem, 4.2vw, 3.5rem);
+  font-size: clamp(1.875rem, min(5.1vw, 10cqi), 4.25rem);
+  line-height: 1.04;
+  text-wrap: balance;
+  word-break: normal;
+  hyphens: none;
+  /* Solo divide una palabra si no cabe completa en ninguna línea. */
+  overflow-wrap: break-word;
+}
+
+@container (max-width: 19rem) {
+  .info .title {
+    font-size: 1.625rem;
+  }
+}

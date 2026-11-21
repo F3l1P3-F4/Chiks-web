@@ -1,15 +1,39 @@
-import clubesPhoto from '../../public/images/soluciones/clubes-y-equipos.webp';
-import empresasPhoto from '../../public/images/soluciones/empresas.webp';
-import comerciosPhoto from '../../public/images/soluciones/comercios.webp';
-import eventosPhoto from '../../public/images/soluciones/eventos.webp';
-import obrasPhoto from '../../public/images/soluciones/obras.webp';
+import { visualAssets } from './visualAssets';
+import { catalogEntryHref } from './catalogEntries';
+import { indumentariaGroupHref } from './indumentariaGroups';
 
 export const PROFILE_PHOTOS = {
-  clubes: { src: clubesPhoto, alt: 'Equipo con indumentaria deportiva personalizada', position: '50% 45%' },
-  empresas: { src: empresasPhoto, alt: 'Gorras e indumentaria corporativa personalizadas', position: '50% 20%' },
-  comercios: { src: comerciosPhoto, alt: 'Vidriera de comercio con gráfica personalizada', position: '50% 30%' },
-  eventos: { src: eventosPhoto, alt: 'Stand y paneles gráficos para un evento', position: '50% 55%' },
-  obras: { src: obrasPhoto, alt: 'Carteles impresos para una empresa de obras', position: '50% 20%' },
+  clubes: { src: visualAssets.clubes, alt: 'Equipo con indumentaria deportiva personalizada', position: '50% 45%' },
+  empresas: { src: visualAssets.uniformes, alt: 'Gorras e indumentaria corporativa personalizadas', position: '50% 20%' },
+  comercios: { src: visualAssets.vidriera, alt: 'Vidriera de comercio con gráfica personalizada', position: '50% 30%' },
+  eventos: { src: visualAssets.stand, alt: 'Stand y paneles gráficos para un evento', position: '50% 55%' },
+  obras: { src: visualAssets.carteleria, alt: 'Carteles impresos para una empresa de obras', position: '50% 20%' },
+};
+
+// Cada vínculo corresponde a un servicio ya listado y una oferta existente.
+// Los servicios ambiguos conservan su texto y el acceso general al catálogo.
+export const solutionServiceLinks: Record<keyof typeof solutionProfiles, Partial<Record<string, string>>> = {
+  'clubes-y-equipos': {
+    'Indumentaria deportiva': indumentariaGroupHref('deportiva'),
+    'Banderas y estandartes': catalogEntryHref('banderas-deportivas'),
+    'Bolsos botineros': catalogEntryHref('botineros'),
+    'Merchandising para hinchas': '/productos/merchandising#articulos-clubes',
+  },
+  empresas: {
+    'Indumentaria corporativa': indumentariaGroupHref('empresarial'),
+    'Regalos empresariales': catalogEntryHref('regalos-empresariales'),
+  },
+  comercios: {
+    'Ploteo de vidrieras': catalogEntryHref('vidrieras'),
+    'Marquesinas y cartelería': catalogEntryHref('marquesinas'),
+    'Uniformes para staff': indumentariaGroupHref('empresarial'),
+  },
+  eventos: {
+    'Armado de stands': catalogEntryHref('stands-y-carteleria'),
+  },
+  obras: {
+    'Frentes de obra en lona': catalogEntryHref('lonas'),
+  },
 };
 
 export const solutionProfiles = {

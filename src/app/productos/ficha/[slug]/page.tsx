@@ -1,19 +1,28 @@
+import { pageMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import ProductDetail from '@/components/ProductDetail';
-import { catalogEntries, catalogEntryHref } from '@/data/catalogEntries';
+import { catalogEntries } from '@/data/catalogEntries';
+import { getRelatedProducts } from '@/data/catalogNavigation';
 import IndumentariaGroup from '@/components/IndumentariaGroup';
 import { indumentariaGroups, indumentariaGroupHref, type IndumentariaGroupSlug } from '@/data/indumentariaGroups';
 
 export const dynamicParams = false;
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  if (slug === 'remeras-personalizadas' || (!Object.hasOwn(catalogEntries, slug) && !Object.hasOwn(indumentariaGroups, slug))) notFound();
+  return pageMetadata('/productos/ficha/' + slug);
+}
+
 export function generateStaticParams() {
-  return [...new Set([...Object.keys(catalogEntries), ...Object.keys(indumentariaGroups)])].map((slug) => ({ slug }));
+  const productSlugs = Object.keys(catalogEntries).filter((slug) => slug !== 'remeras-personalizadas');
+  return [...productSlugs, ...Object.keys(indumentariaGroups)].map((slug) => ({ slug }));
 }
 
 export default async function CatalogEntryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   if (Object.hasOwn(indumentariaGroups, slug)) return <IndumentariaGroup slug={slug as IndumentariaGroupSlug} />;
-  if (!Object.hasOwn(catalogEntries, slug)) notFound();
+  if (slug === 'remeras-personalizadas' || !Object.hasOwn(catalogEntries, slug)) notFound();
 
   const product = catalogEntries[slug as keyof typeof catalogEntries];
   let subcategory;
@@ -31,12 +40,7 @@ export default async function CatalogEntryPage({ params }: { params: Promise<{ s
       : { label: 'Artículos generales', href: '/productos/merchandising#articulos-generales' };
   }
 
-  const relatedProducts = (Object.keys(catalogEntries) as (keyof typeof catalogEntries)[])
-    .filter((key) => key !== slug && !Object.hasOwn(indumentariaGroups, key))
-    .filter((key) => catalogEntries[key].categorySlug === product.categorySlug)
-    .sort((a, b) => Number(catalogEntries[b].category === product.category) - Number(catalogEntries[a].category === product.category))
-    .slice(0, 3)
-    .map((key) => ({ ...catalogEntries[key], href: catalogEntryHref(key) }));
+  const relatedProducts = getRelatedProducts(slug as keyof typeof catalogEntries);
 
-  return <ProductDetail product={{ ...product, subcategory, relatedProducts }} />;
+  return <ProductDetail path={'/productos/ficha/' + slug} product={{ ...product, subcategory, relatedProducts }} />;
 }

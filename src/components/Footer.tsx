@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '../../public/images/logo/20231028_172144_0000 (1).png';
+import { visualAssets } from '@/data/visualAssets';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -14,7 +14,7 @@ export default function Footer() {
           
           <div className={styles.brand}>
             <Link href="/" className={styles.logo} aria-label="Las Chikas Design — Inicio">
-              <Image src={logo} alt="Las Chikas Design" sizes="144px" className={styles.logoImage} />
+              <Image src={visualAssets.logo} alt="Las Chikas Design" sizes="144px" className={styles.logoImage} />
             </Link>
             <p className={styles.description}>
               Indumentaria, gráfica y merchandising para clubes, empresas, comercios, eventos y obras.

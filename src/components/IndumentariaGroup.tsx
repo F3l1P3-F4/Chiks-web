@@ -2,14 +2,14 @@ import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import ProductCard from './ProductCard';
 import SectionDivider from './SectionDivider';
-import { indumentariaGroups, type IndumentariaGroupSlug } from '@/data/indumentariaGroups';
+import { indumentariaGroups, indumentariaGroupHref, type IndumentariaGroupSlug } from '@/data/indumentariaGroups';
 
 export default function IndumentariaGroup({ slug }: { slug: IndumentariaGroupSlug }) {
   const { title, description, products } = indumentariaGroups[slug];
 
   return (
     <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb wrap items={[
+      <Breadcrumb currentPath={indumentariaGroupHref(slug)} wrap items={[
         { label: 'Productos', href: '/productos' },
         { label: 'Indumentaria', href: '/productos/indumentaria' },
         { label: title },

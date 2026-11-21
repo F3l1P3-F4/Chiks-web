@@ -10,9 +10,10 @@ interface ProductCardProps {
   href?: string;
   category: string;
   ctaText?: string;
+  heading?: 'h3' | 'h4';
 }
 
-export default function ProductCard({ title, description, photo, href, category, ctaText }: ProductCardProps) {
+export default function ProductCard({ title, description, photo, href, category, ctaText, heading: Heading = 'h3' }: ProductCardProps) {
   return (
     <div className="internal-surface flex h-full min-w-0 flex-col border-2 border-divider transition-colors hover:border-brand focus-within:border-brand">
       <div className="relative aspect-[4/3] overflow-hidden border-b border-divider bg-[#f6f8fc]">
@@ -24,9 +25,9 @@ export default function ProductCard({ title, description, photo, href, category,
         <span className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand">
           {category}
         </span>
-        <h3 className="text-xl font-bold uppercase tracking-tight mb-2 break-words">
+        <Heading className="text-xl font-bold uppercase tracking-tight mb-2 break-words">
           {title}
-        </h3>
+        </Heading>
         <p className="mb-5 flex-grow text-sm leading-relaxed text-gray-600">
           {description}
         </p>

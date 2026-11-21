@@ -1,9 +1,7 @@
+import { pageMetadata } from '@/lib/seo';
+import { visualAssets } from '@/data/visualAssets';
 import React from 'react';
 import Image from 'next/image';
-import indumentariaHero from '../../public/images/hero/indumentaria-corporativa.webp';
-import bolsasHero from '../../public/images/hero/bolsas-personalizadas.webp';
-import gorrasHero from '../../public/images/hero/gorras-indumentaria.webp';
-import merchandisingHero from '../../public/images/hero/merchandising-deportivo.webp';
 import Button from '@/components/Button';
 import SolutionCard from '@/components/SolutionCard';
 import styles from './Hero.module.css';
@@ -11,6 +9,8 @@ import solutionStyles from '@/components/SolutionCard.module.css';
 import WorkGallery from '@/components/WorkGallery';
 import galleryStyles from '@/components/WorkGallery.module.css';
 import processStyles from './Process.module.css';
+
+export const metadata = pageMetadata('/');
 
 export default function Home() {
   return (
@@ -36,20 +36,20 @@ export default function Home() {
               </svg>
               Explorá el catálogo
             </Button>
-            <Button href="/contacto" showArrow={false} className={styles.button}>
+            <Button href="/mi-consulta" showArrow={false} className={styles.button}>
               <svg width="22" height="20" viewBox="0 0 22 20" fill="currentColor" aria-hidden="true">
                 <path d="M21 1 1 8l7 3L18 4l-8 9 3 6 8-18Z" />
               </svg>
-              Solicitar presupuesto
+              Ver mi consulta
             </Button>
           </div>
         </div>
         <div className={styles.products}>
           {[
-            { image: indumentariaHero, alt: 'Remeras con estampados corporativos' },
-            { image: bolsasHero, alt: 'Bolsas textiles personalizadas' },
-            { image: gorrasHero, alt: 'Gorras e indumentaria personalizadas' },
-            { image: merchandisingHero, alt: 'Taza y cintas personalizadas de merchandising deportivo' },
+            { image: visualAssets.corporativa, alt: 'Remeras con estampados corporativos' },
+            { image: visualAssets.bolsas, alt: 'Bolsas textiles personalizadas' },
+            { image: visualAssets.uniformes, alt: 'Gorras e indumentaria personalizadas' },
+            { image: visualAssets.merchandising, alt: 'Taza y cintas personalizadas de merchandising deportivo' },
           ].map(({ image, alt }, index) => (
             <Image
               key={image.src}
@@ -71,30 +71,35 @@ export default function Home() {
             title="Clubes y Equipos"
             variant="clubes"
             items={['Indumentaria deportiva', 'Banderas y estandartes', 'Merchandising para hinchas']}
+            itemHrefs={['/productos/ficha/deportiva', '/productos/ficha/banderas-deportivas', '/productos/merchandising#articulos-clubes']}
             href="/soluciones/clubes-y-equipos"
           />
           <SolutionCard 
             title="Empresas"
             variant="empresas"
             items={['Indumentaria corporativa', 'Regalos empresariales', 'Gráfica para oficinas']}
+            itemHrefs={['/productos/ficha/empresarial', '/productos/ficha/regalos-empresariales', '/productos/grafica']}
             href="/soluciones/empresas"
           />
           <SolutionCard 
             title="Comercios"
             variant="comercios"
             items={['Ploteo de vidrieras', 'Marquesinas y cartelería', 'Decoración interior']}
+            itemHrefs={['/productos/ficha/vidrieras', '/productos/grafica#carteleria-servicios', '/productos/grafica']}
             href="/soluciones/comercios"
           />
           <SolutionCard 
             title="Eventos"
             variant="eventos"
             items={['Banners y fly banners', 'Armado de stands', 'Souvenirs']}
+            itemHrefs={['/productos/grafica#impresion-ecosolvente', '/productos/ficha/stands-y-carteleria', '/productos/merchandising#articulos-generales']}
             href="/soluciones/eventos"
           />
           <SolutionCard 
             title="Obras"
             variant="obras"
             items={['Frentes de obra en lona', 'Cartelería de seguridad', 'Señalética']}
+            itemHrefs={['/productos/ficha/lonas', '/productos/grafica#carteleria-servicios', '/productos/grafica#carteleria-servicios']}
             href="/soluciones/obras"
           />
         </div>

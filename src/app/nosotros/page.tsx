@@ -1,12 +1,15 @@
+import { pageMetadata } from '@/lib/seo';
 ﻿import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
 import Button from '@/components/Button';
 
+export const metadata = pageMetadata('/nosotros');
+
 export default function Page() {
   return (
     <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb wrap items={[{ label: 'Nosotros' }]} />
+      <Breadcrumb currentPath="/nosotros" wrap items={[{ label: 'Nosotros' }]} />
       <div className="max-w-4xl mb-16">
         <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8 break-words">Nosotros</h1>
         <p className="text-xl text-gray-600 leading-relaxed">

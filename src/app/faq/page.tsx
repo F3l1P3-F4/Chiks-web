@@ -1,12 +1,15 @@
+import { pageMetadata } from '@/lib/seo';
 ﻿import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
 import { faqGroups } from '@/data/faqs';
 
+export const metadata = pageMetadata('/faq');
+
 export default function Page() {
   return (
     <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb wrap items={[{ label: 'Preguntas frecuentes' }]} />
+      <Breadcrumb currentPath="/faq" wrap items={[{ label: 'Preguntas frecuentes' }]} />
       <div className="max-w-4xl mb-12">
         <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter uppercase mb-8 break-words">Preguntas frecuentes</h1>
         <p className="text-xl text-gray-600 leading-relaxed">Información para preparar tu consulta y conocer qué condiciones necesitamos confirmar para cada trabajo.</p>

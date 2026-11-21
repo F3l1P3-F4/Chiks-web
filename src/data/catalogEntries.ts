@@ -1,33 +1,23 @@
 import { catalogPhotos } from './productImages';
 import type { ProductInfo } from '@/components/ProductDetail';
 
+// Fichas individuales. Las páginas de agrupación están en indumentariaGroups.
 export const catalogEntries = {
-  "egresados": {
-    title: "Egresados",
+  "remeras-personalizadas": {
+    photo: catalogPhotos.remeras,
+    additionalPhotos: [catalogPhotos.deportiva],
+    title: "Remeras Personalizadas",
     category: "Indumentaria",
     categorySlug: "indumentaria",
-    description: "Buzos, camperas, remeras y chombas para egresados de todos los niveles. Diseños exclusivos con bordado y serigrafía.",
+    description: 'Remeras personalizadas para uniformes, egresados, eventos y merchandising.',
+    applications: 'Uniformes, indumentaria para egresados, eventos y merchandising.',
+    customization: 'Aplicación de un logo o diseño propio.',
+    faqs: [
+      { question: '¿Se puede sublimar sobre una remera negra?' },
+      { question: '¿Cuánto demora el pedido?' },
+    ],
   },
-  "deportiva": {
-    title: "Deportiva",
-    category: "Indumentaria",
-    categorySlug: "indumentaria",
-    description: "Camisetas, shorts y conjuntos técnicos para clubes y equipos. Confección en Dry Fit y telas de alto rendimiento con sublimación full color.",
-    photo: catalogPhotos.deportiva,
-  },
-  "empresarial": {
-    title: "Empresarial",
-    category: "Indumentaria",
-    categorySlug: "indumentaria",
-    description: "Uniformes de trabajo, chombas, remeras de staff y ropa de abrigo corporativa con identificación duradera de marca.",
-    photo: catalogPhotos.empresarial,
-  },
-  "bandas": {
-    title: "Bandas",
-    category: "Indumentaria",
-    categorySlug: "indumentaria",
-    description: "Remeras, buzos y merchandising textil para bandas, músicos y eventos culturales. Estampados de alta resolución y fidelidad de color.",
-  },
+
   "gorras": {
     title: "Gorras",
     category: "Merchandising",
@@ -171,7 +161,7 @@ export const catalogEntries = {
     categorySlug: "grafica",
     description: "Armado de cartelería corpórea, cuadros, tótems y elementos gráficos para stands de ferias y eventos.",
     applications: "Stands de ferias y eventos.",
-    photo: catalogPhotos.carteleria,
+    photo: catalogPhotos.stands,
   },
   "camperas": {
     title: "Camperas",
@@ -211,5 +201,10 @@ export const catalogEntries = {
 } satisfies Record<string, ProductInfo>;
 
 export function catalogEntryHref(slug: keyof typeof catalogEntries) {
-  return `/productos/ficha/${slug}`;
+  return slug === 'remeras-personalizadas'
+    ? '/productos/indumentaria/remeras-personalizadas'
+    : `/productos/ficha/${slug}`;
 }
+
+export type CatalogProductSlug = keyof typeof catalogEntries;
+export const catalogProductSlugs = Object.keys(catalogEntries) as CatalogProductSlug[];
