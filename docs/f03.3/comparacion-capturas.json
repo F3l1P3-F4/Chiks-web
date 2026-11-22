@@ -1,0 +1,50 @@
+[
+  {
+    "file": "remeras-paso-1-390",
+    "byteEqual": true
+  },
+  {
+    "file": "remeras-paso-1-1440",
+    "byteEqual": true
+  },
+  {
+    "file": "remeras-paso-3-390",
+    "byteEqual": true
+  },
+  {
+    "file": "remeras-paso-3-1440",
+    "byteEqual": true
+  },
+  {
+    "file": "remeras-revision-390",
+    "byteEqual": true
+  },
+  {
+    "file": "remeras-revision-1440",
+    "byteEqual": true
+  },
+  {
+    "file": "lonas-paso-1-390",
+    "byteEqual": true
+  },
+  {
+    "file": "lonas-paso-1-1440",
+    "byteEqual": true
+  },
+  {
+    "file": "lonas-paso-3-390",
+    "byteEqual": true
+  },
+  {
+    "file": "lonas-paso-3-1440",
+    "byteEqual": true
+  },
+  {
+    "file": "lonas-revision-390",
+    "byteEqual": true
+  },
+  {
+    "file": "lonas-revision-1440",
+    "byteEqual": true
+  }
+]

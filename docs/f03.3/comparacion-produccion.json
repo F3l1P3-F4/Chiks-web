@@ -1,0 +1,281 @@
+{
+  "comparison": [
+    {
+      "key": "produccion/remeras-personalizadas/390",
+      "equal": true,
+      "beforeElements": 148,
+      "afterElements": 148
+    },
+    {
+      "key": "produccion/remeras-personalizadas/1440",
+      "equal": true,
+      "beforeElements": 148,
+      "afterElements": 148
+    },
+    {
+      "key": "produccion/gorras/390",
+      "equal": true,
+      "beforeElements": 64,
+      "afterElements": 64
+    },
+    {
+      "key": "produccion/gorras/1440",
+      "equal": true,
+      "beforeElements": 64,
+      "afterElements": 64
+    },
+    {
+      "key": "produccion/tazas/390",
+      "equal": true,
+      "beforeElements": 84,
+      "afterElements": 84
+    },
+    {
+      "key": "produccion/tazas/1440",
+      "equal": true,
+      "beforeElements": 84,
+      "afterElements": 84
+    },
+    {
+      "key": "produccion/buzos-y-hoodies/390",
+      "equal": true,
+      "beforeElements": 74,
+      "afterElements": 74
+    },
+    {
+      "key": "produccion/buzos-y-hoodies/1440",
+      "equal": true,
+      "beforeElements": 74,
+      "afterElements": 74
+    },
+    {
+      "key": "produccion/llaveros/390",
+      "equal": true,
+      "beforeElements": 68,
+      "afterElements": 68
+    },
+    {
+      "key": "produccion/llaveros/1440",
+      "equal": true,
+      "beforeElements": 68,
+      "afterElements": 68
+    },
+    {
+      "key": "produccion/neceseres/390",
+      "equal": true,
+      "beforeElements": 68,
+      "afterElements": 68
+    },
+    {
+      "key": "produccion/neceseres/1440",
+      "equal": true,
+      "beforeElements": 68,
+      "afterElements": 68
+    },
+    {
+      "key": "produccion/botineros/390",
+      "equal": true,
+      "beforeElements": 117,
+      "afterElements": 117
+    },
+    {
+      "key": "produccion/botineros/1440",
+      "equal": true,
+      "beforeElements": 117,
+      "afterElements": 117
+    },
+    {
+      "key": "produccion/mochilas/390",
+      "equal": true,
+      "beforeElements": 102,
+      "afterElements": 102
+    },
+    {
+      "key": "produccion/mochilas/1440",
+      "equal": true,
+      "beforeElements": 102,
+      "afterElements": 102
+    },
+    {
+      "key": "produccion/toallones/390",
+      "equal": true,
+      "beforeElements": 102,
+      "afterElements": 102
+    },
+    {
+      "key": "produccion/toallones/1440",
+      "equal": true,
+      "beforeElements": 102,
+      "afterElements": 102
+    },
+    {
+      "key": "produccion/banderas-deportivas/390",
+      "equal": true,
+      "beforeElements": 109,
+      "afterElements": 109
+    },
+    {
+      "key": "produccion/banderas-deportivas/1440",
+      "equal": true,
+      "beforeElements": 109,
+      "afterElements": 109
+    },
+    {
+      "key": "produccion/lonas/390",
+      "equal": true,
+      "beforeElements": 94,
+      "afterElements": 94
+    },
+    {
+      "key": "produccion/lonas/1440",
+      "equal": true,
+      "beforeElements": 94,
+      "afterElements": 94
+    },
+    {
+      "key": "produccion/banners/390",
+      "equal": true,
+      "beforeElements": 102,
+      "afterElements": 102
+    },
+    {
+      "key": "produccion/banners/1440",
+      "equal": true,
+      "beforeElements": 102,
+      "afterElements": 102
+    },
+    {
+      "key": "produccion/vinilos/390",
+      "equal": true,
+      "beforeElements": 89,
+      "afterElements": 89
+    },
+    {
+      "key": "produccion/vinilos/1440",
+      "equal": true,
+      "beforeElements": 89,
+      "afterElements": 89
+    },
+    {
+      "key": "produccion/microperforados/390",
+      "equal": true,
+      "beforeElements": 87,
+      "afterElements": 87
+    },
+    {
+      "key": "produccion/microperforados/1440",
+      "equal": true,
+      "beforeElements": 87,
+      "afterElements": 87
+    },
+    {
+      "key": "produccion/backlite/390",
+      "equal": true,
+      "beforeElements": 92,
+      "afterElements": 92
+    },
+    {
+      "key": "produccion/backlite/1440",
+      "equal": true,
+      "beforeElements": 92,
+      "afterElements": 92
+    },
+    {
+      "key": "produccion/marquesinas/390",
+      "equal": true,
+      "beforeElements": 102,
+      "afterElements": 102
+    },
+    {
+      "key": "produccion/marquesinas/1440",
+      "equal": true,
+      "beforeElements": 102,
+      "afterElements": 102
+    },
+    {
+      "key": "produccion/vidrieras/390",
+      "equal": true,
+      "beforeElements": 103,
+      "afterElements": 103
+    },
+    {
+      "key": "produccion/vidrieras/1440",
+      "equal": true,
+      "beforeElements": 103,
+      "afterElements": 103
+    },
+    {
+      "key": "produccion/ploteo-vehicular/390",
+      "equal": true,
+      "beforeElements": 63,
+      "afterElements": 63
+    },
+    {
+      "key": "produccion/ploteo-vehicular/1440",
+      "equal": true,
+      "beforeElements": 63,
+      "afterElements": 63
+    },
+    {
+      "key": "produccion/stands-y-carteleria/390",
+      "equal": true,
+      "beforeElements": 83,
+      "afterElements": 83
+    },
+    {
+      "key": "produccion/stands-y-carteleria/1440",
+      "equal": true,
+      "beforeElements": 83,
+      "afterElements": 83
+    },
+    {
+      "key": "produccion/camperas/390",
+      "equal": true,
+      "beforeElements": 89,
+      "afterElements": 89
+    },
+    {
+      "key": "produccion/camperas/1440",
+      "equal": true,
+      "beforeElements": 89,
+      "afterElements": 89
+    },
+    {
+      "key": "produccion/conjuntos-deportivos/390",
+      "equal": true,
+      "beforeElements": 120,
+      "afterElements": 120
+    },
+    {
+      "key": "produccion/conjuntos-deportivos/1440",
+      "equal": true,
+      "beforeElements": 120,
+      "afterElements": 120
+    },
+    {
+      "key": "produccion/banderas/390",
+      "equal": true,
+      "beforeElements": 64,
+      "afterElements": 64
+    },
+    {
+      "key": "produccion/banderas/1440",
+      "equal": true,
+      "beforeElements": 64,
+      "afterElements": 64
+    },
+    {
+      "key": "produccion/regalos-empresariales/390",
+      "equal": true,
+      "beforeElements": 91,
+      "afterElements": 91
+    },
+    {
+      "key": "produccion/regalos-empresariales/1440",
+      "equal": true,
+      "beforeElements": 91,
+      "afterElements": 91
+    }
+  ],
+  "layouts": []
+}

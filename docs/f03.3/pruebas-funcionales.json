@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Datos F02 y reglas específicas conservados literalmente",
+    "passed": true,
+    "evidence": {
+      "groups": 9,
+      "options": 28,
+      "stylesheetRulesUnchanged": true
+    }
+  },
+  {
+    "name": "remeras: entrada por teclado, foco y validación de todos los pasos",
+    "passed": true
+  },
+  {
+    "name": "remeras: cantidades y medidas inválidas no avanzan ni borran datos",
+    "passed": true
+  },
+  {
+    "name": "remeras: retroceso conserva selecciones y cantidades",
+    "passed": true
+  },
+  {
+    "name": "remeras: resumen, revisión, edición y ayudas",
+    "passed": true
+  },
+  {
+    "name": "remeras: observaciones de 2.000 caracteres, foco y ausencia de desbordes",
+    "passed": true
+  },
+  {
+    "name": "remeras: alternar de modo y reiniciar preserva el borrador comercial",
+    "passed": true
+  },
+  {
+    "name": "remeras: asesoramiento y cantidad por definir permiten completar la revisión",
+    "passed": true
+  },
+  {
+    "name": "lonas: entrada por teclado, foco y validación de todos los pasos",
+    "passed": true
+  },
+  {
+    "name": "lonas: cantidades y medidas inválidas no avanzan ni borran datos",
+    "passed": true
+  },
+  {
+    "name": "lonas: retroceso conserva selecciones y cantidades",
+    "passed": true
+  },
+  {
+    "name": "lonas: resumen, revisión, edición y ayudas",
+    "passed": true
+  },
+  {
+    "name": "lonas: observaciones de 2.000 caracteres, foco y ausencia de desbordes",
+    "passed": true
+  },
+  {
+    "name": "lonas: alternar de modo y reiniciar preserva el borrador comercial",
+    "passed": true
+  },
+  {
+    "name": "lonas: asesoramiento y cantidad por definir permiten completar la revisión",
+    "passed": true
+  },
+  {
+    "name": "R4: solicitud directa, persistencia, edición y borrador con conflicto",
+    "passed": true
+  },
+  {
+    "name": "Almacenamiento bloqueado: demostraciones independientes y selección comercial en memoria",
+    "passed": true
+  },
+  {
+    "name": "Sin excepciones JavaScript en el recorrido principal",
+    "passed": true
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-22",
+  "branch": "desarrollo",
+  "baselineCommit": "7df4da058db6fc03d05645e7c6ab62b7233b6a66",
+  "baselineFiles": 238,
+  "changedExisting": [
+    "src/components/LonasDevelopmentPreview.tsx",
+    "src/components/RemerasDevelopmentPreview.tsx"
+  ],
+  "movedStylesheet": {
+    "from": "src/components/RemerasDevelopmentPreview.module.css",
+    "to": "src/components/guided/GuidedPreview.module.css",
+    "rulesIdentical": true
+  },
+  "protected": {
+    "E01": {
+      "files": 37,
+      "unchanged": true
+    },
+    "F02": {
+      "unchanged": true
+    },
+    "R4": {
+      "unchanged": true
+    },
+    "commercialData": {
+      "unchanged": true
+    },
+    "productionEntryPoints": {
+      "unchanged": true
+    },
+    "homeHeaderFooter": {
+      "unchanged": true
+    }
+  },
+  "evidence": "Comparación SHA-256 de los archivos presentes al comenzar. Solo cambian los dos pilotos y se traslada su CSS compartido. Datos F02, inicializadores, validadores y cálculo de resúmenes cotejados contra HEAD mediante TypeScript AST."
+}

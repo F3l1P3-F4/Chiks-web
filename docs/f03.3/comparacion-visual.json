@@ -1,0 +1,942 @@
+{
+  "comparison": [
+    {
+      "key": "remeras/paso-1/320",
+      "equal": true,
+      "beforeElements": 254,
+      "afterElements": 254
+    },
+    {
+      "key": "remeras/paso-1/390",
+      "equal": true,
+      "beforeElements": 254,
+      "afterElements": 254
+    },
+    {
+      "key": "remeras/paso-1/768",
+      "equal": true,
+      "beforeElements": 254,
+      "afterElements": 254
+    },
+    {
+      "key": "remeras/paso-1/1024",
+      "equal": true,
+      "beforeElements": 254,
+      "afterElements": 254
+    },
+    {
+      "key": "remeras/paso-1/1440",
+      "equal": true,
+      "beforeElements": 254,
+      "afterElements": 254
+    },
+    {
+      "key": "remeras/paso-1/1670",
+      "equal": true,
+      "beforeElements": 254,
+      "afterElements": 254
+    },
+    {
+      "key": "remeras/paso-2/320",
+      "equal": true,
+      "beforeElements": 248,
+      "afterElements": 248
+    },
+    {
+      "key": "remeras/paso-2/390",
+      "equal": true,
+      "beforeElements": 248,
+      "afterElements": 248
+    },
+    {
+      "key": "remeras/paso-2/768",
+      "equal": true,
+      "beforeElements": 248,
+      "afterElements": 248
+    },
+    {
+      "key": "remeras/paso-2/1024",
+      "equal": true,
+      "beforeElements": 248,
+      "afterElements": 248
+    },
+    {
+      "key": "remeras/paso-2/1440",
+      "equal": true,
+      "beforeElements": 248,
+      "afterElements": 248
+    },
+    {
+      "key": "remeras/paso-2/1670",
+      "equal": true,
+      "beforeElements": 248,
+      "afterElements": 248
+    },
+    {
+      "key": "remeras/paso-3/320",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/paso-3/390",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/paso-3/768",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/paso-3/1024",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/paso-3/1440",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/paso-3/1670",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/revision/320",
+      "equal": true,
+      "beforeElements": 201,
+      "afterElements": 201
+    },
+    {
+      "key": "remeras/revision/390",
+      "equal": true,
+      "beforeElements": 201,
+      "afterElements": 201
+    },
+    {
+      "key": "remeras/revision/768",
+      "equal": true,
+      "beforeElements": 201,
+      "afterElements": 201
+    },
+    {
+      "key": "remeras/revision/1024",
+      "equal": true,
+      "beforeElements": 201,
+      "afterElements": 201
+    },
+    {
+      "key": "remeras/revision/1440",
+      "equal": true,
+      "beforeElements": 201,
+      "afterElements": 201
+    },
+    {
+      "key": "remeras/revision/1670",
+      "equal": true,
+      "beforeElements": 201,
+      "afterElements": 201
+    },
+    {
+      "key": "remeras/notas-extensas/320",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/notas-extensas/390",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/notas-extensas/768",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/notas-extensas/1024",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/notas-extensas/1440",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/notas-extensas/1670",
+      "equal": true,
+      "beforeElements": 283,
+      "afterElements": 283
+    },
+    {
+      "key": "remeras/asesoramiento/320",
+      "equal": true,
+      "beforeElements": 232,
+      "afterElements": 232
+    },
+    {
+      "key": "remeras/asesoramiento/390",
+      "equal": true,
+      "beforeElements": 232,
+      "afterElements": 232
+    },
+    {
+      "key": "remeras/asesoramiento/768",
+      "equal": true,
+      "beforeElements": 232,
+      "afterElements": 232
+    },
+    {
+      "key": "remeras/asesoramiento/1024",
+      "equal": true,
+      "beforeElements": 232,
+      "afterElements": 232
+    },
+    {
+      "key": "remeras/asesoramiento/1440",
+      "equal": true,
+      "beforeElements": 232,
+      "afterElements": 232
+    },
+    {
+      "key": "remeras/asesoramiento/1670",
+      "equal": true,
+      "beforeElements": 232,
+      "afterElements": 232
+    },
+    {
+      "key": "lonas/paso-1/320",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-1/390",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-1/768",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-1/1024",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-1/1440",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-1/1670",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-2/320",
+      "equal": true,
+      "beforeElements": 205,
+      "afterElements": 205
+    },
+    {
+      "key": "lonas/paso-2/390",
+      "equal": true,
+      "beforeElements": 205,
+      "afterElements": 205
+    },
+    {
+      "key": "lonas/paso-2/768",
+      "equal": true,
+      "beforeElements": 205,
+      "afterElements": 205
+    },
+    {
+      "key": "lonas/paso-2/1024",
+      "equal": true,
+      "beforeElements": 205,
+      "afterElements": 205
+    },
+    {
+      "key": "lonas/paso-2/1440",
+      "equal": true,
+      "beforeElements": 205,
+      "afterElements": 205
+    },
+    {
+      "key": "lonas/paso-2/1670",
+      "equal": true,
+      "beforeElements": 205,
+      "afterElements": 205
+    },
+    {
+      "key": "lonas/paso-3/320",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-3/390",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-3/768",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-3/1024",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-3/1440",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/paso-3/1670",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/revision/320",
+      "equal": true,
+      "beforeElements": 167,
+      "afterElements": 167
+    },
+    {
+      "key": "lonas/revision/390",
+      "equal": true,
+      "beforeElements": 167,
+      "afterElements": 167
+    },
+    {
+      "key": "lonas/revision/768",
+      "equal": true,
+      "beforeElements": 167,
+      "afterElements": 167
+    },
+    {
+      "key": "lonas/revision/1024",
+      "equal": true,
+      "beforeElements": 167,
+      "afterElements": 167
+    },
+    {
+      "key": "lonas/revision/1440",
+      "equal": true,
+      "beforeElements": 167,
+      "afterElements": 167
+    },
+    {
+      "key": "lonas/revision/1670",
+      "equal": true,
+      "beforeElements": 167,
+      "afterElements": 167
+    },
+    {
+      "key": "lonas/notas-extensas/320",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/notas-extensas/390",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/notas-extensas/768",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/notas-extensas/1024",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/notas-extensas/1440",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/notas-extensas/1670",
+      "equal": true,
+      "beforeElements": 221,
+      "afterElements": 221
+    },
+    {
+      "key": "lonas/asesoramiento/320",
+      "equal": true,
+      "beforeElements": 193,
+      "afterElements": 193
+    },
+    {
+      "key": "lonas/asesoramiento/390",
+      "equal": true,
+      "beforeElements": 193,
+      "afterElements": 193
+    },
+    {
+      "key": "lonas/asesoramiento/768",
+      "equal": true,
+      "beforeElements": 193,
+      "afterElements": 193
+    },
+    {
+      "key": "lonas/asesoramiento/1024",
+      "equal": true,
+      "beforeElements": 193,
+      "afterElements": 193
+    },
+    {
+      "key": "lonas/asesoramiento/1440",
+      "equal": true,
+      "beforeElements": 193,
+      "afterElements": 193
+    },
+    {
+      "key": "lonas/asesoramiento/1670",
+      "equal": true,
+      "beforeElements": 193,
+      "afterElements": 193
+    }
+  ],
+  "layouts": [
+    {
+      "product": "remeras",
+      "state": "paso-1",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-1",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-1",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-1",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-1",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-1",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-2",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-2",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-2",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-2",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-2",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-2",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-3",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-3",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-3",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-3",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-3",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "paso-3",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "revision",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "revision",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "revision",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "revision",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "revision",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "revision",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "notas-extensas",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "notas-extensas",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "notas-extensas",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "notas-extensas",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "notas-extensas",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "notas-extensas",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "asesoramiento",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "asesoramiento",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "asesoramiento",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "asesoramiento",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "asesoramiento",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "remeras",
+      "state": "asesoramiento",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-1",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-1",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-1",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-1",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-1",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-1",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-2",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-2",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-2",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-2",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-2",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-2",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-3",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-3",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-3",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-3",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-3",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "paso-3",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "revision",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "revision",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "revision",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "revision",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "revision",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "revision",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "notas-extensas",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "notas-extensas",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "notas-extensas",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "notas-extensas",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "notas-extensas",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "notas-extensas",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "asesoramiento",
+      "width": 320,
+      "scroll": 305,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "asesoramiento",
+      "width": 390,
+      "scroll": 375,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "asesoramiento",
+      "width": 768,
+      "scroll": 753,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "asesoramiento",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "asesoramiento",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": []
+    },
+    {
+      "product": "lonas",
+      "state": "asesoramiento",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": []
+    }
+  ]
+}

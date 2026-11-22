@@ -1,16 +1,20 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import type { ReactNode } from 'react';
-import Button from './Button';
 import pilot from './RemerasProductDetail.module.css';
-import styles from './RemerasDevelopmentPreview.module.css';
+import styles from './guided/GuidedPreview.module.css';
+import {
+  GuidedModeBar, GuidedDemoNotice, GuidedChoiceField, GuidedConfigurator,
+  GuidedNotes, GuidedSummary, GuidedReview,
+  type GuidedChoiceOption as Choice, type GuidedSummaryRow as Row,
+} from './guided/GuidedPreview';
+import { useGuidedSteps, type GuidedStepError as DemoError } from './guided/useGuidedSteps';
 import local from './LonasDevelopmentPreview.module.css';
 
 // F03.2: alternativas originales de F02, importadas exclusivamente en desarrollo.
 // Este módulo no importa el estado de consultas ni escribe en almacenamiento.
 type Field = 'material' | 'uso' | 'terminacion' | 'diseno';
-type Choice = readonly [value: string, label: string, help: string];
 const advice: Choice = ['asesoramiento', 'Necesito asesoramiento', 'Podés seguir sin decidir esto ahora.'];
 const fields: Record<Field, { label: string; options: readonly Choice[] }> = {
   material: { label: 'Material de referencia', options: [
@@ -53,17 +57,6 @@ const numeric = (value: string) => Number(value.trim().replace(',', '.'));
 const validMeasure = (value: string) => /^\d+(?:[.,]\d{1,2})?$/.test(value.trim()) && Number.isFinite(numeric(value)) && numeric(value) > 0;
 const positiveInteger = (value: string) => value.trim() !== '' && Number.isSafeInteger(Number(value)) && Number(value) > 0;
 const format = (value: number) => value.toLocaleString('es-AR');
-type DemoError = { id: string; message: string };
-type Row = { label: string; value: string; pending?: boolean; scrollable?: boolean };
-
-function SummaryRows({ rows, review = false }: { rows: Row[]; review?: boolean }) {
-  return <dl className={review ? styles.reviewList : styles.summaryList}>
-    {rows.map(({ label, value, pending, scrollable }) => <div className={styles.summaryRow} key={label}>
-      <dt>{label}</dt>
-      <dd className={`${pending ? styles.pending : ''} ${scrollable ? styles.longText : ''}`} tabIndex={scrollable ? 0 : undefined} role={scrollable ? 'region' : undefined} aria-label={scrollable ? 'Observaciones de la demostración de Lonas' : undefined}>{value}</dd>
-    </div>)}
-  </dl>;
-}
 
 export default function LonasDevelopmentPreview({ gallery, commercialInfo, productName, description, hasPhotos }: {
   gallery: ReactNode;
@@ -74,30 +67,16 @@ export default function LonasDevelopmentPreview({ gallery, commercialInfo, produ
 }) {
   const [demo, setDemo] = useState(false);
   const [selection, setSelection] = useState(initialState);
-  const [step, setStep] = useState(0);
-  const [reviewed, setReviewed] = useState(false);
-  const [error, setError] = useState<DemoError | null>(null);
-  const [announcement, setAnnouncement] = useState('');
-  const stepTitle = useRef<HTMLHeadingElement>(null);
-  const reviewTitle = useRef<HTMLHeadingElement>(null);
 
   function patch(values: Partial<DemoState>) {
     setSelection((previous) => ({ ...previous, ...values }));
-    setError(null);
+    clearError();
   }
 
   function changeChoice(field: Field, value: string) {
     setSelection((previous) => ({ ...previous, answers: { ...previous.answers, [field]: value } }));
-    setError(null);
+    clearError();
     setAnnouncement(`${fields[field].label}: ${fields[field].options.find(([key]) => key === value)?.[1]}. Resumen actualizado.`);
-  }
-
-  function moveStep(index: number) {
-    setStep(index);
-    setReviewed(false);
-    setError(null);
-    setAnnouncement(`Paso ${index + 1}: ${steps[index]}.`);
-    requestAnimationFrame(() => { stepTitle.current?.focus({ preventScroll: true }); stepTitle.current?.scrollIntoView({ block: 'start' }); });
   }
 
   function errorFor(index: number): DemoError | null {
@@ -112,52 +91,12 @@ export default function LonasDevelopmentPreview({ gallery, commercialInfo, produ
     return null;
   }
 
-  function showError(index: number, problem: DemoError) {
-    setStep(index);
-    setReviewed(false);
-    setError(problem);
-    requestAnimationFrame(() => document.getElementById(problem.id)?.focus());
-  }
-
-  function next() {
-    if (step < 2) {
-      const problem = errorFor(step);
-      if (problem) showError(step, problem);
-      else moveStep(step + 1);
-      return;
-    }
-    for (let index = 0; index < steps.length; index++) {
-      const problem = errorFor(index);
-      if (problem) { showError(index, problem); return; }
-    }
-    setError(null);
-    setReviewed(true);
-    setAnnouncement('Selección de ejemplo lista para revisar. No se guardó ni se envió.');
-    requestAnimationFrame(() => { reviewTitle.current?.focus(); reviewTitle.current?.scrollIntoView({ block: 'start' }); });
-  }
-
-  function reset() {
-    setSelection(initialState());
-    setStep(0);
-    setReviewed(false);
-    setError(null);
-    setAnnouncement('Demostración reiniciada. La consulta comercial no cambió.');
-    requestAnimationFrame(() => document.getElementById('lonas-demo-title')?.focus());
-  }
+  const { step, reviewed, error, announcement, stepTitle, reviewTitle, moveStep, next, reset, clearError, setAnnouncement } = useGuidedSteps({
+    idPrefix: 'lonas-demo', steps, validateStep: errorFor, resetSelection: () => setSelection(initialState()),
+  });
 
   function choice(field: Field) {
-    return <fieldset className={styles.fieldset} key={field}>
-      <legend>{fields[field].label}</legend>
-      <div className={styles.choiceGrid}>
-        {fields[field].options.map(([value, label, help]) => {
-          const id = `lonas-demo-${field}-${value}`;
-          return <label key={value} className={`${styles.choice} ${value === 'asesoramiento' ? styles.advice : ''}`}>
-            <input id={id} type="radio" name={`lonas-demo-${field}`} value={value} checked={selection.answers[field] === value} onChange={() => changeChoice(field, value)} aria-invalid={error?.id === id || undefined} aria-describedby={error?.id === id ? 'lonas-demo-error' : undefined} />
-            <span><strong>{label}</strong><small>{help}</small></span>
-          </label>;
-        })}
-      </div>
-    </fieldset>;
+    return <GuidedChoiceField key={field} idPrefix="lonas-demo" field={field} {...fields[field]} selected={selection.answers[field]} error={error} onChange={(value) => changeChoice(field, value)} />;
   }
 
   const chosen = (field: Field): Row => {
@@ -184,21 +123,15 @@ export default function LonasDevelopmentPreview({ gallery, commercialInfo, produ
   const dimension = (value: string, label: string) => !selection.measureAdvice && validMeasure(value) ? `${format(numeric(value))} cm` : label;
 
   return <div className={`${local.preview} ${demo ? local.active : ''}`}>
-    <div className={styles.modeBar}>
-      <div><strong>Prueba local de la ficha</strong><p>Alterná entre la consulta comercial y la experiencia completa de F02.</p></div>
-      <Button id="lonas-demo-toggle" showArrow={false} aria-pressed={demo} aria-controls="lonas-demo-view" onClick={() => {
-        setDemo(!demo);
-        requestAnimationFrame(() => document.getElementById(!demo ? reviewed ? 'lonas-demo-review-title' : 'lonas-demo-title' : 'cantidad-lonas')?.focus());
-      }}>{demo ? 'Volver a consulta comercial' : 'Probar experiencia F02'}</Button>
-    </div>
+    <GuidedModeBar idPrefix="lonas-demo" demo={demo} onToggle={() => {
+      setDemo(!demo);
+      requestAnimationFrame(() => document.getElementById(!demo ? reviewed ? 'lonas-demo-review-title' : 'lonas-demo-title' : 'cantidad-lonas')?.focus());
+    }} />
     <header hidden={!demo} className={local.heading}>
       <h1>{productName}</h1>
       {description && <p>{description}</p>}
     </header>
-    <div hidden={!demo} className={styles.warning} role="note">
-      <strong>Demostración — opciones pendientes de confirmación comercial</strong>
-      <p>Las selecciones son ilustrativas, no modifican las fotografías y no se guardan ni se envían. No se incorporan a Mi consulta.</p>
-    </div>
+    <GuidedDemoNotice visible={demo} />
     <div className={demo ? pilot.workspace : 'grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-24'}>
       <div className={demo ? pilot.visualColumn : styles.contents}>
         <div hidden={demo && !hasPhotos} className={demo ? pilot.gallery : styles.contents}>{gallery}</div>
@@ -219,23 +152,13 @@ export default function LonasDevelopmentPreview({ gallery, commercialInfo, produ
       {/* Nunca desmontar la selección comercial: conserva cantidad, notas y conflictos. */}
       <div className={styles.contents} hidden={demo}>{commercialInfo}</div>
       <div id="lonas-demo-view" className={styles.contents} hidden={!demo}>
-        {reviewed ? <section className={`internal-surface ${pilot.formPanel} ${local.panel} ${styles.review}`} aria-labelledby="lonas-demo-review-title">
-          <h2 id="lonas-demo-review-title" ref={reviewTitle} tabIndex={-1}>Revisá tu selección de ejemplo</h2>
-          <p>Estas son las decisiones que tomaste durante la demostración.</p>
-          <SummaryRows rows={rows} review />
-          <p className={styles.notice}><strong>Fin de la demostración.</strong> No se agregó nada a Mi consulta, no se guardó información y no se envió una solicitud. Todas las opciones siguen pendientes de validación comercial.</p>
-          <div className={styles.actions}><Button id="lonas-demo-edit" variant="solid" showArrow={false} onClick={() => moveStep(2)}>Volver a editar</Button><button id="lonas-demo-reset-review" className={styles.smallLink} type="button" onClick={reset}>Reiniciar demostración</button></div>
-        </section> : <>
-          <section className={`internal-surface ${pilot.formPanel} ${local.panel}`} aria-labelledby="lonas-demo-title">
-            <div className={styles.configTop}><h2 id="lonas-demo-title" tabIndex={-1}>Armá tu ejemplo</h2><button id="lonas-demo-reset" type="button" className={styles.smallLink} onClick={reset}>Reiniciar</button></div>
-            <ol className={styles.stepNav} aria-label="Pasos de selección de ejemplo de Lonas">
-              {steps.map((label, index) => <li key={label}><button type="button" aria-current={step === index ? 'step' : undefined} aria-controls="lonas-demo-step-content" onClick={() => moveStep(index)}><span>Paso {index + 1}</span>{label}</button></li>)}
-            </ol>
-            <div id="lonas-demo-step-content">
-              <h3 ref={stepTitle} tabIndex={-1} className={styles.stepTitle}>{stepTitles[step]}</h3>
-              <p className={styles.stepHelp}>{stepHelp[step]}</p>
-              {error && <p id="lonas-demo-error" className={styles.error} role="alert">{error.message}</p>}
-              {step === 1 ? <>
+        {reviewed ? <GuidedReview idPrefix="lonas-demo" className={`${pilot.formPanel} ${local.panel}`} rows={rows} titleRef={reviewTitle} onEdit={() => moveStep(2)} onReset={reset} notesLabel="Observaciones de la demostración de Lonas" /> : <>
+          <GuidedConfigurator
+            idPrefix="lonas-demo" className={`${pilot.formPanel} ${local.panel}`} steps={steps} step={step}
+            title={stepTitles[step]} help={stepHelp[step]} error={error} stepTitleRef={stepTitle}
+            onStepChange={moveStep} onNext={next} onReset={reset} stepsLabel="Pasos de selección de ejemplo de Lonas"
+          >
+          {step === 1 ? <>
                 <fieldset className={styles.fieldset}>
                   <legend>Medidas de referencia</legend>
                   <label className={styles.checkLine}><input id="lonas-demo-measure-advice" type="checkbox" checked={selection.measureAdvice} onChange={(event) => patch({ measureAdvice: event.target.checked })} /><span>Necesito ayuda para definir las medidas</span></label>
@@ -256,22 +179,11 @@ export default function LonasDevelopmentPreview({ gallery, commercialInfo, produ
                 </fieldset>
               </> : stages[step].map(choice)}
               {step === 2 && <>
-                <div className={styles.formField}><label htmlFor="lonas-demo-notes">Observaciones adicionales del ejemplo</label><textarea id="lonas-demo-notes" rows={3} maxLength={2000} value={selection.notes} onChange={(event) => patch({ notes: event.target.value })} aria-describedby="lonas-demo-notes-help" /><p id="lonas-demo-notes-help" className={styles.fieldHelp}>Hasta 2.000 caracteres. No incluyas datos personales; este texto no se incorpora a solicitudes reales.</p></div>
+                <GuidedNotes idPrefix="lonas-demo" value={selection.notes} onChange={(value) => patch({ notes: value })} />
                 <p className={styles.notice}>Son referencias para evaluar la experiencia. No confirman materiales, usos ni terminaciones disponibles.</p>
               </>}
-            </div>
-            <div className={styles.actions}>
-              {step > 0 && <Button id="lonas-demo-back" showArrow={false} onClick={() => moveStep(step - 1)}>Anterior</Button>}
-              <Button id="lonas-demo-next" variant="solid" onClick={next}>{step === 2 ? 'Revisar selección de ejemplo' : 'Continuar'}</Button>
-            </div>
-            <a className={styles.summaryLink} href="#lonas-demo-summary">Ver mi resumen de ejemplo</a>
-          </section>
-          <aside id="lonas-demo-summary" tabIndex={-1} className={`internal-surface ${pilot.selectionSummary} ${local.panel} ${styles.summary}`} aria-labelledby="lonas-demo-summary-title">
-            <h2 id="lonas-demo-summary-title">Tu selección de ejemplo</h2>
-            <p>Se actualiza mientras probás las opciones.</p>
-            <SummaryRows rows={rows} />
-            <p className={styles.footnote}>Precio, disponibilidad y condiciones: a confirmar con el equipo. La demostración no calcula presupuestos.</p>
-          </aside>
+          </GuidedConfigurator>
+          <GuidedSummary idPrefix="lonas-demo" className={`${pilot.selectionSummary} ${local.panel}`} rows={rows} notesLabel="Observaciones de la demostración de Lonas" />
         </>}
       </div>
     </div>
