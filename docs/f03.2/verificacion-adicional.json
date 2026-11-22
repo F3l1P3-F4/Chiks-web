@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Medidas extremas: etiquetas largas sin desbordamiento",
+    "passed": true,
+    "evidence": {
+      "width": "999999999999 cm",
+      "height": "0.01 cm",
+      "viewports": 6
+    }
+  },
+  {
+    "name": "Alternar asesoramiento restaura medidas y cantidad escritas",
+    "passed": true
+  },
+  {
+    "name": "Foco visible de teclado y sin controles comerciales ocultos en la secuencia",
+    "passed": true,
+    "evidence": {
+      "visible": true,
+      "style": "solid",
+      "width": "3px"
+    }
+  },
+  {
+    "name": "Almacenamiento bloqueado: demostración y borrador comercial conservados",
+    "passed": true
+  },
+  {
+    "name": "Almacenamiento bloqueado: Solicitar presupuesto mantiene selección en memoria y advertencias",
+    "passed": true,
+    "evidence": {
+      "quantity": 6,
+      "temporary": true
+    }
+  },
+  {
+    "name": "Producción: sin controles demostrativos; navegación comercial con basePath",
+    "passed": true
+  },
+  {
+    "name": "Producción: Tus datos y mensaje R4 sin opciones ficticias ni envío",
+    "passed": true,
+    "evidence": {
+      "personalDataNotStored": true,
+      "noExternalSend": true
+    }
+  }
+]

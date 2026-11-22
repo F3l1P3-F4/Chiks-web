@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-22",
+  "branch": "desarrollo",
+  "baseline": "da26cf225b2b9d904f9c9dbd38888b996a72bb2d",
+  "baselineFiles": 218,
+  "changedExisting": [
+    "src/app/productos/ficha/[slug]/page.tsx",
+    "src/components/ProductDetail.tsx"
+  ],
+  "missing": [],
+  "E01": {
+    "files": 37,
+    "unchanged": true
+  },
+  "F02": {
+    "unchanged": true
+  },
+  "Remeras": {
+    "unchanged": true
+  },
+  "R4": {
+    "unchanged": true
+  },
+  "method": "Comparación SHA-256 de todos los archivos que existían al comenzar; únicamente dos archivos existentes difieren. Documentación y capturas de F03.2 son archivos nuevos."
+}

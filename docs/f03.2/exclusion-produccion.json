@@ -1,0 +1,23 @@
+{
+  "files": 333,
+  "markers": [
+    "lonas-demo-",
+    "Probar experiencia F02",
+    "Contanos qué tenés en mente",
+    "Referencia: una superficie con pequeños orificios.",
+    "LonasDevelopmentPreview",
+    "RemerasDevelopmentPreview"
+  ],
+  "hits": [],
+  "html": {
+    "basePath": true,
+    "commercialQuantity": true,
+    "galleryPlaceholder": true,
+    "existingVariantsPreserved": true
+  },
+  "sitemap": {
+    "exists": true,
+    "hasLonas": true,
+    "noDemo": true
+  }
+}

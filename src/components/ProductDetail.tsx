@@ -31,9 +31,10 @@ const pending = 'Pendiente de confirmación.';
 interface ProductDetailProps {
   product: ProductInfo;
   path: string;
+  renderWorkspace?: (gallery: React.ReactNode, commercialInfo: React.ReactNode) => React.ReactNode;
 }
 
-export default function ProductDetail({ product, path }: ProductDetailProps) {
+export default function ProductDetail({ product, path, renderWorkspace }: ProductDetailProps) {
   const specifications = [
     { title: 'Especificaciones', values: product.features },
     { title: 'Materiales', values: product.materials },
@@ -49,19 +50,8 @@ export default function ProductDetail({ product, path }: ProductDetailProps) {
   if (!product.minQuantity) pendingFields.push('Cantidad mínima de pedido y aplicabilidad');
 
 
-  return (
-    <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
-      <Breadcrumb currentPath={path} wrap items={[
-        { label: 'Productos', href: '/productos' },
-        { label: product.categorySlug === 'grafica' ? 'Gráfica' : product.category, href: `/productos/${product.categorySlug}` },
-        ...(product.subcategory ? [product.subcategory] : []),
-        { label: product.title }
-      ]} />
-
-      <div className="grid grid-cols-1 gap-12 mb-24 lg:grid-cols-2 lg:gap-24">
-        <ProductGallery key={product.title} photos={photos} />
-
-        {/* Info Section */}
+  const gallery = <ProductGallery key={product.title} photos={photos} />;
+  const commercialInfo = (
         <div className={`${styles.info} flex flex-col min-w-0`}>
           <h1 className={`${styles.title} font-extrabold uppercase tracking-tighter mb-6`}>
             {product.title}
@@ -106,7 +96,21 @@ export default function ProductDetail({ product, path }: ProductDetailProps) {
 
           <ProductSelection product={{ id: path.split('/').pop()!, name: product.title, path }} showConsultation />
         </div>
-      </div>
+  );
+
+  return (
+    <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
+      <Breadcrumb currentPath={path} wrap items={[
+        { label: 'Productos', href: '/productos' },
+        { label: product.categorySlug === 'grafica' ? 'Gráfica' : product.category, href: `/productos/${product.categorySlug}` },
+        ...(product.subcategory ? [product.subcategory] : []),
+        { label: product.title }
+      ]} />
+
+      {renderWorkspace ? renderWorkspace(gallery, commercialInfo) : <div className="grid grid-cols-1 gap-12 mb-24 lg:grid-cols-2 lg:gap-24">
+        {gallery}
+        {commercialInfo}
+      </div>}
 
       {/* Relacionados */}
       {product.relatedProducts && product.relatedProducts.length > 0 && (

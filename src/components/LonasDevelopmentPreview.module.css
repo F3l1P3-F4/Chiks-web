@@ -1,0 +1,41 @@
+.preview { margin-bottom: 96px; }
+.preview [hidden] { display: none !important; }
+.heading { margin: 24px 0; }
+.heading h1 { font-size: clamp(1.75rem, 4.2vw, 3.5rem); line-height: 1.08; }
+.heading p { max-width: 65ch; margin-top: 16px; font-size: 17px; line-height: 1.65; }
+.active h2, .active h3 { text-transform: none; letter-spacing: -.025em; line-height: 1.25; }
+.preview .panel { padding: 28px; overflow: visible; }
+.measureGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.measureGrid label span { color: #43516c; font-weight: 500; }
+.scheme { padding: 24px; overflow: visible; }
+.scheme h2 { font-size: 20px; }
+.scheme > p { font-size: 12px; line-height: 1.6; color: #43516c; }
+.schemeStage { display: flex; align-items: center; justify-content: center; min-height: 285px; padding: 42px 40px; }
+.board { position: relative; display: flex; align-items: center; justify-content: center; width: min(100%, 300px); max-height: 460px; border: 2px solid #1f4bff; border-radius: 6px; background: #eaf0ff; color: #1339ba; }
+.boardText { padding: 14px; text-align: center; font-size: 18px; font-weight: 750; line-height: 1.5; }
+.boardText small { display: block; font-size: 12px; font-weight: 500; }
+.widthLabel, .heightLabel { position: absolute; font-size: 13px; font-weight: 650; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.widthLabel { bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); }
+.heightLabel { right: calc(100% + 12px); top: 50%; transform: translate(50%, -50%) rotate(-90deg); }
+.eyelet { position: absolute; width: 10px; height: 10px; border: 2px solid #1f4bff; border-radius: 50%; background: #fff; }
+.eyelet:nth-of-type(1) { top: 6px; left: 6px; }
+.eyelet:nth-of-type(2) { top: 6px; right: 6px; }
+.eyelet:nth-of-type(3) { bottom: 6px; left: 6px; }
+.eyelet:nth-of-type(4) { bottom: 6px; right: 6px; }
+
+@media (max-width: 1023px) {
+  .preview .panel { padding: 22px; }
+  .scheme { padding: 22px; }
+  .schemeStage { min-height: 230px; padding-inline: 30px; }
+}
+
+@media (max-width: 767px) {
+  .heading p { font-size: 15px; }
+  .schemeStage { min-height: 200px; }
+}
+
+@media (max-width: 359px) {
+  .preview .panel { padding-inline: 16px; }
+  .scheme { padding: 18px; }
+  .measureGrid { gap: 12px; }
+}

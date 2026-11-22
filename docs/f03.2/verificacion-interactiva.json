@@ -1,0 +1,376 @@
+{
+  "results": [
+    {
+      "name": "Alternativas, ayudas y pasos idénticos a F02 (4 grupos, 12 opciones)",
+      "passed": true,
+      "evidence": {
+        "groups": 4,
+        "options": 12
+      }
+    },
+    {
+      "name": "Borrador comercial inicial y galería disponibles",
+      "passed": true
+    },
+    {
+      "name": "Acceso por teclado y foco inicial del modo demostración",
+      "passed": true
+    },
+    {
+      "name": "Sin selección: error asociado al primer control",
+      "passed": true
+    },
+    {
+      "name": "Radios mediante teclado, ayuda contextual y resumen inmediato",
+      "passed": true
+    },
+    {
+      "name": "Ancho inválido: vacío, cero, negativo, texto y más de dos decimales",
+      "passed": true,
+      "evidence": {
+        "invalid": [
+          "",
+          "0",
+          "-2",
+          "abc",
+          "12.345"
+        ]
+      }
+    },
+    {
+      "name": "Alto inválido y conservación del ancho ante error",
+      "passed": true
+    },
+    {
+      "name": "Cantidad inválida: vacía, cero, negativa y fraccionaria",
+      "passed": true,
+      "evidence": {
+        "invalid": [
+          "",
+          "0",
+          "-1",
+          "1.5"
+        ]
+      }
+    },
+    {
+      "name": "Medidas con coma/punto y cantidad actualizan el resumen y esquema",
+      "passed": true,
+      "evidence": {
+        "measures": "120,5 × 80,25 cm",
+        "quantity": "3 piezas",
+        "ratio": "1.50156 / 1"
+      }
+    },
+    {
+      "name": "Paso 3 valida terminación y diseño",
+      "passed": true
+    },
+    {
+      "name": "Observaciones exactas y retroceso conservan todas las elecciones",
+      "passed": true
+    },
+    {
+      "name": "Revisión íntegra, sin envío ni incorporación a R4",
+      "passed": true
+    },
+    {
+      "name": "Editar revisión y cambiar terminación",
+      "passed": true
+    },
+    {
+      "name": "Salir y volver conserva borrador comercial y selecciones de prueba",
+      "passed": true
+    },
+    {
+      "name": "Reinicio limpia únicamente la demostración",
+      "passed": true
+    },
+    {
+      "name": "Recorrido completo solicitando asesoramiento",
+      "passed": true
+    },
+    {
+      "name": "Observaciones de 2.000 caracteres sin espacios: contenido íntegro, foco y desplazamiento accesibles",
+      "passed": true
+    },
+    {
+      "name": "Sin cambios en localStorage durante todo el uso demostrativo",
+      "passed": true
+    },
+    {
+      "name": "Regresión comercial: agregar, persistir, solicitar presupuesto y actualizar Lonas",
+      "passed": true
+    },
+    {
+      "name": "Regresión de sincronización y conflicto: borrador comercial preservado",
+      "passed": true
+    },
+    {
+      "name": "Regresión de Remeras: galería, 20 prendas, tres pasos y revisión",
+      "passed": true
+    },
+    {
+      "name": "Eliminar Lonas desde Mi consulta y estado vacío",
+      "passed": true
+    },
+    {
+      "name": "Sin excepciones JavaScript durante el recorrido",
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "state": "material",
+      "width": 320,
+      "scroll": 305,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "material",
+      "width": 390,
+      "scroll": 375,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "material",
+      "width": 768,
+      "scroll": 753,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "material",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "material",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "material",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "medidas",
+      "width": 320,
+      "scroll": 305,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "medidas",
+      "width": 390,
+      "scroll": 375,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "medidas",
+      "width": 768,
+      "scroll": 753,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "medidas",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "medidas",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "medidas",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "terminacion",
+      "width": 320,
+      "scroll": 305,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "terminacion",
+      "width": 390,
+      "scroll": 375,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "terminacion",
+      "width": 768,
+      "scroll": 753,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "terminacion",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "terminacion",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "terminacion",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "revision",
+      "width": 320,
+      "scroll": 305,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "revision",
+      "width": 390,
+      "scroll": 375,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "revision",
+      "width": 768,
+      "scroll": 753,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "revision",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "revision",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "revision",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "asesoramiento",
+      "width": 320,
+      "scroll": 305,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "asesoramiento",
+      "width": 390,
+      "scroll": 375,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "asesoramiento",
+      "width": 768,
+      "scroll": 753,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "asesoramiento",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "asesoramiento",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "asesoramiento",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "texto-extenso",
+      "width": 320,
+      "scroll": 305,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "texto-extenso",
+      "width": 390,
+      "scroll": 375,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "texto-extenso",
+      "width": 768,
+      "scroll": 753,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "texto-extenso",
+      "width": 1024,
+      "scroll": 1009,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "texto-extenso",
+      "width": 1440,
+      "scroll": 1425,
+      "outside": [],
+      "visibleH1": 1
+    },
+    {
+      "state": "texto-extenso",
+      "width": 1670,
+      "scroll": 1655,
+      "outside": [],
+      "visibleH1": 1
+    }
+  ]
+}
