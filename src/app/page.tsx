@@ -1,12 +1,10 @@
 import { pageMetadata } from '@/lib/seo';
-import { visualAssets } from '@/data/visualAssets';
 import React from 'react';
-import Image from 'next/image';
 import Button from '@/components/Button';
 import SolutionCard from '@/components/SolutionCard';
 import styles from './Hero.module.css';
 import solutionStyles from '@/components/SolutionCard.module.css';
-import WorkGallery from '@/components/WorkGallery';
+import HeroWorkCarousel from '@/components/HeroWorkCarousel';
 import galleryStyles from '@/components/WorkGallery.module.css';
 import processStyles from './Process.module.css';
 
@@ -19,7 +17,7 @@ export default function Home() {
     <div className="container mx-auto px-4 lg:px-8 py-12">
       
       {/* HERO */}
-      <section aria-labelledby="hero-title" className={`${styles.hero} relative isolate mb-16 grid items-center gap-10 lg:grid-cols-2`}>
+      <section aria-labelledby="hero-title" className={`${styles.hero} relative isolate`}>
         <div className={styles.copy}>
           <p className={styles.eyebrow}>Diseño <span aria-hidden="true">|</span> Impresión <span aria-hidden="true">|</span> Personalización</p>
           <h1 id="hero-title" className={styles.title}>
@@ -29,7 +27,7 @@ export default function Home() {
           <p className={styles.subtitle}>
             Indumentaria, gráfica y merchandising que hacen visible tu identidad
           </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+          <div className={styles.actions}>
             <Button href="/productos" variant="solid" showArrow={false} className={styles.button}>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
                 <path d="M2 2h5v5H2zm11 0h5v5h-5zM2 13h5v5H2zm11 0h5v5h-5z" />
@@ -44,23 +42,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <div className={styles.products}>
-          {[
-            { image: visualAssets.corporativa, alt: 'Remeras con estampados corporativos' },
-            { image: visualAssets.bolsas, alt: 'Bolsas textiles personalizadas' },
-            { image: visualAssets.uniformes, alt: 'Gorras e indumentaria personalizadas' },
-            { image: visualAssets.merchandising, alt: 'Taza y cintas personalizadas de merchandising deportivo' },
-          ].map(({ image, alt }, index) => (
-            <Image
-              key={image.src}
-              src={image}
-              alt={alt}
-              preload={index === 0}
-              sizes="(min-width: 1024px) 25vw, 50vw"
-              className={styles.productPhoto}
-            />
-          ))}
-        </div>
+        <HeroWorkCarousel />
       </section>
 
       {/* SOLUCIONES POR PERFIL */}
@@ -103,11 +85,6 @@ export default function Home() {
             href="/soluciones/obras"
           />
         </div>
-      </section>
-
-      {/* TRABAJOS REALIZADOS */}
-      <section className="mb-32" aria-labelledby="trabajos-title">
-        <WorkGallery />
       </section>
 
       {/* PROCESO */}

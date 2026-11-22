@@ -1,0 +1,111 @@
+[
+  {
+    "name": "HTML exportado: sección inferior retirada, una foto inicial y preload",
+    "passed": true,
+    "evidence": {
+      "oldSection": false,
+      "images": 1,
+      "preload": true,
+      "title": "Tintas que hablan",
+      "h1": 1
+    }
+  },
+  {
+    "name": "Fotografías y navegación exportadas con /Chiks-web",
+    "passed": true,
+    "evidence": [
+      {
+        "width": 390,
+        "index": 1,
+        "src": "/Chiks-web/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp"
+      },
+      {
+        "width": 390,
+        "index": 2,
+        "src": "/Chiks-web/_next/static/media/vidriera.0e335yi06ai4g.webp"
+      },
+      {
+        "width": 390,
+        "index": 3,
+        "src": "/Chiks-web/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+      },
+      {
+        "width": 390,
+        "index": 4,
+        "src": "/Chiks-web/_next/static/media/ploteo-vehicular.41m630z_r_bs3.webp"
+      },
+      {
+        "width": 390,
+        "index": 5,
+        "src": "/Chiks-web/_next/static/media/merchandising.33y-3w4b1cf-5.webp"
+      },
+      {
+        "width": 1440,
+        "index": 1,
+        "src": "/Chiks-web/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp"
+      },
+      {
+        "width": 1440,
+        "index": 2,
+        "src": "/Chiks-web/_next/static/media/vidriera.0e335yi06ai4g.webp"
+      },
+      {
+        "width": 1440,
+        "index": 3,
+        "src": "/Chiks-web/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+      },
+      {
+        "width": 1440,
+        "index": 4,
+        "src": "/Chiks-web/_next/static/media/ploteo-vehicular.41m630z_r_bs3.webp"
+      },
+      {
+        "width": 1440,
+        "index": 5,
+        "src": "/Chiks-web/_next/static/media/merchandising.33y-3w4b1cf-5.webp"
+      }
+    ]
+  },
+  {
+    "name": "Galería interna intacta en producción, seis anchos",
+    "passed": true,
+    "evidence": [
+      {
+        "width": 320,
+        "equal": true
+      },
+      {
+        "width": 390,
+        "equal": true
+      },
+      {
+        "width": 768,
+        "equal": true
+      },
+      {
+        "width": 1024,
+        "equal": true
+      },
+      {
+        "width": 1440,
+        "equal": true
+      },
+      {
+        "width": 1670,
+        "equal": true
+      }
+    ]
+  },
+  {
+    "name": "Sin errores de carga o ejecución en producción",
+    "passed": true
+  },
+  {
+    "name": "Carrusel C02 y configuradores de prueba ausentes del código exportado",
+    "passed": true,
+    "evidence": {
+      "files": 334,
+      "hits": []
+    }
+  }
+]

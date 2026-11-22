@@ -1,23 +1,25 @@
 .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
   max-width: 1400px;
-  margin-inline: auto;
+  margin: 0 auto 32px;
   color: #fff;
 }
 
-.copy {
-  min-width: 0;
-  padding-left: 22px;
-}
+.copy { min-width: 0; padding-left: 14px; }
 
 .eyebrow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  font-size: clamp(10px, 0.95vw, 14px);
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.13em;
+  line-height: 1.45;
+  letter-spacing: .07em;
   text-transform: uppercase;
 }
 
@@ -26,12 +28,15 @@
   width: fit-content;
   margin-bottom: 18px;
   color: #fff;
-  font-size: clamp(44px, 5.1vw, 80px);
+  font-size: clamp(46px, 12vw, 58px);
   font-weight: 800;
   font-style: italic;
-  line-height: 1.04;
-  letter-spacing: -0.025em;
+  line-height: 1.03;
+  letter-spacing: -.025em;
   text-transform: none;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 .title::before {
@@ -39,113 +44,69 @@
   position: absolute;
   top: 7%;
   bottom: 4%;
-  left: -18px;
-  width: 4px;
+  left: -12px;
+  width: 3px;
   background: linear-gradient(#ff8a37, #ffd3ed 50%, #ff71d1);
   transform: skew(-16deg);
 }
 
-.firstLine {
-  display: block;
-  white-space: nowrap;
-}
-
+.firstLine { display: block; white-space: nowrap; }
 .highlight {
   display: block;
   width: fit-content;
   margin-top: 4px;
-  padding: 0 24px 6px;
+  padding: 0 18px 6px;
   background: #ed0084;
   transform: skew(-16deg);
 }
-
-.highlight > span {
-  display: block;
-  transform: skew(16deg);
-}
+.highlight > span { display: block; transform: skew(16deg); }
 
 .subtitle {
-  max-width: 410px;
-  margin-bottom: 22px;
-  font-size: clamp(17px, 1.4vw, 21px);
+  max-width: 480px;
+  margin-bottom: 20px;
+  font-size: 17px;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.45;
   text-wrap: pretty;
 }
 
-/* Mayor especificidad que las utilidades del botón, solo dentro de este hero. */
+.actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 500px; }
 .hero .button {
-  min-height: 44px;
-  gap: 10px;
-  padding: 9px 18px;
+  min-width: 0;
+  min-height: 48px;
+  gap: 8px;
+  padding: 12px 8px;
   border: 2px solid #fff;
   border-radius: 999px;
   color: #fff;
   background: transparent;
   font-size: 14px;
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
+  line-height: 1.3;
+  letter-spacing: -.015em;
   text-transform: none;
+  text-align: center;
+}
+.hero .button svg { width: 20px; height: 20px; flex-shrink: 0; }
+.hero .button:hover { color: #07134b; background: #fff; }
+.hero .button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+
+@media (min-width: 640px) {
+  .title { font-size: clamp(56px, 6.1vw, 88px); }
+  .title::before { left: -18px; width: 4px; }
+  .copy { padding-left: 22px; }
+  .highlight { padding-inline: 24px; }
+  .hero .button { padding-inline: 16px; }
 }
 
-.hero .button svg {
-  flex-shrink: 0;
+@media (min-width: 768px) {
+  .hero { grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: clamp(28px, 3vw, 48px); margin-bottom: 40px; }
+  .eyebrow { gap: 10px; margin-bottom: 18px; font-size: clamp(11px, 1vw, 13px); letter-spacing: .1em; }
+  .title { margin-bottom: 24px; }
+  .subtitle { margin-bottom: 26px; font-size: clamp(18px, 1.5vw, 22px); }
 }
 
-.hero .button:hover {
-  color: #07134b;
-  background: #fff;
-}
-
-.hero .button:focus-visible {
-  outline: 3px solid #fff;
-  outline-offset: 4px;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 12px;
-  min-width: 0;
-}
-
-.productPhoto {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
-}
-
-@media (min-width: 1024px) {
-  .hero {
-    min-height: 340px;
-    gap: 36px;
-  }
-}
-
-@media (max-width: 639px) {
-  .copy {
-    padding-left: 14px;
-  }
-
-  .eyebrow {
-    gap: 6px;
-    letter-spacing: 0.07em;
-  }
-
-  .title {
-    font-size: clamp(42px, 10.5vw, 64px);
-  }
-
-  .title::before {
-    left: -12px;
-    width: 3px;
-  }
-
-  .highlight {
-    padding-inline: 18px;
-  }
+@media (min-width: 1280px) {
+  .hero { margin-bottom: 48px; }
+  .copy { padding-left: 24px; }
 }

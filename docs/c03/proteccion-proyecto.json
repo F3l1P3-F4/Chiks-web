@@ -1,0 +1,43 @@
+{
+  "branch": "desarrollo",
+  "head": "c57794753c9ca86ef269b9185aec1a1e0c525ea8",
+  "initialFiles": 298,
+  "unchangedInitialFiles": 296,
+  "changed": [
+    "src/app/Hero.module.css",
+    "src/app/page.tsx"
+  ],
+  "removed": [],
+  "added": [
+    "docs/c03/capturas/hero-1024-after.png",
+    "docs/c03/capturas/hero-1024-before.png",
+    "docs/c03/capturas/hero-1440-after.png",
+    "docs/c03/capturas/hero-1440-before.png",
+    "docs/c03/capturas/hero-1670-after.png",
+    "docs/c03/capturas/hero-1670-before.png",
+    "docs/c03/capturas/hero-320-after.png",
+    "docs/c03/capturas/hero-320-before.png",
+    "docs/c03/capturas/hero-390-after.png",
+    "docs/c03/capturas/hero-390-before.png",
+    "docs/c03/capturas/hero-768-after.png",
+    "docs/c03/capturas/hero-768-before.png",
+    "docs/c03/capturas/inicio-1440-after.png",
+    "docs/c03/capturas/inicio-1440-before.png",
+    "docs/c03/capturas/inicio-390-after.png",
+    "docs/c03/capturas/inicio-390-before.png",
+    "docs/c03/capturas/trabajos-1440-after.png",
+    "docs/c03/capturas/trabajos-1440-before.png",
+    "docs/c03/capturas/trabajos-390-after.png",
+    "docs/c03/capturas/trabajos-390-before.png",
+    "docs/c03/comparacion-visual.json",
+    "docs/c03/estado-anterior/Hero.module.css.txt",
+    "docs/c03/estado-anterior/page.tsx.txt",
+    "docs/c03/pruebas-interactivas.json",
+    "docs/c03/verificacion-produccion.json",
+    "src/components/HeroWorkCarousel.module.css",
+    "src/components/HeroWorkCarousel.tsx"
+  ],
+  "experimentalFiles": 37,
+  "sourceSnapshotVerified": "Copias previas cotejadas por SHA-256 con el estado inicial; C02 permanece intacto y sin referencias en Inicio.",
+  "noGitWrites": true
+}

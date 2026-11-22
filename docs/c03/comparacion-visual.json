@@ -1,0 +1,674 @@
+{
+  "comparison": [
+    {
+      "width": 320,
+      "before": {
+        "width": 320,
+        "documentWidth": 305,
+        "mainHeight": 3197.703125,
+        "documentHeight": 4076,
+        "heroHeight": 542.296875,
+        "copyWidth": 273,
+        "photoWidth": 273,
+        "titleFont": 42,
+        "titleHeight": 97.34375,
+        "titleWidth": 209.40625,
+        "titleText": "Tintas que hablan",
+        "photoCount": 4,
+        "firstPhotoTop": 545.15625,
+        "photoDistanceFromTitle": 248.8125,
+        "oldWorkSection": true,
+        "solutionsToProcess": 261.671875,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 259,
+            "height": 44
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 259,
+            "height": 44
+          }
+        ],
+        "firstPhoto": {
+          "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados corporativos",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 130.5,
+          "height": 57.265625,
+          "fit": "fill"
+        }
+      },
+      "after": {
+        "width": 320,
+        "documentWidth": 305,
+        "mainHeight": 2963.28125,
+        "documentHeight": 3842,
+        "heroHeight": 577.546875,
+        "copyWidth": 273,
+        "photoWidth": 273,
+        "titleFont": 46,
+        "titleHeight": 104.75,
+        "titleWidth": 229.359375,
+        "titleText": "Tintas que hablan",
+        "photoCount": 1,
+        "firstPhotoTop": 521.921875,
+        "photoDistanceFromTitle": 197.296875,
+        "oldWorkSection": false,
+        "solutionsToProcess": 24,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 123.5,
+            "height": 64.375
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 123.5,
+            "height": 64.375
+          }
+        ],
+        "firstPhoto": {
+          "src": "http://localhost:3000/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados personalizados",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 271,
+          "height": 168.625,
+          "fit": "cover"
+        }
+      },
+      "mainReduction": 234.421875,
+      "documentReduction": 234
+    },
+    {
+      "width": 390,
+      "before": {
+        "width": 390,
+        "documentWidth": 375,
+        "mainHeight": 3230.578125,
+        "documentHeight": 4086,
+        "heroHeight": 560.96875,
+        "copyWidth": 343,
+        "photoWidth": 343,
+        "titleFont": 42,
+        "titleHeight": 97.34375,
+        "titleWidth": 209.40625,
+        "titleText": "Tintas que hablan",
+        "photoCount": 4,
+        "firstPhotoTop": 522.21875,
+        "photoDistanceFromTitle": 225.875,
+        "oldWorkSection": true,
+        "solutionsToProcess": 296.671875,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 329,
+            "height": 44
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 329,
+            "height": 44
+          }
+        ],
+        "firstPhoto": {
+          "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados corporativos",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 165.5,
+          "height": 72.625,
+          "fit": "fill"
+        }
+      },
+      "after": {
+        "width": 390,
+        "documentWidth": 375,
+        "mainHeight": 2941.28125,
+        "documentHeight": 3796,
+        "heroHeight": 576.34375,
+        "copyWidth": 343,
+        "photoWidth": 343,
+        "titleFont": 46.8,
+        "titleHeight": 106.375,
+        "titleWidth": 233.34375,
+        "titleText": "Tintas que hablan",
+        "photoCount": 1,
+        "firstPhotoTop": 476.96875,
+        "photoDistanceFromTitle": 172.65625,
+        "oldWorkSection": false,
+        "solutionsToProcess": 24,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 158.5,
+            "height": 64.375
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 158.5,
+            "height": 64.375
+          }
+        ],
+        "firstPhoto": {
+          "src": "http://localhost:3000/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados personalizados",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 341,
+          "height": 212.375,
+          "fit": "cover"
+        }
+      },
+      "mainReduction": 289.296875,
+      "documentReduction": 290
+    },
+    {
+      "width": 768,
+      "before": {
+        "width": 768,
+        "documentWidth": 753,
+        "mainHeight": 2545.203125,
+        "documentHeight": 3054,
+        "heroHeight": 733.828125,
+        "copyWidth": 721,
+        "photoWidth": 721,
+        "titleFont": 44,
+        "titleHeight": 101.5,
+        "titleWidth": 219.390625,
+        "titleText": "Tintas que hablan",
+        "photoCount": 4,
+        "firstPhotoTop": 470.375,
+        "photoDistanceFromTitle": 169.875,
+        "oldWorkSection": true,
+        "solutionsToProcess": 213,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 195.890625,
+            "height": 44
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 175.125,
+            "height": 44
+          }
+        ],
+        "firstPhoto": {
+          "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados corporativos",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 354.5,
+          "height": 155.578125,
+          "fit": "fill"
+        }
+      },
+      "after": {
+        "width": 768,
+        "documentWidth": 753,
+        "mainHeight": 1924.21875,
+        "documentHeight": 2433,
+        "heroHeight": 325.84375,
+        "copyWidth": 359.8125,
+        "photoWidth": 333.1875,
+        "titleFont": 56,
+        "titleHeight": 125.34375,
+        "titleWidth": 279.21875,
+        "titleText": "Tintas que hablan",
+        "photoCount": 1,
+        "firstPhotoTop": 201.796875,
+        "photoDistanceFromTitle": -127.484375,
+        "oldWorkSection": false,
+        "solutionsToProcess": 24,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 162.90625,
+            "height": 64.375
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 162.90625,
+            "height": 64.375
+          }
+        ],
+        "firstPhoto": {
+          "src": "http://localhost:3000/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados personalizados",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 331.1875,
+          "height": 206.234375,
+          "fit": "cover"
+        }
+      },
+      "mainReduction": 620.984375,
+      "documentReduction": 621
+    },
+    {
+      "width": 1024,
+      "before": {
+        "width": 1024,
+        "documentWidth": 1009,
+        "mainHeight": 1582.796875,
+        "documentHeight": 2092,
+        "heroHeight": 340,
+        "copyWidth": 454.5,
+        "photoWidth": 454.5,
+        "titleFont": 52.224,
+        "titleHeight": 118.59375,
+        "titleWidth": 260.375,
+        "titleText": "Tintas que hablan",
+        "photoCount": 4,
+        "firstPhotoTop": 202.484375,
+        "photoDistanceFromTitle": -146.375,
+        "oldWorkSection": true,
+        "solutionsToProcess": 211.921875,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 195.890625,
+            "height": 44
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 175.125,
+            "height": 44
+          }
+        ],
+        "firstPhoto": {
+          "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados corporativos",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 221.25,
+          "height": 97.09375,
+          "fit": "fill"
+        }
+      },
+      "after": {
+        "width": 1024,
+        "documentWidth": 1009,
+        "mainHeight": 1361.59375,
+        "documentHeight": 1871,
+        "heroHeight": 330.71875,
+        "copyWidth": 474.71875,
+        "photoWidth": 439.5625,
+        "titleFont": 62.464,
+        "titleHeight": 138.65625,
+        "titleWidth": 311.421875,
+        "titleText": "Tintas que hablan",
+        "photoCount": 1,
+        "firstPhotoTop": 171,
+        "photoDistanceFromTitle": -175.5625,
+        "oldWorkSection": false,
+        "solutionsToProcess": 24,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 220.359375,
+            "height": 48
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 220.359375,
+            "height": 48
+          }
+        ],
+        "firstPhoto": {
+          "src": "http://localhost:3000/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados personalizados",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 437.5625,
+          "height": 272.71875,
+          "fit": "cover"
+        }
+      },
+      "mainReduction": 221.203125,
+      "documentReduction": 221
+    },
+    {
+      "width": 1440,
+      "before": {
+        "width": 1440,
+        "documentWidth": 1425,
+        "mainHeight": 1555.25,
+        "documentHeight": 1941,
+        "heroHeight": 355.578125,
+        "copyWidth": 590,
+        "photoWidth": 590,
+        "titleFont": 73.44,
+        "titleHeight": 162.75,
+        "titleWidth": 366.171875,
+        "titleText": "Tintas que hablan",
+        "photoCount": 4,
+        "firstPhotoTop": 170,
+        "photoDistanceFromTitle": -207.21875,
+        "oldWorkSection": true,
+        "solutionsToProcess": 165.109375,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 195.890625,
+            "height": 44
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 175.125,
+            "height": 44
+          }
+        ],
+        "firstPhoto": {
+          "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados corporativos",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 289,
+          "height": 126.828125,
+          "fit": "fill"
+        }
+      },
+      "after": {
+        "width": 1440,
+        "documentWidth": 1425,
+        "mainHeight": 1450.96875,
+        "documentHeight": 1837,
+        "heroHeight": 408.40625,
+        "copyWidth": 608.953125,
+        "photoWidth": 563.859375,
+        "titleFont": 87.84,
+        "titleHeight": 190.9375,
+        "titleWidth": 437.96875,
+        "titleText": "Tintas que hablan",
+        "photoCount": 1,
+        "firstPhotoTop": 171,
+        "photoDistanceFromTitle": -236.796875,
+        "oldWorkSection": false,
+        "solutionsToProcess": 24,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 244,
+            "height": 48
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 244,
+            "height": 48
+          }
+        ],
+        "firstPhoto": {
+          "src": "http://localhost:3000/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados personalizados",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 561.859375,
+          "height": 350.40625,
+          "fit": "cover"
+        }
+      },
+      "mainReduction": 104.28125,
+      "documentReduction": 104
+    },
+    {
+      "width": 1670,
+      "before": {
+        "width": 1670,
+        "documentWidth": 1655,
+        "mainHeight": 1251.609375,
+        "documentHeight": 1637,
+        "heroHeight": 410.265625,
+        "copyWidth": 682,
+        "photoWidth": 682,
+        "titleFont": 80,
+        "titleHeight": 176.375,
+        "titleWidth": 398.875,
+        "titleText": "Tintas que hablan",
+        "photoCount": 4,
+        "firstPhotoTop": 170,
+        "photoDistanceFromTitle": -240.46875,
+        "oldWorkSection": true,
+        "solutionsToProcess": 174.65625,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 195.890625,
+            "height": 44
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 175.125,
+            "height": 44
+          }
+        ],
+        "firstPhoto": {
+          "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados corporativos",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 335,
+          "height": 147.015625,
+          "fit": "fill"
+        }
+      },
+      "after": {
+        "width": 1670,
+        "documentWidth": 1655,
+        "mainHeight": 1136.9375,
+        "documentHeight": 1523,
+        "heroHeight": 462.25,
+        "copyWidth": 702,
+        "photoWidth": 650,
+        "titleFont": 88,
+        "titleHeight": 191.25,
+        "titleWidth": 438.765625,
+        "titleText": "Tintas que hablan",
+        "photoCount": 1,
+        "firstPhotoTop": 171,
+        "photoDistanceFromTitle": -263.28125,
+        "oldWorkSection": false,
+        "solutionsToProcess": 24,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 244,
+            "height": 48
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 244,
+            "height": 48
+          }
+        ],
+        "firstPhoto": {
+          "src": "http://localhost:3000/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "alt": "Remeras con estampados personalizados",
+          "naturalWidth": 1800,
+          "naturalHeight": 790,
+          "width": 648,
+          "height": 404.25,
+          "fit": "cover"
+        }
+      },
+      "mainReduction": 114.671875,
+      "documentReduction": 114
+    }
+  ],
+  "works": [
+    {
+      "width": 320,
+      "equal": true
+    },
+    {
+      "width": 390,
+      "equal": true
+    },
+    {
+      "width": 768,
+      "equal": true
+    },
+    {
+      "width": 1024,
+      "equal": true
+    },
+    {
+      "width": 1440,
+      "equal": true
+    },
+    {
+      "width": 1670,
+      "equal": true
+    }
+  ],
+  "protection": [
+    {
+      "width": 320,
+      "section": "header",
+      "equal": true
+    },
+    {
+      "width": 320,
+      "section": "section[aria-labelledby=soluciones-title]",
+      "equal": true
+    },
+    {
+      "width": 320,
+      "section": "section[aria-labelledby=proceso-title]",
+      "equal": true
+    },
+    {
+      "width": 320,
+      "section": "footer",
+      "equal": true
+    },
+    {
+      "width": 390,
+      "section": "header",
+      "equal": true
+    },
+    {
+      "width": 390,
+      "section": "section[aria-labelledby=soluciones-title]",
+      "equal": true
+    },
+    {
+      "width": 390,
+      "section": "section[aria-labelledby=proceso-title]",
+      "equal": true
+    },
+    {
+      "width": 390,
+      "section": "footer",
+      "equal": true
+    },
+    {
+      "width": 768,
+      "section": "header",
+      "equal": true
+    },
+    {
+      "width": 768,
+      "section": "section[aria-labelledby=soluciones-title]",
+      "equal": true
+    },
+    {
+      "width": 768,
+      "section": "section[aria-labelledby=proceso-title]",
+      "equal": true
+    },
+    {
+      "width": 768,
+      "section": "footer",
+      "equal": true
+    },
+    {
+      "width": 1024,
+      "section": "header",
+      "equal": true
+    },
+    {
+      "width": 1024,
+      "section": "section[aria-labelledby=soluciones-title]",
+      "equal": true
+    },
+    {
+      "width": 1024,
+      "section": "section[aria-labelledby=proceso-title]",
+      "equal": true
+    },
+    {
+      "width": 1024,
+      "section": "footer",
+      "equal": true
+    },
+    {
+      "width": 1440,
+      "section": "header",
+      "equal": true
+    },
+    {
+      "width": 1440,
+      "section": "section[aria-labelledby=soluciones-title]",
+      "equal": true
+    },
+    {
+      "width": 1440,
+      "section": "section[aria-labelledby=proceso-title]",
+      "equal": true
+    },
+    {
+      "width": 1440,
+      "section": "footer",
+      "equal": true
+    },
+    {
+      "width": 1670,
+      "section": "header",
+      "equal": true
+    },
+    {
+      "width": 1670,
+      "section": "section[aria-labelledby=soluciones-title]",
+      "equal": true
+    },
+    {
+      "width": 1670,
+      "section": "section[aria-labelledby=proceso-title]",
+      "equal": true
+    },
+    {
+      "width": 1670,
+      "section": "footer",
+      "equal": true
+    }
+  ]
+}

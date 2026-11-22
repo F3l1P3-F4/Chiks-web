@@ -1,0 +1,514 @@
+[
+  {
+    "name": "Los tres cambios, copia y botones conservados en seis anchos",
+    "passed": true,
+    "evidence": [
+      {
+        "width": 320,
+        "title": "Tintas que hablan",
+        "font": 46,
+        "subtitle": "Indumentaria, gráfica y merchandising que hacen visible tu identidad",
+        "within": true,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 123.5,
+            "height": 64.375
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 123.5,
+            "height": 64.375
+          }
+        ],
+        "photoY": 520.921875,
+        "controls": [
+          {
+            "width": 44,
+            "height": 44,
+            "right": 237,
+            "left": 193
+          },
+          {
+            "width": 44,
+            "height": 44,
+            "right": 289,
+            "left": 245
+          }
+        ]
+      },
+      {
+        "width": 390,
+        "title": "Tintas que hablan",
+        "font": 46.8,
+        "subtitle": "Indumentaria, gráfica y merchandising que hacen visible tu identidad",
+        "within": true,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 158.5,
+            "height": 64.375
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 158.5,
+            "height": 64.375
+          }
+        ],
+        "photoY": 475.96875,
+        "controls": [
+          {
+            "width": 44,
+            "height": 44,
+            "right": 307,
+            "left": 263
+          },
+          {
+            "width": 44,
+            "height": 44,
+            "right": 359,
+            "left": 315
+          }
+        ]
+      },
+      {
+        "width": 768,
+        "title": "Tintas que hablan",
+        "font": 56,
+        "subtitle": "Indumentaria, gráfica y merchandising que hacen visible tu identidad",
+        "within": true,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 162.90625,
+            "height": 64.375
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 162.90625,
+            "height": 64.375
+          }
+        ],
+        "photoY": 200.796875,
+        "controls": [
+          {
+            "width": 44,
+            "height": 44,
+            "right": 685,
+            "left": 641
+          },
+          {
+            "width": 44,
+            "height": 44,
+            "right": 737,
+            "left": 693
+          }
+        ]
+      },
+      {
+        "width": 1024,
+        "title": "Tintas que hablan",
+        "font": 62.464,
+        "subtitle": "Indumentaria, gráfica y merchandising que hacen visible tu identidad",
+        "within": true,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 220.359375,
+            "height": 48
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 220.359375,
+            "height": 48
+          }
+        ],
+        "photoY": 170,
+        "controls": [
+          {
+            "width": 44,
+            "height": 44,
+            "right": 925,
+            "left": 881
+          },
+          {
+            "width": 44,
+            "height": 44,
+            "right": 977,
+            "left": 933
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "title": "Tintas que hablan",
+        "font": 87.84,
+        "subtitle": "Indumentaria, gráfica y merchandising que hacen visible tu identidad",
+        "within": true,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 244,
+            "height": 48
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 244,
+            "height": 48
+          }
+        ],
+        "photoY": 170,
+        "controls": [
+          {
+            "width": 44,
+            "height": 44,
+            "right": 1268.5,
+            "left": 1224.5
+          },
+          {
+            "width": 44,
+            "height": 44,
+            "right": 1320.5,
+            "left": 1276.5
+          }
+        ]
+      },
+      {
+        "width": 1670,
+        "title": "Tintas que hablan",
+        "font": 88,
+        "subtitle": "Indumentaria, gráfica y merchandising que hacen visible tu identidad",
+        "within": true,
+        "buttons": [
+          {
+            "text": "Explorá el catálogo",
+            "href": "/productos",
+            "width": 244,
+            "height": 48
+          },
+          {
+            "text": "Ver mi consulta",
+            "href": "/mi-consulta",
+            "width": 244,
+            "height": 48
+          }
+        ],
+        "photoY": 170,
+        "controls": [
+          {
+            "width": 44,
+            "height": 44,
+            "right": 1475.5,
+            "left": 1431.5
+          },
+          {
+            "width": 44,
+            "height": 44,
+            "right": 1527.5,
+            "left": 1483.5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Las cinco fotografías cargan, marco estable y una activa en cada reposo",
+    "passed": true,
+    "evidence": [
+      {
+        "width": 320,
+        "index": 1,
+        "height": 170.625,
+        "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp"
+      },
+      {
+        "width": 320,
+        "index": 2,
+        "height": 170.625,
+        "src": "/_next/static/media/vidriera.0e335yi06ai4g.webp"
+      },
+      {
+        "width": 320,
+        "index": 3,
+        "height": 170.625,
+        "src": "/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+      },
+      {
+        "width": 320,
+        "index": 4,
+        "height": 170.625,
+        "src": "/_next/static/media/ploteo-vehicular.41m630z_r_bs3.webp"
+      },
+      {
+        "width": 320,
+        "index": 5,
+        "height": 170.625,
+        "src": "/_next/static/media/merchandising.33y-3w4b1cf-5.webp"
+      },
+      {
+        "width": 390,
+        "index": 1,
+        "height": 214.375,
+        "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp"
+      },
+      {
+        "width": 390,
+        "index": 2,
+        "height": 214.375,
+        "src": "/_next/static/media/vidriera.0e335yi06ai4g.webp"
+      },
+      {
+        "width": 390,
+        "index": 3,
+        "height": 214.375,
+        "src": "/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+      },
+      {
+        "width": 390,
+        "index": 4,
+        "height": 214.375,
+        "src": "/_next/static/media/ploteo-vehicular.41m630z_r_bs3.webp"
+      },
+      {
+        "width": 390,
+        "index": 5,
+        "height": 214.375,
+        "src": "/_next/static/media/merchandising.33y-3w4b1cf-5.webp"
+      },
+      {
+        "width": 768,
+        "index": 1,
+        "height": 208.234375,
+        "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp"
+      },
+      {
+        "width": 768,
+        "index": 2,
+        "height": 208.234375,
+        "src": "/_next/static/media/vidriera.0e335yi06ai4g.webp"
+      },
+      {
+        "width": 768,
+        "index": 3,
+        "height": 208.234375,
+        "src": "/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+      },
+      {
+        "width": 768,
+        "index": 4,
+        "height": 208.234375,
+        "src": "/_next/static/media/ploteo-vehicular.41m630z_r_bs3.webp"
+      },
+      {
+        "width": 768,
+        "index": 5,
+        "height": 208.234375,
+        "src": "/_next/static/media/merchandising.33y-3w4b1cf-5.webp"
+      },
+      {
+        "width": 1024,
+        "index": 1,
+        "height": 274.71875,
+        "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp"
+      },
+      {
+        "width": 1024,
+        "index": 2,
+        "height": 274.71875,
+        "src": "/_next/static/media/vidriera.0e335yi06ai4g.webp"
+      },
+      {
+        "width": 1024,
+        "index": 3,
+        "height": 274.71875,
+        "src": "/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+      },
+      {
+        "width": 1024,
+        "index": 4,
+        "height": 274.71875,
+        "src": "/_next/static/media/ploteo-vehicular.41m630z_r_bs3.webp"
+      },
+      {
+        "width": 1024,
+        "index": 5,
+        "height": 274.71875,
+        "src": "/_next/static/media/merchandising.33y-3w4b1cf-5.webp"
+      },
+      {
+        "width": 1440,
+        "index": 1,
+        "height": 352.40625,
+        "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp"
+      },
+      {
+        "width": 1440,
+        "index": 2,
+        "height": 352.40625,
+        "src": "/_next/static/media/vidriera.0e335yi06ai4g.webp"
+      },
+      {
+        "width": 1440,
+        "index": 3,
+        "height": 352.40625,
+        "src": "/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+      },
+      {
+        "width": 1440,
+        "index": 4,
+        "height": 352.40625,
+        "src": "/_next/static/media/ploteo-vehicular.41m630z_r_bs3.webp"
+      },
+      {
+        "width": 1440,
+        "index": 5,
+        "height": 352.40625,
+        "src": "/_next/static/media/merchandising.33y-3w4b1cf-5.webp"
+      },
+      {
+        "width": 1670,
+        "index": 1,
+        "height": 406.25,
+        "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp"
+      },
+      {
+        "width": 1670,
+        "index": 2,
+        "height": 406.25,
+        "src": "/_next/static/media/vidriera.0e335yi06ai4g.webp"
+      },
+      {
+        "width": 1670,
+        "index": 3,
+        "height": 406.25,
+        "src": "/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+      },
+      {
+        "width": 1670,
+        "index": 4,
+        "height": 406.25,
+        "src": "/_next/static/media/ploteo-vehicular.41m630z_r_bs3.webp"
+      },
+      {
+        "width": 1670,
+        "index": 5,
+        "height": 406.25,
+        "src": "/_next/static/media/merchandising.33y-3w4b1cf-5.webp"
+      }
+    ]
+  },
+  {
+    "name": "Fundido suave de 320 ms sin cambio de tamaño y capa saliente oculta a lectores",
+    "passed": true,
+    "evidence": {
+      "during": {
+        "busy": "false",
+        "count": 2,
+        "activeCount": 1,
+        "src": "/_next/static/media/vidriera.0e335yi06ai4g.webp",
+        "alt": "Gráfica aplicada a una vidriera comercial",
+        "loaded": true,
+        "height": 352.40625,
+        "width": 563.859375,
+        "status": "Fotografía 02 / de 05. Gráfica aplicada a una vidriera comercial",
+        "animations": [
+          {
+            "state": "running",
+            "name": "HeroWorkCarousel-module__KCFGdW__retirePhoto",
+            "duration": 320
+          },
+          {
+            "state": "running",
+            "name": "HeroWorkCarousel-module__KCFGdW__revealPhoto",
+            "duration": 320
+          }
+        ],
+        "fallback": false
+      },
+      "after": {
+        "busy": "false",
+        "count": 1,
+        "activeCount": 1,
+        "src": "/_next/static/media/vidriera.0e335yi06ai4g.webp",
+        "alt": "Gráfica aplicada a una vidriera comercial",
+        "loaded": true,
+        "height": 352.40625,
+        "width": 563.859375,
+        "status": "Fotografía 02 / de 05. Gráfica aplicada a una vidriera comercial",
+        "animations": [],
+        "fallback": false
+      }
+    }
+  },
+  {
+    "name": "Avance, retroceso, ciclo manual e interrupciones rápidas",
+    "passed": true
+  },
+  {
+    "name": "Teclado, foco visible y orden hacia el enlace de trabajos",
+    "passed": true
+  },
+  {
+    "name": "Sin reproducción automática",
+    "passed": true
+  },
+  {
+    "name": "Movimiento reducido elimina el fundido, también al cambiar durante una transición",
+    "passed": true
+  },
+  {
+    "name": "Pestaña oculta: se detiene el fundido y no se reinicia al regresar",
+    "passed": true,
+    "evidence": {
+      "simulatedVisibility": false,
+      "hiddenPhoto": "/_next/static/media/trabajo-03-stand.1mg-ncbd6lj5q.webp"
+    }
+  },
+  {
+    "name": "Gestos táctiles horizontales cambian la foto y el gesto vertical recorre Inicio",
+    "passed": true,
+    "evidence": {
+      "source": "Chromium CDP touch events"
+    }
+  },
+  {
+    "name": "Error de fotografía: aviso neutro, recuperación y altura constante",
+    "passed": true,
+    "evidence": {
+      "syntheticImageError": true
+    }
+  },
+  {
+    "name": "Carga inicial: una imagen y preload; no se sirven las cinco como grilla",
+    "passed": true,
+    "evidence": {
+      "images": [
+        {
+          "src": "/_next/static/media/indumentaria-corporativa.03vcim0q9hwvv.webp",
+          "loading": null
+        }
+      ],
+      "preload": true,
+      "removed": true,
+      "preloadViaHeader": true
+    }
+  },
+  {
+    "name": "Enlaces originales y acceso a trabajos funcionales",
+    "passed": true
+  },
+  {
+    "name": "Sin excepciones JavaScript en el recorrido",
+    "passed": true
+  }
+]
