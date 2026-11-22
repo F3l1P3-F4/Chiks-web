@@ -1,0 +1,106 @@
+.modeBar { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 24px; padding: 18px 0; border-block: 1px solid #6385af; }
+.modeBar strong { font-size: 16px; }
+.modeBar p { margin-top: 6px; max-width: 60ch; font-size: 13px; color: #c8daf2; line-height: 1.6; }
+.modeBar button { flex-shrink: 0; padding-inline: 20px; letter-spacing: .04em; }
+.modeBar button[aria-pressed='true'] { color: #07134b; background: #fff; border-color: #fff; }
+.warning { margin-bottom: 24px; color: #e6efff; font-size: 13px; line-height: 1.65; }
+.warning strong { display: block; color: #8aeaff; font-size: 15px; margin-bottom: 6px; }
+.contents { display: contents; }
+.contents > :is(div, section, aside) { width: 100%; }
+.contents[hidden], .warning[hidden] { display: none !important; }
+.configurator, .review, .summary { min-width: 0; }
+.configTop { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.configTop h2 { font-size: 24px; }
+.smallLink { background: none; border: 0; min-height: 44px; padding: 4px 0; color: #43516c; font-size: 13px; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.stepNav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0 0 24px; padding: 0; list-style: none; }
+.stepNav button { width: 100%; height: 100%; min-height: 64px; border: 0; border-radius: 10px; padding: 10px 4px; background: #f1f5fb; color: #43516c; font-size: 12px; font-weight: 650; line-height: 1.4; cursor: pointer; }
+.stepNav button span { display: block; font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+.stepNav button[aria-current='step'] { background: #eaf0ff; color: #1339ba; outline: 1px solid #1f4bff; outline-offset: -1px; }
+.stepNav button:hover { background: #e4ebf8; }
+.stepNav button:focus-visible { outline: 3px solid #005bea; outline-offset: 3px; }
+.stepTitle { font-size: 20px; margin-bottom: 8px; scroll-margin-block: 24px; }
+.stepHelp { color: #43516c; font-size: 14px; line-height: 1.65; margin-bottom: 24px; }
+.fieldset { padding: 0; border: 0; margin: 0 0 24px; min-width: 0; }
+.fieldset legend { font-size: 15px; font-weight: 750; margin-bottom: 10px; padding: 0; }
+.choiceGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.choice { display: flex; align-items: start; gap: 10px; min-width: 0; padding: 14px; border: 1px solid #cbd7e8; border-radius: 12px; cursor: pointer; }
+.choice:hover { border-color: #7687a4; }
+.choice:has(input:checked) { border-color: #a90062; background: #fff3f9; }
+.choice:has(input:focus-visible) { outline: 3px solid #005bea; outline-offset: 3px; }
+.choice input { width: 18px; height: 18px; margin-top: 2px; accent-color: #a90062; flex-shrink: 0; }
+.choice input:focus-visible { outline: none; }
+.choice strong { display: block; font-size: 14px; line-height: 1.4; }
+.choice small { display: block; font-size: 12px; line-height: 1.6; color: #43516c; margin-top: 5px; }
+.choice:has(input[aria-invalid='true']) { border-color: #970055; }
+.advice { grid-column: 1 / -1; align-items: center; min-height: 48px; padding-block: 12px; }
+.advice strong { font-weight: 600; }
+.colorDot { width: 18px; height: 18px; flex-shrink: 0; border: 1px solid #64738f; border-radius: 50%; }
+.checkLine { display: flex; align-items: start; gap: 10px; padding-block: 12px; min-height: 48px; font-size: 14px; line-height: 1.6; cursor: pointer; }
+.checkLine input { width: 20px; height: 20px; margin-top: 1px; accent-color: #a90062; flex-shrink: 0; }
+.quantityGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.quantityCell { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0; padding: 10px 12px; border: 1px solid #cbd7e8; border-radius: 10px; }
+.quantityCell label { font-weight: 750; }
+.quantityCell input { width: 72px; min-width: 0; min-height: 44px; padding: 8px; border: 1px solid #8c9bb4; border-radius: 6px; background: white; color: #07134b; }
+.totalLine { display: flex; justify-content: space-between; gap: 12px; padding-block: 14px; font-size: 14px; font-weight: 650; }
+.totalLine output { color: #970055; text-align: right; }
+.formField { min-width: 0; }
+.formField > label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.formField > input, .formField > textarea { width: 100%; min-width: 0; min-height: 48px; padding: 12px; border: 1px solid #8c9bb4; border-radius: 8px; background: white; color: #07134b; }
+.formField textarea { min-height: 112px; resize: vertical; }
+.quantityCell input, .formField input { font-variant-numeric: tabular-nums; }
+.quantityCell input, .formField input, .formField textarea { caret-color: #a90062; }
+.quantityCell input:focus-visible, .formField input:focus-visible, .formField textarea:focus-visible { outline-width: 3px; }
+.quantityCell input[aria-invalid='true'], .formField input[aria-invalid='true'] { border-color: #970055; }
+.fieldHelp { color: #43516c; font-size: 13px; line-height: 1.65; margin-top: 10px; }
+.contextHelp { margin-top: 12px; color: #43516c; font-size: 13px; line-height: 1.65; }
+.contextHelp summary { color: #970055; cursor: pointer; min-height: 44px; padding-block: 10px; font-weight: 650; }
+.contextHelp p { padding-top: 4px; }
+.notice { margin-top: 16px; padding: 12px 14px; border-radius: 10px; background: #f1f5fb; color: #43516c; font-size: 13px; line-height: 1.65; }
+.error { padding: 12px 14px; margin-bottom: 16px; border: 1px solid #c2638f; border-radius: 10px; background: #fff1f6; color: #970055; font-size: 14px; line-height: 1.6; }
+.actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #cbd7e8; }
+.actions button { max-width: 100%; line-height: 1.5; letter-spacing: .04em; padding-inline: 22px; }
+.actions button:last-child:not(.smallLink) { margin-left: auto; }
+.summaryLink { display: none; }
+.summary > p { color: #43516c; font-size: 13px; line-height: 1.65; }
+.summaryList { margin-top: 18px; }
+.summaryRow { display: flex; justify-content: space-between; gap: 20px; padding-block: 11px; border-bottom: 1px solid #e2e8f1; font-size: 14px; line-height: 1.6; }
+.summaryRow dt { color: #43516c; }
+.summaryRow dd { max-width: 65%; text-align: right; font-weight: 650; overflow-wrap: anywhere; white-space: pre-wrap; }
+.summaryRow .pending { font-weight: 450; color: #52617a; }
+.summaryRow:has(.longText) { display: block; }
+.summaryRow .longText { max-width: 100%; max-height: 14rem; overflow-y: auto; text-align: left; margin-top: 6px; scrollbar-color: #8c9bb4 #f1f5fb; scrollbar-width: thin; }
+.longText:focus-visible { outline: 3px solid #005bea; outline-offset: 3px; }
+.summary .footnote { margin-top: 16px; font-size: 12px; }
+.review > h2 { font-size: 24px; margin-bottom: 12px; }
+.review > p { color: #43516c; font-size: 14px; line-height: 1.65; }
+.reviewList { margin-top: 20px; }
+.reviewList .summaryRow { display: block; }
+.reviewList dd { max-width: 100%; text-align: left; margin-top: 5px; }
+.review .notice { background: #fff1f8; color: #6f204d; }
+
+@media (max-width: 1023px) {
+  .choiceGrid { grid-template-columns: 1fr; }
+  .modeBar { align-items: start; }
+  .modeBar button { flex-shrink: 1; }
+}
+
+@media (max-width: 767px) {
+  .modeBar { flex-direction: column; align-items: stretch; gap: 14px; }
+  .modeBar button { align-self: start; }
+  .configTop h2 { font-size: 21px; }
+  .choiceGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .choice { padding: 12px; gap: 8px; }
+  .choice strong { font-size: 13px; }
+  .stepNav { gap: 6px; }
+  .stepNav button { font-size: 11px; }
+  .stepNav button span { font-size: 13px; }
+  .summaryLink { display: inline-flex; align-items: center; min-height: 44px; margin-top: 12px; font-size: 13px; color: #970055; font-weight: 650; text-decoration: underline; text-underline-offset: 4px; }
+}
+
+@media (max-width: 359px) {
+  .choiceGrid { grid-template-columns: 1fr; }
+  .quantityCell { padding-inline: 10px; }
+  .quantityCell input { width: 60px; }
+  .actions button { padding-inline: 16px; }
+  .summaryRow { gap: 12px; }
+}

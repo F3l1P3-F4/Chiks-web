@@ -7,14 +7,16 @@ import ProductConsultation from './ProductConsultation';
 import { selectionVersion, useConsultation } from './ConsultationProvider';
 import type { ConsultationItem, ConsultationProduct, SaveResult } from './ConsultationProvider';
 import conflictStyles from './ConsultationConflict.module.css';
+import pilotStyles from './RemerasProductDetail.module.css';
 
 interface Draft { quantity: string; notes: string; base: ConsultationItem | null }
 
-export default function ProductSelection({ product, heading = 'Agregar a mi consulta', onDraftChange, showConsultation = false }: {
+export default function ProductSelection({ product, heading = 'Agregar a mi consulta', onDraftChange, showConsultation = false, presentation = 'default' }: {
   product: ConsultationProduct;
   heading?: string;
   onDraftChange?: (dirty: boolean) => void;
   showConsultation?: boolean;
+  presentation?: 'default' | 'remeras-pilot';
 }) {
   const { items, ready, save, pendingIds, conflicts, readCurrent } = useConsultation();
   const router = useRouter();
@@ -30,6 +32,7 @@ export default function ProductSelection({ product, heading = 'Agregar a mi cons
   const conflict = draft !== null && selectionVersion(draft.base) !== selectionVersion(existing);
   const formId = `seleccion-form-${product.id}`;
   const busy = submitting || navigating;
+  const pilot = presentation === 'remeras-pilot';
 
   const temporaryResolved = lastResult === 'temporary' && !pendingIds.includes(product.id);
   const conflictResolved = lastResult === 'conflict' && !conflict && conflicts.length === 0;
@@ -49,10 +52,17 @@ export default function ProductSelection({ product, heading = 'Agregar a mi cons
     setLastResult(null);
   }
 
-  return (
-    <>
-    <section aria-labelledby={`seleccion-${product.id}`} className="internal-surface border border-divider p-6 mb-8">
+  const selectionPanel = (
+    <section aria-labelledby={`seleccion-${product.id}`} className={pilot ? pilotStyles.selection : 'internal-surface border border-divider p-6 mb-8'}>
       <h2 id={`seleccion-${product.id}`} className="text-xl mb-4">{heading}</h2>
+      {pilot && <>
+        <ol className={pilotStyles.steps} aria-label="Cómo preparar tu consulta">
+          <li><strong>Paso 1</strong>Cantidad</li>
+          <li><strong>Paso 2</strong>Tu idea</li>
+          <li><strong>Paso 3</strong>Revisar en Mi consulta</li>
+        </ol>
+        <p className={pilotStyles.stepHelp}>Indicá cuántas remeras necesitás y contanos tu idea. Después podés revisar tu selección en Mi consulta.</p>
+      </>}
       {conflict && <div role="alert" className="text-sm mb-4 space-y-3">
         <p>Este producto cambió en otra pestaña. Tu borrador sigue aquí. Elegí qué versión conservar antes de guardar.</p>
         <p className={conflictStyles.observations}>Versión guardada: {existing ? `${existing.quantity} unidades. Observaciones: ${existing.notes || 'Sin observaciones.'}` : 'Producto eliminado.'}</p>
@@ -134,6 +144,10 @@ export default function ProductSelection({ product, heading = 'Agregar a mi cons
             className="w-full rounded-lg border border-divider bg-white p-3 text-[#07134b]" />
           <p id={`ayuda-${product.id}`} className="text-sm text-gray-600 mt-2">Podés indicar talles, colores, diseños u otras necesidades. No incluyas datos personales.</p>
         </div>
+        {pilot && <details className={pilotStyles.contextHelp}>
+          <summary>¿Necesitás asesoramiento?</summary>
+          <p>Podés pedirlo en las observaciones. Modelos, materiales, talles, colores y mínimos todavía necesitan confirmación con el equipo.</p>
+        </details>}
         <Button type="submit" variant="solid" disabled={!ready || conflict || busy} className="w-full max-w-full text-center disabled:opacity-50">
           {existing ? 'Actualizar mi consulta' : 'Agregar a mi consulta'}
         </Button>
@@ -141,7 +155,30 @@ export default function ProductSelection({ product, heading = 'Agregar a mi cons
       {draft && <p className="mt-3 text-sm">Borrador sin guardar.</p>}
       <p id={`${formId}-status`} role="status" aria-live="polite" className="mt-3 text-sm font-semibold">{feedback}</p>
     </section>
-    {showConsultation && <ProductConsultation selectionFormId={formId} disabled={!ready || conflict || busy} />}
-    </>
   );
+
+  const consultation = showConsultation && <ProductConsultation selectionFormId={formId} disabled={!ready || conflict || busy} />;
+  if (!pilot) return <>{selectionPanel}{consultation}</>;
+
+  const validQuantity = Number.isSafeInteger(Number(quantity)) && Number(quantity) > 0;
+  return <>
+    <div className={`internal-surface ${pilotStyles.formPanel}`}>
+      {selectionPanel}
+      <a className={pilotStyles.summaryLink} href={`#resumen-${product.id}`}>Ver resumen de mi selección</a>
+      <div className={pilotStyles.consultation}>{consultation}</div>
+    </div>
+    <aside id={`resumen-${product.id}`} tabIndex={-1} className={`internal-surface ${pilotStyles.selectionSummary}`} aria-labelledby={`resumen-titulo-${product.id}`}>
+      <h2 id={`resumen-titulo-${product.id}`}>Tu selección</h2>
+      <p className={pilotStyles.summaryIntro}>Este resumen refleja lo que estás completando.</p>
+      <dl>
+        <div className={pilotStyles.summaryRow}><dt>Producto</dt><dd>{product.name}</dd></div>
+        <div className={pilotStyles.summaryRow}><dt>Cantidad</dt><dd>{validQuantity ? `${Number(quantity).toLocaleString('es-AR')} ${Number(quantity) === 1 ? 'remera' : 'remeras'}` : 'Revisá la cantidad'}</dd></div>
+        <div className={`${pilotStyles.summaryRow} ${pilotStyles.notesRow}`}><dt>Observaciones</dt><dd tabIndex={notes ? 0 : undefined} role={notes ? 'region' : undefined} aria-label={notes ? 'Observaciones de tu selección' : undefined}>{notes || 'Sin observaciones.'}</dd></div>
+        <div className={pilotStyles.summaryRow}><dt>Precio</dt><dd>Consultar</dd></div>
+        <div className={pilotStyles.summaryRow}><dt>Estado</dt><dd>{!ready ? 'Cargando consulta…' : conflict ? 'Borrador con cambios por revisar' : draft ? 'Borrador sin guardar' : pendingIds.includes(product.id) ? 'Solo en esta sesión' : existing ? 'Guardado en Mi consulta' : 'Sin agregar a Mi consulta'}</dd></div>
+      </dl>
+      <p className={pilotStyles.summaryNote}>Modelos, materiales, talles, colores y mínimos: pendientes de confirmación. Las observaciones sirven para consultar tus necesidades.</p>
+      <a href={`#cantidad-${product.id}`} className={pilotStyles.editLink}>Volver a editar la selección</a>
+    </aside>
+  </>;
 }

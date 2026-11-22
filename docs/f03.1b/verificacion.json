@@ -1,0 +1,821 @@
+{
+  "date": "2026-11-22",
+  "stage": "F03.1B",
+  "developmentAccess": "http://localhost:3000/productos/indumentaria/remeras-personalizadas → Probar experiencia F02",
+  "f02Parity": {
+    "exactGroups": true,
+    "groups": 5,
+    "choices": 16
+  },
+  "functional": {
+    "checks": [
+      "Vista comercial inicial sin controles demostrativos visibles",
+      "Modo de prueba claramente identificado y consulta comercial oculta",
+      "Foco entra en la experiencia guiada",
+      "Modelo pendiente muestra error y enfoca la alternativa",
+      "Revisión valida también los pasos omitidos",
+      "Radios operables con flechas y selección visible",
+      "Modelo y material actualizan inmediatamente el resumen",
+      "Reparto 8 S y 12 M produce total 20 y resumen individual",
+      "Cantidad negativa bloquea avance y conserva las otras cantidades",
+      "Cantidades fraccionarias son rechazadas",
+      "Cantidad aproximada requerida cuando se pide ayuda con talles",
+      "Cantidad aproximada se refleja sin inventar reparto",
+      "Se puede dejar también la cantidad por definir",
+      "Volver del asesoramiento conserva el reparto anterior",
+      "Retroceder conserva modelo y material",
+      "Personalización y observaciones se reflejan completas",
+      "Salir de la demostración recupera el borrador comercial y su foco",
+      "Volver a la demostración conserva todas las elecciones",
+      "Revisión final muestra las decisiones y explica que no hubo envío",
+      "Demostración no presenta acciones comerciales activas",
+      "Almacenamiento intacto durante toda la demostración",
+      "Volver a editar conserva personalización y observaciones",
+      "Observaciones extensas se conservan íntegras y son desplazables",
+      "Reiniciar limpia las elecciones y el resumen",
+      "Recorrido completo con asesoramiento sin forzar especificaciones",
+      "Reinicio desde revisión vuelve al primer paso",
+      "Reinicios y asesoramiento tampoco alteran el almacenamiento",
+      "R4 comercial sigue incorporando 20 remeras con presupuesto directo",
+      "R4 conserva esquema y no recibe elecciones demostrativas",
+      "R4 actualiza y persiste al recargar",
+      "R4 elimina la selección correctamente"
+    ],
+    "layouts": [
+      {
+        "state": "paso-1",
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 5255,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-1",
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 5005,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-1",
+        "width": 768,
+        "scrollWidth": 753,
+        "height": 3048,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-1",
+        "width": 1024,
+        "scrollWidth": 1009,
+        "height": 3010,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-1",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "height": 2951,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-1",
+        "width": 1670,
+        "scrollWidth": 1655,
+        "height": 2951,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-2",
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 5162,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-2",
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 4965,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-2",
+        "width": 768,
+        "scrollWidth": 753,
+        "height": 3048,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-2",
+        "width": 1024,
+        "scrollWidth": 1009,
+        "height": 3010,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-2",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "height": 2951,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-2",
+        "width": 1670,
+        "scrollWidth": 1655,
+        "height": 2951,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "asesoramiento",
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 5098,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "asesoramiento",
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 4880,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "asesoramiento",
+        "width": 768,
+        "scrollWidth": 753,
+        "height": 3092,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "asesoramiento",
+        "width": 1024,
+        "scrollWidth": 1009,
+        "height": 3010,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "asesoramiento",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "height": 2951,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "asesoramiento",
+        "width": 1670,
+        "scrollWidth": 1655,
+        "height": 2951,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-3",
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 6121,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-3",
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 5787,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-3",
+        "width": 768,
+        "scrollWidth": 753,
+        "height": 3506,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-3",
+        "width": 1024,
+        "scrollWidth": 1009,
+        "height": 3230,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-3",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "height": 3173,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "paso-3",
+        "width": 1670,
+        "scrollWidth": 1655,
+        "height": 3173,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "revision",
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 4753,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "revision",
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 4708,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "revision",
+        "width": 768,
+        "scrollWidth": 753,
+        "height": 3073,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "revision",
+        "width": 1024,
+        "scrollWidth": 1009,
+        "height": 3006,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "revision",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "height": 2968,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "revision",
+        "width": 1670,
+        "scrollWidth": 1655,
+        "height": 2968,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "observaciones-extensas",
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 6278,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "observaciones-extensas",
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 5966,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "observaciones-extensas",
+        "width": 768,
+        "scrollWidth": 753,
+        "height": 3506,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "observaciones-extensas",
+        "width": 1024,
+        "scrollWidth": 1009,
+        "height": 3240,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "observaciones-extensas",
+        "width": 1440,
+        "scrollWidth": 1425,
+        "height": 3181,
+        "broken": [],
+        "overflows": []
+      },
+      {
+        "state": "observaciones-extensas",
+        "width": 1670,
+        "scrollWidth": 1655,
+        "height": 3181,
+        "broken": [],
+        "overflows": []
+      }
+    ],
+    "exceptions": 0
+  },
+  "accessibility": {
+    "checks": [
+      "12 avances con Tab omiten la consulta oculta y mantienen controles visibles",
+      "Paso activo conserva un foco de teclado de 3 px distinto de su estado seleccionado",
+      "Selección mediante toque emulado a 320 px"
+    ],
+    "focus": [
+      {
+        "tag": "INPUT",
+        "id": "f02-demo-modelo-recto",
+        "text": "",
+        "visible": true,
+        "outline": "none",
+        "width": "3px",
+        "labelOutline": "solid"
+      },
+      {
+        "tag": "INPUT",
+        "id": "f02-demo-material-algodon",
+        "text": "",
+        "visible": true,
+        "outline": "none",
+        "width": "3px",
+        "labelOutline": "solid"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "f02-demo-next",
+        "text": "Continuar→",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Ver mi resumen de ejemplo",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "SUMMARY",
+        "id": "",
+        "text": "¿Se puede sublimar sobre una r",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "SUMMARY",
+        "id": "",
+        "text": "¿Cuánto demora el pedido?",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Ver ficha →",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Ver ficha →",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Ver ficha →",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Inicio",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Trabajos",
+        "visible": true,
+        "outline": "solid",
+        "width": "2px",
+        "labelOutline": ""
+      }
+    ]
+  },
+  "production": {
+    "records": [
+      {
+        "path": "/productos/indumentaria/remeras-personalizadas",
+        "width": 390,
+        "signature": "93f61fda00050af8e18067b48cbdcef9fb95f03ddec29685219fb91a3bc8e2d8",
+        "after": "93f61fda00050af8e18067b48cbdcef9fb95f03ddec29685219fb91a3bc8e2d8",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/gorras",
+        "width": 390,
+        "signature": "d568d016389b4b73e1be8511e7ff9ffde83c40f6f2658d66c686a69f2ebd90b4",
+        "after": "d568d016389b4b73e1be8511e7ff9ffde83c40f6f2658d66c686a69f2ebd90b4",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/tazas",
+        "width": 390,
+        "signature": "95ceccdb95637b1dc8ea4f456e5631e662f06fd60c6bf29be173f4fc6e7e6532",
+        "after": "95ceccdb95637b1dc8ea4f456e5631e662f06fd60c6bf29be173f4fc6e7e6532",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/buzos-y-hoodies",
+        "width": 390,
+        "signature": "be3f9a8c9836da546b74bd7e396878e234d9e1b29576895c8088e04c70fec6d5",
+        "after": "be3f9a8c9836da546b74bd7e396878e234d9e1b29576895c8088e04c70fec6d5",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/llaveros",
+        "width": 390,
+        "signature": "5706c9ae6ac87ad2c7e1ca19786259567998db41ff6957c4cdce170cddb69d23",
+        "after": "5706c9ae6ac87ad2c7e1ca19786259567998db41ff6957c4cdce170cddb69d23",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/neceseres",
+        "width": 390,
+        "signature": "1a793bd04d4039d0fc220564de6cf1fbdbdf5e0b3c32d553c756388c272fadc5",
+        "after": "1a793bd04d4039d0fc220564de6cf1fbdbdf5e0b3c32d553c756388c272fadc5",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/botineros",
+        "width": 390,
+        "signature": "1fb5b21fb706f22c8ddd0d0ca98f18e6bafdb5cc2a48b76f37167d58a51cde56",
+        "after": "1fb5b21fb706f22c8ddd0d0ca98f18e6bafdb5cc2a48b76f37167d58a51cde56",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/mochilas",
+        "width": 390,
+        "signature": "5cdea388f3c45b7c372a6a9ce40f143d622c411c6e761c81ca56664535e15e18",
+        "after": "5cdea388f3c45b7c372a6a9ce40f143d622c411c6e761c81ca56664535e15e18",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/toallones",
+        "width": 390,
+        "signature": "d5b50056f7c02ed19179f723412c177e54d5b470c0efbf1ec1b07fcc23b05f05",
+        "after": "d5b50056f7c02ed19179f723412c177e54d5b470c0efbf1ec1b07fcc23b05f05",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/banderas-deportivas",
+        "width": 390,
+        "signature": "b32ba95ebc5b20d18f0f4ad76c0fd092ddad626c4b4e15db0f153ec74feaefeb",
+        "after": "b32ba95ebc5b20d18f0f4ad76c0fd092ddad626c4b4e15db0f153ec74feaefeb",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/lonas",
+        "width": 390,
+        "signature": "ef161b6091eee5a7928d1c3a4e403492c6040d612ddfe7b0238c3fe95dbd8e89",
+        "after": "ef161b6091eee5a7928d1c3a4e403492c6040d612ddfe7b0238c3fe95dbd8e89",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/banners",
+        "width": 390,
+        "signature": "1854fb437688b3ad06c16354d1ab98556bf244f43a8a2fb96a3d5e5aeb853892",
+        "after": "1854fb437688b3ad06c16354d1ab98556bf244f43a8a2fb96a3d5e5aeb853892",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/vinilos",
+        "width": 390,
+        "signature": "6b525433d05c795f04e372871f0f161f09c385abc5022caa5b75c84a54065e46",
+        "after": "6b525433d05c795f04e372871f0f161f09c385abc5022caa5b75c84a54065e46",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/microperforados",
+        "width": 390,
+        "signature": "d16f71a729603e3c69debdfb54a25355780bba4cec2c635916e29e53c68f084b",
+        "after": "d16f71a729603e3c69debdfb54a25355780bba4cec2c635916e29e53c68f084b",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/backlite",
+        "width": 390,
+        "signature": "c6f0c3207f7cec056508a493a5f953479525c17d3957ea717d6dec220504265a",
+        "after": "c6f0c3207f7cec056508a493a5f953479525c17d3957ea717d6dec220504265a",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/marquesinas",
+        "width": 390,
+        "signature": "7388ab4fa72ab0b20031da0f24e23b9202d9076950a4c116e1659b3ce8864031",
+        "after": "7388ab4fa72ab0b20031da0f24e23b9202d9076950a4c116e1659b3ce8864031",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/vidrieras",
+        "width": 390,
+        "signature": "2a3b41cbaca75173c8eca6b474e82a32cfffec4f745ba148a3c33031c3491c13",
+        "after": "2a3b41cbaca75173c8eca6b474e82a32cfffec4f745ba148a3c33031c3491c13",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/ploteo-vehicular",
+        "width": 390,
+        "signature": "764e94341dd9f6b707e9fae27177df5aa1d947a263b7a811bfc5c2421de22cef",
+        "after": "764e94341dd9f6b707e9fae27177df5aa1d947a263b7a811bfc5c2421de22cef",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/stands-y-carteleria",
+        "width": 390,
+        "signature": "d6f312e8de10d0c54eaa5ced33b919266847c99ee06a64f499504780befe2b47",
+        "after": "d6f312e8de10d0c54eaa5ced33b919266847c99ee06a64f499504780befe2b47",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/camperas",
+        "width": 390,
+        "signature": "19429231feb77c9b0ed7227aec4eb87e7b2b8cee25f75d4cc368a6dfbf4f0168",
+        "after": "19429231feb77c9b0ed7227aec4eb87e7b2b8cee25f75d4cc368a6dfbf4f0168",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/conjuntos-deportivos",
+        "width": 390,
+        "signature": "855e7ee788e629c0cc221ec9d43384be0df71bf28d247d1f9895a662b99fd7fc",
+        "after": "855e7ee788e629c0cc221ec9d43384be0df71bf28d247d1f9895a662b99fd7fc",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/banderas",
+        "width": 390,
+        "signature": "6a691387cfb4554c4c14f69106218fe4385c31f83f3dca67e2914b7a16567e13",
+        "after": "6a691387cfb4554c4c14f69106218fe4385c31f83f3dca67e2914b7a16567e13",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/regalos-empresariales",
+        "width": 390,
+        "signature": "a001d82245021079aaea644786274400495d2465d2e89f867a8a8807b4a257a6",
+        "after": "a001d82245021079aaea644786274400495d2465d2e89f867a8a8807b4a257a6",
+        "matches": true
+      },
+      {
+        "path": "/productos/indumentaria/remeras-personalizadas",
+        "width": 1440,
+        "signature": "ec2cb88645b2ff6574cfd29f234ba9d8eec07403891fd68b1c8b7c54b5c52dd2",
+        "after": "ec2cb88645b2ff6574cfd29f234ba9d8eec07403891fd68b1c8b7c54b5c52dd2",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/gorras",
+        "width": 1440,
+        "signature": "053fa1166287c6d724a47b38f83ebc85e08882b89ad78b6653861b575908eb73",
+        "after": "053fa1166287c6d724a47b38f83ebc85e08882b89ad78b6653861b575908eb73",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/tazas",
+        "width": 1440,
+        "signature": "2a7daa04d077a89992c20534bd84044f87f47d0f970ca772dfcee0bcdb06f9f4",
+        "after": "2a7daa04d077a89992c20534bd84044f87f47d0f970ca772dfcee0bcdb06f9f4",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/buzos-y-hoodies",
+        "width": 1440,
+        "signature": "369c9e82ca3bdbc8283bd430a533d574938b8add022fda5c6aa0d31ee47deebe",
+        "after": "369c9e82ca3bdbc8283bd430a533d574938b8add022fda5c6aa0d31ee47deebe",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/llaveros",
+        "width": 1440,
+        "signature": "cc01d8439b804f9fd7c5a8db2fb2e7ed4d7b28e134d6ee1d5b5a439907fe28ab",
+        "after": "cc01d8439b804f9fd7c5a8db2fb2e7ed4d7b28e134d6ee1d5b5a439907fe28ab",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/neceseres",
+        "width": 1440,
+        "signature": "48697a94165b9b701581ba749e7ef76758a5fb1f139c423476ce67a7e4119bd3",
+        "after": "48697a94165b9b701581ba749e7ef76758a5fb1f139c423476ce67a7e4119bd3",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/botineros",
+        "width": 1440,
+        "signature": "372523e5b40d562276aa7d671077eadf623e74e12cb5f9a42f417e433be0c7f4",
+        "after": "372523e5b40d562276aa7d671077eadf623e74e12cb5f9a42f417e433be0c7f4",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/mochilas",
+        "width": 1440,
+        "signature": "a30fd9562f50d049f69e2c26add6ba653e7d3dcba7c5c6e3282c0bc4340bd329",
+        "after": "a30fd9562f50d049f69e2c26add6ba653e7d3dcba7c5c6e3282c0bc4340bd329",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/toallones",
+        "width": 1440,
+        "signature": "385652829b0224c9500e1e27305cd80b883beec173b19e9bad0c11a5248cc3fa",
+        "after": "385652829b0224c9500e1e27305cd80b883beec173b19e9bad0c11a5248cc3fa",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/banderas-deportivas",
+        "width": 1440,
+        "signature": "8042dc9c4b8b5ad3ebde03d8a17a8f67d65cb135b38c60728517908015489d83",
+        "after": "8042dc9c4b8b5ad3ebde03d8a17a8f67d65cb135b38c60728517908015489d83",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/lonas",
+        "width": 1440,
+        "signature": "569085ad8ec7c235dbc99e90b3c54147b9329315f768002c3b5649d58d80bb68",
+        "after": "569085ad8ec7c235dbc99e90b3c54147b9329315f768002c3b5649d58d80bb68",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/banners",
+        "width": 1440,
+        "signature": "29003eca6dff2ea5ec0db833d750d8f6f440cccbe6b2de748a2cec3b60ad3f84",
+        "after": "29003eca6dff2ea5ec0db833d750d8f6f440cccbe6b2de748a2cec3b60ad3f84",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/vinilos",
+        "width": 1440,
+        "signature": "934e1a519dec5f3ce9771c611eb762708f4f64cac53a6a3814ebde510e6a00be",
+        "after": "934e1a519dec5f3ce9771c611eb762708f4f64cac53a6a3814ebde510e6a00be",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/microperforados",
+        "width": 1440,
+        "signature": "325fc939f0aff8c5b8d3edf311a26eb0964a8c8c0804185e14c76712c910b26b",
+        "after": "325fc939f0aff8c5b8d3edf311a26eb0964a8c8c0804185e14c76712c910b26b",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/backlite",
+        "width": 1440,
+        "signature": "de38bf81cf30c438f1c7ee204ea26aa82ec25f142e01a6a8b8877f62884e357f",
+        "after": "de38bf81cf30c438f1c7ee204ea26aa82ec25f142e01a6a8b8877f62884e357f",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/marquesinas",
+        "width": 1440,
+        "signature": "c07512a097101fe22a4c818716e5914922a792a9087896f916999b5f4129f7ba",
+        "after": "c07512a097101fe22a4c818716e5914922a792a9087896f916999b5f4129f7ba",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/vidrieras",
+        "width": 1440,
+        "signature": "70699ca6e04a098bb1c9e824065b79e6ce34b13f35d0d1e296365fe3e2d720ce",
+        "after": "70699ca6e04a098bb1c9e824065b79e6ce34b13f35d0d1e296365fe3e2d720ce",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/ploteo-vehicular",
+        "width": 1440,
+        "signature": "319d02f0ce98fbfc525d950f45e29f771442c9550c402c8ee75cc7d0aa8ab12a",
+        "after": "319d02f0ce98fbfc525d950f45e29f771442c9550c402c8ee75cc7d0aa8ab12a",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/stands-y-carteleria",
+        "width": 1440,
+        "signature": "8484119b088ef0d64948086c8ab7ce8ba6afcab6d59d689aedef0e18a3a7b8aa",
+        "after": "8484119b088ef0d64948086c8ab7ce8ba6afcab6d59d689aedef0e18a3a7b8aa",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/camperas",
+        "width": 1440,
+        "signature": "9b84d44d69b6678c128034cbabd64ca40d3eefcfebd84c103bacf336de6c9a1f",
+        "after": "9b84d44d69b6678c128034cbabd64ca40d3eefcfebd84c103bacf336de6c9a1f",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/conjuntos-deportivos",
+        "width": 1440,
+        "signature": "1129dbbe7276d9cc9eaf64b13854fb2fe6d9f9240b6a886689680394019951f1",
+        "after": "1129dbbe7276d9cc9eaf64b13854fb2fe6d9f9240b6a886689680394019951f1",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/banderas",
+        "width": 1440,
+        "signature": "14844e0eef4118fe6024429bc1999b5fb4be3afda3197c319151e710df034980",
+        "after": "14844e0eef4118fe6024429bc1999b5fb4be3afda3197c319151e710df034980",
+        "matches": true
+      },
+      {
+        "path": "/productos/ficha/regalos-empresariales",
+        "width": 1440,
+        "signature": "6091ead2abc0eb946ed953cf4864cbbeb18370fead512db5b09929d9e2a3d9aa",
+        "after": "6091ead2abc0eb946ed953cf4864cbbeb18370fead512db5b09929d9e2a3d9aa",
+        "matches": true
+      }
+    ],
+    "checks": [
+      "23 fichas sin cambios visuales detectados a 390 y 1440 px",
+      "Sin activador ni controles demostrativos en producción",
+      "Presupuesto directo guarda cantidad y observaciones y navega con /Chiks-web"
+    ],
+    "finalExportScan": {
+      "filesScanned": 333,
+      "matches": []
+    },
+    "build": "PASS: 48 páginas estáticas con /Chiks-web",
+    "postbuild": "PASS: 44 nombres de segmentos normalizados",
+    "guard": "Importación de servidor exclusivamente si NODE_ENV === development"
+  },
+  "checks": {
+    "eslint": "PASS",
+    "typescript": "PASS",
+    "r44MessageTests": "PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "protection": {
+    "filesAtStart": 206,
+    "unchanged": 205,
+    "modifiedThisStage": [
+      "src/components/RemerasProductDetail.tsx"
+    ],
+    "f02Preserved": 14,
+    "e01Preserved": 37,
+    "previousF031DocumentationPreserved": 16,
+    "productSelectionUnchanged": true,
+    "consultationProviderUnchanged": true,
+    "branch": "desarrollo",
+    "head": "204a1a689e6ffcf046986a5e7b873675c9caedcc"
+  },
+  "impeccable": {
+    "method": "Guías y revisión manual del resultado renderizado",
+    "automaticEngineExecuted": false
+  },
+  "limits": [
+    "Chromium emulado, sin dispositivos físicos o lector de pantalla real",
+    "Sin envíos ni recepción comercial por WhatsApp",
+    "Opciones demostrativas, no aprobadas comercialmente"
+  ],
+  "commitPushDeployPerformed": false
+}
