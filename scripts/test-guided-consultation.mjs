@@ -110,7 +110,7 @@ try {
       assert.equal(await recovered.save(edited,prior),'saved');
       const after=state(createConsultationStore(products,storage)).items;assert.deepEqual(after.find(i=>i.configurationId===second.configurationId),second);
       const message=buildConsultationMessage(after,customer);
-      for(const line of ['Modelo: Corte recto','Material: Algodón','Color: Azul marino','Técnica de personalización: Estampado','Ubicación del diseño: Frente','Talles y cantidades: S: 7 · M: 10 · L: 5','Cantidad total: 22','Material: Frontlit','Uso previsto: Interior','Terminación: Con ojales','Diseño: Tengo una idea o diseño','Medidas solicitadas: 150 × 250 cm','Asesoramiento solicitado: Terminación','Configuración 1 de 2','Configuración 2 de 2',banner.notes])assert(message.includes(line),line);
+      for(const line of ['Modelo: Corte recto','Material: Algodón','Color: Azul marino','Técnica de personalización: Estampado','Ubicación del diseño: Frente','Talles y cantidades: S: 7 · M: 10 · L: 5','Cantidad total: 22','Material solicitado: Frontlit','Uso previsto: Interior','Terminación: Con ojales','Diseño: Tengo una idea o diseño','Medidas solicitadas: 150 × 250 cm','Asesoramiento solicitado: Terminación','Configuración 1 de 2','Configuración 2 de 2',banner.notes])assert(message.includes(line),line);
       assert.equal(message.split('Modelo: Corte recto').length-1,1);assert(!message.includes('undefined'));assert(!message.includes('DEMOSTRACIÓN'));assert(!fullRaw.includes(customer.fullName));
     } finally { Object.assign(confirmedCatalogs,originals); }
   });
@@ -124,6 +124,16 @@ try {
     assert(validateConfiguration({...entry,quantity:21}));assert(validateConfiguration({...entry,configuration:{...entry.configuration,sizes:[entry.configuration.sizes[0],{...entry.configuration.sizes[1],label:' referencia a '}]}}));
     assert(validateConfiguration({...entry,configuration:{...entry.configuration,requests:{model:'x'.repeat(121)}}}));assert(validateConfiguration({...entry,configuration:{...entry.configuration,placements:[{id:'manga',label:'Manga'}]}}));
     assert(!parseConsultation(v11raw,products).storageIssue);assert(!v11raw.includes(customer.fullName));
+  });
+  await test('V12: Lonas solicitadas, varias configuraciones, recuperación y mensaje con Remeras/R4',async()=>{
+    let raw=null;const adapter={read:()=>raw,write:value=>{raw=value;}};const store=createConsultationStore(products,adapter);
+    const lona={...products[1],configurationId:'cfg-v12-lonas001',quantity:2,notes:'Texto de prueba\nCon espacios',configuration:{...config('lonas'),choices:{material:{id:'frontlit',label:'Frontlit'}},measurements:{width:150.5,height:200,unit:'cm'},lonaRequest:{use:'Evento solicitado',finish:'Terminación a evaluar',design:'Tengo un diseño preparado',measurementsNotes:'Verificar montaje'}}};
+    assert.equal(await store.save(lona,null),'saved');const second={...lona,configurationId:'cfg-v12-lonas002',quantity:3};assert.equal(await store.save(second,null),'saved');await store.save(old,null);await store.save(mug,null);
+    const recovered=createConsultationStore(products,adapter);const prior=state(recovered).items.find(i=>i.configurationId===lona.configurationId);assert.deepEqual(prior,lona);
+    const edited={...prior,quantity:4,configuration:{...prior.configuration,choices:{material:{id:'mesh',label:'Mesh'}}}};assert.equal(await recovered.save(edited,prior),'saved');assert.equal(state(recovered).items.find(i=>i.configurationId===second.configurationId).quantity,3);
+    const message=buildConsultationMessage(state(recovered).items,customer);for(const part of ['Material solicitado: Mesh','Uso previsto: Evento solicitado','Terminación solicitada: Terminación a evaluar','Información del diseño: Tengo un diseño preparado','Observaciones sobre medidas: Verificar montaje','150.5 × 200 cm','Cantidad total: 4','Configuración 2 de 2','Remeras Personalizadas','Tazas',lona.notes])assert(message.includes(part),part);
+    assert(validateConfiguration({...lona,configuration:{...lona.configuration,lonaRequest:{finish:'x'.repeat(501)}}}));assert(validateConfiguration({...old,configuration:{...config(),lonaRequest:{use:'No corresponde'}}}));
+    assert.equal(await recovered.remove(second.configurationId,state(recovered).items.find(i=>i.configurationId===second.configurationId)),'saved');assert.equal(state(recovered).items.length,3);
   });
   console.log(JSON.stringify({passed:true,tests:results},null,2));
 } finally { if(previous)load.extensions['.ts']=previous;else delete load.extensions['.ts']; }

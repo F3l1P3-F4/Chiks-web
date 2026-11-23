@@ -1,0 +1,4 @@
+.fields { display:grid; gap:16px; margin-bottom:16px; }
+.diagram { margin:0; padding:12px; background:#f1f5fb; border-radius:12px; color:#43516c; }
+.diagram svg { display:block; width:100%; max-width:260px; height:160px; margin-inline:auto; }
+.diagram figcaption { font-size:12px; line-height:1.6; }

@@ -28,7 +28,12 @@ export const confirmedCatalogs: Record<GuidedKind, GuidedCatalog> = {
       { id: 'naranja', label: 'Naranja', color: '#ed812b' }, { id: 'verde', label: 'Verde', color: '#34814e' },
     ],
   }, sizes: [] },
-  lonas: { kind: 'lonas', source: 'confirmed', fields: {}, sizes: [] },
+  // V12: preferencias solicitadas; no confirma stock ni terminaciones.
+  lonas: { kind: 'lonas', source: 'confirmed', fields: { material: [
+    {id:'frontlit',label:'Frontlit',help:'Preferencia para consultar con el equipo.'},
+    {id:'blackout',label:'Blackout',help:'Preferencia para consultar con el equipo.'},
+    {id:'mesh',label:'Mesh',help:'Preferencia para consultar con el equipo.'},
+  ] }, sizes: [] },
 };
 export const kindFields: Record<GuidedKind, readonly ConfigurationField[]> = {
   remeras: ['model', 'material', 'color', 'technique', 'placement'],

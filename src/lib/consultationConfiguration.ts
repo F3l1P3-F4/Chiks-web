@@ -8,6 +8,7 @@ export interface ProductConfiguration {
   choices: Partial<Record<ConfigurationField, Pick<ConfigurationOption, 'id' | 'label'>>>;
   sizes: { id: string; label: string; quantity: number; requested?: true }[];
   requests?: { model?: string; material?: string; sizesNotes?: string };
+  lonaRequest?: { use?: string; finish?: string; design?: string; measurementsNotes?: string };
   placements?: Pick<ConfigurationOption, 'id' | 'label'>[];
   measurements?: { width: number; height: number; unit: 'cm' | 'm' };
   advice: AdviceField[];
@@ -36,6 +37,7 @@ export function configurationShape(value: unknown, productId: string): value is 
   if (new Set(value.sizes.map((size: { id: string }) => size.id)).size !== value.sizes.length) return false;
   if (value.sizes.some((size: Record<string, unknown>) => size.requested !== undefined && size.requested !== true)) return false;
   if (value.requests !== undefined && (value.kind !== 'remeras' || !object(value.requests) || Object.entries(value.requests).some(([key, text]) => !['model', 'material', 'sizesNotes'].includes(key) || typeof text !== 'string' || !text.trim() || text.length > (key === 'sizesNotes' ? 500 : 120)))) return false;
+  if (value.lonaRequest !== undefined && (value.kind !== 'lonas' || !object(value.lonaRequest) || Object.entries(value.lonaRequest).some(([key,text]) => !['use','finish','design','measurementsNotes'].includes(key) || typeof text !== 'string' || !text.trim() || text.length>500))) return false;
   if (value.placements !== undefined && (value.kind !== 'remeras' || !Array.isArray(value.placements) || value.placements.length > 2 || value.placements.some((p: unknown) => !object(p) || !label(p.id) || !label(p.label)) || new Set(value.placements.map((p: {id:string}) => p.id)).size !== value.placements.length || value.choices.placement)) return false;
   if (value.advice.some((field: unknown) => typeof field !== 'string' || !Object.hasOwn(adviceLabels, field)) || new Set(value.advice).size !== value.advice.length) return false;
   if (value.measurements !== undefined && (value.kind !== 'lonas' || !object(value.measurements) || !positive(value.measurements.width) || !positive(value.measurements.height) || !['cm', 'm'].includes(String(value.measurements.unit)))) return false;
@@ -49,6 +51,7 @@ export function cleanConfiguration(value: ProductConfiguration): ProductConfigur
     sizes: value.sizes.map(({ id, label, quantity, requested }) => ({ id, label, quantity, ...(requested ? { requested: true as const } : {}) })),
     ...(value.requests && Object.keys(value.requests).length ? { requests: Object.fromEntries(Object.entries(value.requests).filter(([,text]) => text?.trim())) } : {}),
     ...(value.placements?.length ? { placements: value.placements.map(({id,label}) => ({id,label})) } : {}),
+    ...(value.lonaRequest && Object.values(value.lonaRequest).some(text=>text?.trim()) ? {lonaRequest:Object.fromEntries(['use','finish','design','measurementsNotes'].flatMap(key=>{const text=value.lonaRequest?.[key as keyof NonNullable<ProductConfiguration['lonaRequest']>];return text?.trim()?[[key,text]]:[];}))} : {}),
     ...(value.measurements ? { measurements: { width: value.measurements.width, height: value.measurements.height, unit: value.measurements.unit } } : {}),
     advice: [...value.advice].sort(),
   };
@@ -81,7 +84,8 @@ export function configurationRows(config?: ProductConfiguration): { label: strin
   return [
     ...(config.requests?.model ? [{label:'Modelo solicitado',value:config.requests.model}] : []),
     ...(config.requests?.material ? [{label:'Material solicitado',value:config.requests.material}] : []),
-    ...Object.entries(configurationLabels).flatMap(([field, label]) => config.choices[field as ConfigurationField] ? [{ label, value: config.choices[field as ConfigurationField]!.label }] : []),
+    ...Object.entries(configurationLabels).flatMap(([field, label]) => config.choices[field as ConfigurationField] ? [{ label:config.kind==='lonas'&&field==='material'?'Material solicitado':label, value: config.choices[field as ConfigurationField]!.label }] : []),
+    ...([['use','Uso previsto'],['finish','Terminación solicitada'],['design','Información del diseño'],['measurementsNotes','Observaciones sobre medidas']] as const).flatMap(([field,label])=>config.lonaRequest?.[field]?[{label,value:config.lonaRequest[field]!}]:[]),
     ...(config.sizes.length ? [{ label: 'Talles y cantidades', value: config.sizes.map((size) => `${size.label}: ${size.quantity}`).join(' · ') }] : []),
     ...(config.requests?.sizesNotes ? [{label:'Observaciones sobre talles',value:config.requests.sizesNotes}] : []),
     ...(config.placements?.length ? [{label:'Ubicación del diseño',value:config.placements.map(p=>p.label).join(' y ')}] : []),

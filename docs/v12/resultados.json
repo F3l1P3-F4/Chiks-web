@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Regresión mínima de Remeras V11: guardar 20 y conservar controles",
+    "passed": true
+  },
+  {
+    "name": "Entrada directa, materiales solicitados y uso libre sin demostración",
+    "passed": true
+  },
+  {
+    "name": "Dimensiones positivas en cm, cantidad y esquema dinámico",
+    "passed": true
+  },
+  {
+    "name": "Terminación libre, diseño y resumen único",
+    "passed": true
+  },
+  {
+    "name": "390 y 1440: orden DOM/visual, teclado, sin desbordes; dos capturas",
+    "passed": true
+  },
+  {
+    "name": "Guardar, recargar y recuperar todas las características",
+    "passed": true
+  },
+  {
+    "name": "Cancelar no sobrescribe; editar actualiza sólo su identidad",
+    "passed": true
+  },
+  {
+    "name": "Segunda configuración independiente y mensaje único con Remeras y R4",
+    "passed": true
+  },
+  {
+    "name": "Eliminar sólo una configuración",
+    "passed": true
+  }
+]

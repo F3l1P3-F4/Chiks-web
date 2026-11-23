@@ -1,0 +1,36 @@
+Solicitud de presupuesto — Las Chikas Design
+
+Datos del cliente
+Nombre y apellido: Cliente V12 de prueba
+Celular: +1 202 555 0199
+
+Productos seleccionados
+1. Tazas
+Cantidad: 30
+Observaciones: Consulta anterior
+
+2. Remeras Personalizadas
+Cantidad total: 20
+Modelo solicitado: Modelo solicitado V11
+Técnica de personalización: DTF
+Ubicación del diseño: Frente
+
+3. Lonas
+Configuración 1 de 2
+Cantidad total: 4
+Material solicitado: Frontlit
+Uso previsto: Cartel para evento solicitado
+Terminación solicitada: Terminación a consultar según colocación
+Información del diseño: Tengo un diseño preparado
+Observaciones sobre medidas: Revisar medidas al colocar
+Medidas solicitadas: 180 × 200 cm
+Asesoramiento solicitado: Medidas
+Observaciones: Observaciones V12
+Conservar espacios  
+
+4. Lonas
+Configuración 2 de 2
+Cantidad total: 3
+Material solicitado: Mesh
+Terminación solicitada: Consultar otra terminación
+Medidas solicitadas: 90 × 120 cm

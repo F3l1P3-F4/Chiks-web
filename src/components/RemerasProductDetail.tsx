@@ -3,6 +3,7 @@ import ProductCard from './ProductCard';
 import ProductGallery from './ProductGallery';
 import GuidedProductSelection from './guided/GuidedProductSelection';
 import RemerasGuidedWorkspace from './RemerasGuidedWorkspace';
+import LonasGuidedWorkspace from './LonasGuidedWorkspace';
 import type { ProductInfo } from './ProductDetail';
 import styles from './RemerasProductDetail.module.css';
 
@@ -13,7 +14,7 @@ export default async function RemerasProductDetail({ product, path }: { product:
   const photos = product.photo ? [product.photo, ...(product.additionalPhotos ?? [])] : [];
   const gallery = <div className={styles.visualColumn}>
     <div className={styles.gallery}><ProductGallery photos={photos} /></div>
-    {!definitive && <>
+    {!definitive && consultationProduct.id !== 'lonas' && <>
     <p className={styles.photoCaption}>Fotografías del producto. Las imágenes no cambian según las observaciones.</p>
     <details className={styles.productFacts}>
       <summary>Información del producto</summary>
@@ -28,8 +29,8 @@ export default async function RemerasProductDetail({ product, path }: { product:
     </>}
   </div>;
   const selection = <GuidedProductSelection product={consultationProduct} />;
-  let workspace = definitive ? <RemerasGuidedWorkspace gallery={gallery} product={consultationProduct} /> : <div className={styles.workspace}>{gallery}{selection}</div>;
-  if (!definitive && process.env.NODE_ENV === 'development') {
+  let workspace = definitive ? <RemerasGuidedWorkspace gallery={gallery} product={consultationProduct} /> : consultationProduct.id==='lonas' ? <LonasGuidedWorkspace gallery={gallery} product={consultationProduct}/> : <div className={styles.workspace}>{gallery}{selection}</div>;
+  if (!definitive && consultationProduct.id !== 'lonas' && process.env.NODE_ENV === 'development') {
     const { default: DevelopmentPreview } = consultationProduct.id === 'lonas'
       ? await import('./LonasDevelopmentPreview') : await import('./RemerasDevelopmentPreview');
     workspace = <DevelopmentPreview gallery={gallery} commercialSelection={selection} product={consultationProduct} />;
