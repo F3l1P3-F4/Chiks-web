@@ -1,0 +1,18 @@
+Solicitud de presupuesto — Las Chikas Design
+
+Datos del cliente
+Nombre y apellido: Cliente V11 de prueba
+Celular: +1 202 555 0199
+
+Productos seleccionados
+1. Remeras Personalizadas
+Cantidad total: 20
+Modelo solicitado: Corte amplio solicitado
+Material solicitado: Tela suave a confirmar
+Color: Azul Francia
+Técnica de personalización: Estampa vinilo
+Talles y cantidades: Referencia A: 8 · Referencia B: 12
+Observaciones sobre talles: Confirmar equivalencias de talles
+Ubicación del diseño: Frente y Espalda
+Asesoramiento solicitado: Asesoramiento general
+Observaciones: Texto editado de V11

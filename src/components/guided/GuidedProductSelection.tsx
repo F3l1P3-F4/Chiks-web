@@ -17,6 +17,8 @@ import type { GuidedStepError } from './useGuidedSteps';
 import pilot from '../RemerasProductDetail.module.css';
 import styles from './GuidedPreview.module.css';
 import local from './GuidedProductSelection.module.css';
+import RemerasConfigurationFields from './RemerasConfigurationFields';
+import type { RequestedSize } from './RemerasConfigurationFields';
 
 const subscribeHash = (notify: () => void) => { window.addEventListener('hashchange', notify); window.addEventListener('popstate', notify); return () => { window.removeEventListener('hashchange', notify); window.removeEventListener('popstate', notify); }; };
 const readHash = () => new URLSearchParams(window.location.hash.slice(1)).get('configuracion') ?? '';
@@ -34,7 +36,9 @@ interface Draft {
   quantity: string;
   notes: string;
   choices: ProductConfiguration['choices'];
-  sizes: { id: string; label: string; quantity: string }[];
+  sizes: RequestedSize[];
+  requests: NonNullable<ProductConfiguration['requests']>;
+  placements: NonNullable<ProductConfiguration['placements']>;
   distribute: boolean;
   dimensions: boolean;
   width: string;
@@ -44,7 +48,10 @@ interface Draft {
 }
 function fromItem(item: ConsultationItem | null, catalog: GuidedCatalog): Draft {
   const config = item?.configuration;
-  return { base: item, quantity: String(item?.quantity ?? 1), notes: item?.notes ?? '', choices: config?.choices ?? {},
+  const choices = {...config?.choices};
+  const placements = config?.placements ?? (catalog.source === 'confirmed' && catalog.kind === 'remeras' && choices.placement ? [choices.placement] : []);
+  if (catalog.source === 'confirmed' && catalog.kind === 'remeras') delete choices.placement;
+  return { base: item, quantity: String(item?.quantity ?? 1), notes: item?.notes ?? '', choices, requests: config?.requests ?? {}, placements,
     sizes: [...catalog.sizes.map(({ id, label }) => config?.sizes.find((size) => size.id === id) ?? { id, label, quantity: 0 }), ...(config?.sizes.filter((size) => !catalog.sizes.some((option) => option.id === size.id)) ?? [])].map((size) => ({ ...size, quantity: String(size.quantity) })),
     distribute: !!config?.sizes.length, dimensions: !!config?.measurements, width: String(config?.measurements?.width ?? ''), height: String(config?.measurements?.height ?? ''), unit: config?.measurements?.unit ?? 'cm', advice: config?.advice ?? [],
   };
@@ -141,19 +148,30 @@ function ConfigurationForm({ product, selectedKey, catalog, embedded, onDirty, o
   const missing = selectedKey !== 'new' && !existing && !draft;
   const steps = catalog.kind === 'remeras' ? ['Modelo y material', 'Talles y cantidad', 'Personalización'] : ['Material y uso', 'Medidas y cantidad', 'Terminaciones y diseño'];
   const stages: ConfigurationField[][] = catalog.kind === 'remeras' ? [['model', 'material'], [], ['color', 'technique', 'placement']] : [['material', 'use'], [], ['finish', 'design']];
+  const interactiveRemeras = catalog.kind === 'remeras' && catalog.source === 'confirmed';
+  const requestedDistribution = interactiveRemeras && catalog.sizes.length === 0;
   const total = value.distribute ? value.sizes.reduce((sum, size) => sum + Number(size.quantity), 0) : Number(value.quantity);
   function configuration(): ProductConfiguration {
     return cleanConfiguration({ version: 1, kind: catalog.kind, source: catalog.source, choices: value.choices,
-      sizes: value.distribute ? value.sizes.filter((size) => Number(size.quantity) > 0).map((size) => ({ ...size, quantity: Number(size.quantity) })) : [],
+      sizes: value.distribute ? value.sizes.filter((size) => Number(size.quantity) > 0 && size.label.trim()).map((size) => ({ ...size, quantity: Number(size.quantity) })) : [],
+      ...(interactiveRemeras ? {requests:value.requests,placements:value.placements} : {}),
       ...(value.dimensions && validMeasure(value.width) && validMeasure(value.height) ? { measurements: { width: measure(value.width), height: measure(value.height), unit: value.unit } } : {}), advice: value.advice,
     });
   }
   const unavailable = unavailableOptions(configuration(), catalog);
-  function patch(values: Partial<Draft>) { setDraft({ ...value, ...values, base: draft ? draft.base : existing });onDirty(true);setFeedback('');clearError(); }
+  function patch(values: Partial<Draft>) { setDraft(previous => ({ ...(previous ?? value), ...values, base: previous ? previous.base : existing }));onDirty(true);setFeedback('');clearError(); }
   function cancel() { setDraft(null);onDirty(false);setFeedback('Edición cancelada. La selección guardada no cambió.');moveStep(0); }
   function cancelAndReturn() { cancel();startNavigation(() => router.push('/mi-consulta')); }
   function problem(index: number): GuidedStepError | null {
+    if (index === 0 && interactiveRemeras) for (const field of ['model','material'] as const) if ((value.requests[field]?.length ?? 0)>120) return {id:`${prefix}-request-${field}`,message:'Usá hasta 120 caracteres para describir lo que buscás.'};
     if (index === 1) {
+      if (requestedDistribution && value.distribute) {
+        if (!value.sizes.length) return {id:`${prefix}-add-size`,message:'Agregá al menos un talle o desmarcá la distribución para indicar sólo el total.'};
+        const invalid = value.sizes.find(size=>!size.label.trim() || size.label.length>120 || !positiveInteger(size.quantity));
+        if (invalid) return {id:`${prefix}-${!invalid.label.trim()||invalid.label.length>120?'label':'size'}-${invalid.id}`,message:'Completá cada talle solicitado con un nombre y una cantidad entera mayor que cero.'};
+        if(new Set(value.sizes.map(size=>size.label.trim().toLocaleLowerCase('es'))).size!==value.sizes.length) return {id:`${prefix}-label-${value.sizes[0].id}`,message:'No repitas el mismo talle; sumá sus cantidades en una sola fila.'};
+      }
+      if ((value.requests.sizesNotes?.length ?? 0)>500) return {id:`${prefix}-request-sizesNotes`,message:'Las observaciones sobre talles admiten hasta 500 caracteres.'};
       if (value.distribute && (value.sizes.some((size) => size.quantity.trim() === '' || !Number.isSafeInteger(Number(size.quantity)) || Number(size.quantity) < 0) || !Number.isSafeInteger(total) || total <= 0)) return { id: `${prefix}-size-${value.sizes[0]?.id}`, message: 'Indicá cantidades enteras desde cero y al menos una prenda en total.' };
       if (!value.distribute && !positiveInteger(value.quantity)) return { id: `${prefix}-quantity`, message: 'Ingresá una cantidad entera mayor que cero. No se establece un mínimo comercial.' };
       if (value.dimensions && !validMeasure(value.width)) return { id: `${prefix}-width`, message: 'Ingresá un ancho mayor que cero. Podés usar coma o punto decimal.' };
@@ -163,7 +181,7 @@ function ConfigurationForm({ product, selectedKey, catalog, embedded, onDirty, o
     return null;
   }
   const { step, reviewed, error, announcement, stepTitle, reviewTitle, moveStep, next, reset, clearError, setAnnouncement } = useGuidedSteps({ idPrefix: prefix, steps, validateStep: problem, resetSelection: () => patch(fromItem(null, catalog)), commercial: true });
-  const rows: GuidedSummaryRow[] = [{ label: 'Producto', value: product.name }, { label: 'Cantidad total', value: Number.isSafeInteger(total) && total > 0 ? String(total) : 'Revisá la cantidad' }, ...configurationRows(configuration()), { label: 'Observaciones', value: value.notes || 'Sin observaciones.', scrollable: !!value.notes }];
+  const rows: GuidedSummaryRow[] = [{ label: 'Producto', value: product.name }, { label: 'Cantidad total', value: Number.isSafeInteger(total) && total > 0 ? String(total) : 'Revisá la cantidad' }, ...configurationRows(configuration()), ...(interactiveRemeras && !value.notes ? [] : [{ label: 'Observaciones', value: value.notes || 'Sin observaciones.', scrollable: !!value.notes }])];
   async function commit(go: boolean) {
     if (saving.current || navigating || conflict || missing) return;
     for (let i = 0; i < 3; i++) { const issue = problem(i);if (issue) { moveStep(i);setFeedback(issue.message);return; } }
@@ -205,17 +223,18 @@ function ConfigurationForm({ product, selectedKey, catalog, embedded, onDirty, o
           {!embedded && !demoCatalog && <Button showArrow={false} disabled={disabled} onClick={() => commit(true)}>Solicitar presupuesto</Button>}
           <button className={styles.smallLink} type="button" onClick={() => moveStep(2)}>Volver a editar</button>
         </div>
-      </section> : <GuidedConfigurator commercial idPrefix={prefix} className={`${pilot.formPanel} ${local.panel}`} steps={steps} stepsLabel="Pasos para configurar tu consulta" step={step} title={steps[step]} help={catalog.source === 'demo' ? 'Probá alternativas ilustrativas de F02. No representan disponibilidad comercial y se guardan sólo en la consulta aislada de esta prueba.' : step === 1 ? 'Indicá lo que necesitás. Las medidas y cantidades solicitadas se confirmarán con el equipo.' : 'Elegí entre las opciones confirmadas o pedí asesoramiento. Podés continuar sin definirlas ahora.'} error={error} stepTitleRef={stepTitle} onStepChange={moveStep} onNext={next} onReset={reset}>
+      </section> : <GuidedConfigurator commercial idPrefix={prefix} className={`${pilot.formPanel} ${local.panel}`} steps={steps} stepsLabel="Pasos para configurar tu consulta" step={step} title={steps[step]} help={catalog.source === 'demo' ? 'Probá alternativas ilustrativas de F02. No representan disponibilidad comercial y se guardan sólo en la consulta aislada de esta prueba.' : interactiveRemeras ? ['Contanos cómo te gustaría tu remera. Podés dejar decisiones abiertas y pedir ayuda.','Indicá cuántas prendas necesitás. Si conocés los talles, podés repartir las cantidades.','Elegí cómo te gustaría personalizarla. El equipo confirmará los detalles de tu solicitud.'][step] : step === 1 ? 'Indicá lo que necesitás. Las medidas y cantidades solicitadas se confirmarán con el equipo.' : 'Elegí entre las opciones confirmadas o pedí asesoramiento. Podés continuar sin definirlas ahora.'} error={error} stepTitleRef={stepTitle} onStepChange={moveStep} onNext={next} onReset={reset}>
         <fieldset disabled={!ready || busy} className={local.fields}>
           <legend className="sr-only">{steps[step]}</legend>
+          {interactiveRemeras && <RemerasConfigurationFields step={step} prefix={prefix} catalog={catalog} requests={value.requests} choices={value.choices} placements={value.placements} advice={value.advice} sizes={value.sizes} distribute={value.distribute} error={error} onRequests={requests=>patch({requests})} onChoices={choices=>patch({choices})} onPlacements={placements=>patch({placements})} onAdvice={advice=>patch({advice})} onSizes={sizes=>patch({sizes})} onDistribute={distribute=>patch({distribute,...(!distribute && Number.isSafeInteger(total) && total>0 ? {quantity:String(total)} : {}),sizes:value.sizes.length?value.sizes:[{id:`solicitado-${crypto.randomUUID()}`,label:'',quantity:'1',requested:true}]})} />}
           {step === 1 ? <>
             {catalog.kind === 'remeras' && value.sizes.length > 0 && <label className={styles.checkLine}><input type="checkbox" checked={value.distribute} onChange={(event) => patch({ distribute: event.target.checked })} />Distribuir cantidades por talle</label>}
-            {value.distribute ? <><div className={styles.quantityGrid}>{value.sizes.map((size, index) => <div key={size.id} className={styles.quantityCell}><label htmlFor={`${prefix}-size-${size.id}`}>{size.label}</label><input id={`${prefix}-size-${size.id}`} type="number" min="0" step="1" max={Number.MAX_SAFE_INTEGER} inputMode="numeric" value={size.quantity} onChange={(event) => patch({ sizes: value.sizes.map((entry, i) => i === index ? { ...entry, quantity: event.target.value } : entry) })} aria-invalid={error?.id === `${prefix}-size-${size.id}` || undefined} aria-describedby={error?.id === `${prefix}-size-${size.id}` ? `${prefix}-error` : undefined} /></div>)}</div><p className={styles.totalLine}>Cantidad total: {Number.isSafeInteger(total) ? total : 'Revisá las cantidades'}</p></> : input('quantity', 'Cantidad solicitada', value.quantity, (quantity) => patch({ quantity }))}
+            {value.distribute ? <>{!requestedDistribution && <div className={styles.quantityGrid}>{value.sizes.map((size, index) => <div key={size.id} className={styles.quantityCell}><label htmlFor={`${prefix}-size-${size.id}`}>{size.label}</label><input id={`${prefix}-size-${size.id}`} type="number" min="0" step="1" max={Number.MAX_SAFE_INTEGER} inputMode="numeric" value={size.quantity} onChange={(event) => patch({ sizes: value.sizes.map((entry, i) => i === index ? { ...entry, quantity: event.target.value } : entry) })} aria-invalid={error?.id === `${prefix}-size-${size.id}` || undefined} aria-describedby={error?.id === `${prefix}-size-${size.id}` ? `${prefix}-error` : undefined} /></div>)}</div>}<p className={styles.totalLine}>Cantidad total: {Number.isSafeInteger(total) ? total : 'Revisá las cantidades'}</p></> : input('quantity', 'Cantidad solicitada', value.quantity, (quantity) => patch({ quantity }))}
             {catalog.kind === 'lonas' && <>
               <label className={styles.checkLine}><input type="checkbox" checked={value.dimensions} onChange={(event) => patch({ dimensions: event.target.checked })} />Quiero indicar las medidas que necesito</label>
               {value.dimensions ? <><div className={local.measurements}>{input('width', 'Ancho', value.width, (width) => patch({ width }), true)}{input('height', 'Alto', value.height, (height) => patch({ height }), true)}</div><div className={styles.formField}><label htmlFor={`${prefix}-unit`}>Unidad de las medidas</label><select id={`${prefix}-unit`} value={value.unit} onChange={(event) => patch({ unit: event.target.value as 'cm' | 'm' })}><option value="cm">Centímetros (cm)</option><option value="m">Metros (m)</option></select></div><p className={styles.fieldHelp}>Son medidas solicitadas, sujetas a confirmación; no definen límites de fabricación.</p></> : <p className={styles.fieldHelp}>Podés pedir asesoramiento y definir las medidas con el equipo.</p>}
             </>}
-          </> : stages[step].map((field) => {
+          </> : !interactiveRemeras && stages[step].map((field) => {
             const options = catalog.fields[field] ?? [], selected = value.choices[field];
             return <div key={field}>{options.length > 0 ? <GuidedChoiceField idPrefix={prefix} field={field} label={configurationLabels[field]} options={options.map((option) => [option.id, option.label, option.help ?? '', option.color])} selected={selected?.id} error={error} onChange={(id) => { const option = options.find((option) => option.id === id)!;patch({ choices: { ...value.choices, [field]: { id, label: option.label } } }); }} /> : <p className={styles.fieldHelp}><strong>{configurationLabels[field]}</strong>: opciones pendientes de confirmación. Contanos lo que necesitás en las observaciones.</p>}
               {selected && <button type="button" className={styles.smallLink} onClick={() => { const choices = { ...value.choices };delete choices[field];patch({ choices }); }}>Quitar selección de {configurationLabels[field].toLowerCase()}: {selected.label}</button>}

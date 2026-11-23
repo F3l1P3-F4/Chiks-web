@@ -10,6 +10,10 @@
 .panel h2 { font-size: 24px; line-height: 1.25; }
 .fields { min-width: 0; margin: 0; padding: 0; border: 0; }
 .measurements { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 16px; }
+.requestFields { display: grid; gap: 18px; }
+.sizeRequest { display: grid; grid-template-columns: minmax(0, 1fr) minmax(70px, .6fr) auto; gap: 10px; align-items: end; }
+.sizeRequest button { align-self: end; }
+@media (max-width: 420px) { .sizeRequest { grid-template-columns: minmax(0, 1fr) minmax(70px, .6fr); } .sizeRequest button { grid-column: 1 / -1; justify-self: end; } }
 .draftBar { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: #fff; font-size: 14px; }
 .draftBar button { color: inherit; }
 .feedback { font-size: 14px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }

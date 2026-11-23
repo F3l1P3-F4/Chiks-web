@@ -114,5 +114,16 @@ try {
       assert.equal(message.split('Modelo: Corte recto').length-1,1);assert(!message.includes('undefined'));assert(!message.includes('DEMOSTRACIÓN'));assert(!fullRaw.includes(customer.fullName));
     } finally { Object.assign(confirmedCatalogs,originals); }
   });
+  await test('V11: solicitudes libres, talles propios y frente/espalda se conservan hasta el mensaje',async()=>{
+    let v11raw=null;const adapter={read:()=>v11raw,write:value=>{v11raw=value;}};
+    const store=createConsultationStore(products,adapter);
+    const entry=shirt('cfg-v11-prueba01',{configuration:{...config(),requests:{model:'Corte solicitado por el cliente',material:'Tela a definir con el equipo',sizesNotes:'Verificar equivalencias'},sizes:[{id:'pedido-1',label:'Referencia A',quantity:8,requested:true},{id:'pedido-2',label:'Referencia B',quantity:12,requested:true}],choices:{technique:{id:'dtf',label:'DTF'},color:{id:'azul-francia',label:'Azul Francia'}},placements:[{id:'frente',label:'Frente'},{id:'espalda',label:'Espalda'}]}});
+    assert.equal(await store.save(entry,null),'saved');const reload=createConsultationStore(products,adapter);const recovered=state(reload).items[0];assert.deepEqual(recovered.configuration,load('../src/lib/consultationConfiguration.ts').cleanConfiguration(entry.configuration));
+    const message=buildConsultationMessage([recovered,mug],customer);for(const part of ['Modelo solicitado: Corte solicitado por el cliente','Material solicitado: Tela a definir con el equipo','Talles y cantidades: Referencia A: 8 · Referencia B: 12','Observaciones sobre talles: Verificar equivalencias','Técnica de personalización: DTF','Color: Azul Francia','Ubicación del diseño: Frente y Espalda'])assert(message.includes(part),part);
+    const changed={...recovered,configuration:{...recovered.configuration,placements:[{id:'espalda',label:'Espalda'}],requests:{...recovered.configuration.requests,model:'Otra solicitud'}}};assert.equal(await reload.save(changed,recovered),'saved');assert.equal(state(createConsultationStore(products,adapter)).items[0].configuration.requests.model,'Otra solicitud');
+    assert(validateConfiguration({...entry,quantity:21}));assert(validateConfiguration({...entry,configuration:{...entry.configuration,sizes:[entry.configuration.sizes[0],{...entry.configuration.sizes[1],label:' referencia a '}]}}));
+    assert(validateConfiguration({...entry,configuration:{...entry.configuration,requests:{model:'x'.repeat(121)}}}));assert(validateConfiguration({...entry,configuration:{...entry.configuration,placements:[{id:'manga',label:'Manga'}]}}));
+    assert(!parseConsultation(v11raw,products).storageIssue);assert(!v11raw.includes(customer.fullName));
+  });
   console.log(JSON.stringify({passed:true,tests:results},null,2));
 } finally { if(previous)load.extensions['.ts']=previous;else delete load.extensions['.ts']; }

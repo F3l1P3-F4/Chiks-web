@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Modelo y material libres; asesoramiento sin alternativas ficticias",
+    "passed": true
+  },
+  {
+    "name": "Talles propios, cantidades positivas y total automático",
+    "passed": true
+  },
+  {
+    "name": "Tarjetas de técnica/color, asesoramiento y frente más espalda",
+    "passed": true
+  },
+  {
+    "name": "V10.1: celular y escritorio, controles por teclado, dos capturas",
+    "passed": true
+  },
+  {
+    "name": "Guardar, recargar y recuperar todas las elecciones en Mi consulta",
+    "passed": true
+  },
+  {
+    "name": "Editar sin duplicar y generar/copiar un único mensaje completo",
+    "passed": true
+  }
+]

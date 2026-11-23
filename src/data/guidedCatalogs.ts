@@ -16,7 +16,18 @@ export const adviceLabels = { general: 'Asesoramiento general', model: 'Modelo',
 export type AdviceField = keyof typeof adviceLabels;
 export const productKinds: Readonly<Record<string, GuidedKind>> = { 'remeras-personalizadas': 'remeras', lonas: 'lonas' };
 export const confirmedCatalogs: Record<GuidedKind, GuidedCatalog> = {
-  remeras: { kind: 'remeras', source: 'confirmed', fields: {}, sizes: [] },
+  // Opciones definidas en V11. Las muestras son aproximaciones digitales, no códigos Pantone.
+  remeras: { kind: 'remeras', source: 'confirmed', fields: {
+    technique: [{ id: 'vinilo', label: 'Estampa vinilo' }, { id: 'dtf', label: 'DTF' }],
+    placement: [{ id: 'frente', label: 'Frente' }, { id: 'espalda', label: 'Espalda' }],
+    color: [
+      { id: 'blanco', label: 'Blanco', color: '#ffffff' }, { id: 'rojo', label: 'Rojo', color: '#cc2936' },
+      { id: 'negro', label: 'Negro', color: '#202124' }, { id: 'amarillo', label: 'Amarillo', color: '#f4ce36' },
+      { id: 'gris-shogin', label: 'Gris shogin', color: '#aeb0b4' }, { id: 'gris-oscuro', label: 'Gris oscuro', color: '#555961' },
+      { id: 'azul-oscuro', label: 'Azul oscuro', color: '#182f59' }, { id: 'azul-francia', label: 'Azul Francia', color: '#2858c5' },
+      { id: 'naranja', label: 'Naranja', color: '#ed812b' }, { id: 'verde', label: 'Verde', color: '#34814e' },
+    ],
+  }, sizes: [] },
   lonas: { kind: 'lonas', source: 'confirmed', fields: {}, sizes: [] },
 };
 export const kindFields: Record<GuidedKind, readonly ConfigurationField[]> = {
