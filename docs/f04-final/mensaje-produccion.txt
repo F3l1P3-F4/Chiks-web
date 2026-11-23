@@ -1,0 +1,31 @@
+Solicitud de presupuesto — Las Chikas Design
+
+Datos del cliente
+Nombre y apellido: Cliente F04 de prueba
+Celular: +1 202 555 0199
+Correo electrónico: revision@example.test
+
+Productos seleccionados
+1. Tazas
+Cantidad: 30
+Observaciones: Dos diseños
+
+2. Remeras Personalizadas
+Configuración 1 de 2
+Cantidad total: 25
+Asesoramiento solicitado: Asesoramiento general
+Observaciones: Edición de la primera
+
+3. Remeras Personalizadas
+Configuración 2 de 2
+Cantidad total: 30
+Observaciones: Segunda personalización
+
+4. Lonas
+Cantidad total: 3
+Medidas solicitadas: 180.5 × 250 cm
+Asesoramiento solicitado: Terminación
+Observaciones: Medidas revisadas para el evento
+
+Comentario general
+Consulta conjunta de prueba

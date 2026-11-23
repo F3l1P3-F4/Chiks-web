@@ -42,12 +42,9 @@ export default async function CatalogEntryPage({ params }: { params: Promise<{ s
 
   const relatedProducts = getRelatedProducts(slug as keyof typeof catalogEntries);
 
-  // El import queda fuera del grafo de producción: las opciones F02 son solo de prueba local.
-  if (slug === 'lonas' && process.env.NODE_ENV === 'development') {
-    const { default: LonasDevelopmentPreview } = await import('@/components/LonasDevelopmentPreview');
-    return <ProductDetail path={'/productos/ficha/' + slug} product={{ ...product, subcategory, relatedProducts }} renderWorkspace={(gallery, commercialInfo) => (
-      <LonasDevelopmentPreview gallery={gallery} commercialInfo={commercialInfo} productName={product.title} description={product.description} hasPhotos={'photo' in product && !!product.photo} />
-    )} />;
+  if (slug === 'lonas') {
+    const { default: GuidedProductDetail } = await import('@/components/RemerasProductDetail');
+    return <GuidedProductDetail path={'/productos/ficha/' + slug} product={{ ...product, subcategory, relatedProducts }} />;
   }
 
   return <ProductDetail path={'/productos/ficha/' + slug} product={{ ...product, subcategory, relatedProducts }} />;

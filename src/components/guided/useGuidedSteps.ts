@@ -5,11 +5,12 @@ import { useRef, useState } from 'react';
 export interface GuidedStepError { id: string; message: string }
 
 // Solo controla el recorrido de prueba y su foco. Cada producto valida sus datos.
-export function useGuidedSteps({ idPrefix, steps, validateStep, resetSelection }: {
+export function useGuidedSteps({ idPrefix, steps, validateStep, resetSelection, commercial = false }: {
   idPrefix: string;
   steps: readonly string[];
   validateStep: (index: number) => GuidedStepError | null;
   resetSelection: () => void;
+  commercial?: boolean;
 }) {
   const [step, setStep] = useState(0);
   const [reviewed, setReviewed] = useState(false);
@@ -46,7 +47,7 @@ export function useGuidedSteps({ idPrefix, steps, validateStep, resetSelection }
     }
     setError(null);
     setReviewed(true);
-    setAnnouncement('Selección de ejemplo lista para revisar. No se guardó ni se envió.');
+    setAnnouncement(commercial ? 'Selección lista para revisar. Todavía no se guardó.' : 'Selección de ejemplo lista para revisar. No se guardó ni se envió.');
     requestAnimationFrame(() => { reviewTitle.current?.focus(); reviewTitle.current?.scrollIntoView({ block: 'start' }); });
   }
 
@@ -55,7 +56,7 @@ export function useGuidedSteps({ idPrefix, steps, validateStep, resetSelection }
     setStep(0);
     setReviewed(false);
     setError(null);
-    setAnnouncement('Demostración reiniciada. La consulta comercial no cambió.');
+    setAnnouncement(commercial ? 'Borrador reiniciado. La selección guardada no cambió.' : 'Demostración reiniciada. La consulta comercial no cambió.');
     requestAnimationFrame(() => document.getElementById(`${idPrefix}-title`)?.focus());
   }
 

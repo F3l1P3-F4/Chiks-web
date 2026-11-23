@@ -12,11 +12,12 @@ const fields = [
   { name: 'comment', label: 'Comentario general sobre el pedido', type: 'textarea', autoComplete: 'off', required: false, help: 'Opcional. Agregá información general sobre tu consulta (hasta 2.000 caracteres).' },
 ] as const;
 
-export default function ConsultationCustomerDetails({ visible, values, onChange, onReview }: {
+export default function ConsultationCustomerDetails({ visible, values, onChange, onReview, demonstration = false }: {
   visible: boolean;
   values: CustomerDetails;
   onChange: (values: CustomerDetails) => void;
   onReview: () => void;
+  demonstration?: boolean;
 }) {
   const [touched, setTouched] = useState<Partial<Record<CustomerField, boolean>>>({});
   const errors = validateCustomerDetails(values);
@@ -28,7 +29,7 @@ export default function ConsultationCustomerDetails({ visible, values, onChange,
     <section aria-labelledby="tus-datos-title" className="internal-surface border border-divider p-6 mb-8">
       <h2 id="tus-datos-title" className="text-xl mb-3">Tus datos</h2>
       <p id="tus-datos-help" className="text-sm text-gray-600 mb-6">
-        Nombre y celular son obligatorios. Tus datos se conservan solo mientras permanezcas en esta página. Podrás revisar el resumen antes de compartirlo con WhatsApp.
+        {demonstration ? 'Usá datos de prueba. Se conservan sólo en esta demostración y permiten revisar un mensaje ilustrativo, sin copiarlo ni abrir WhatsApp.' : 'Nombre y celular son obligatorios. Tus datos se conservan sólo en la memoria de esta pestaña mientras navegás; se borran al recargarla o cerrarla. Podrás revisar el resumen antes de compartirlo con WhatsApp.'}
       </p>
       <form aria-labelledby="tus-datos-title" aria-describedby="tus-datos-help" noValidate
         onSubmit={(event) => {

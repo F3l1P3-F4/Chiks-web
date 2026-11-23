@@ -1,0 +1,203 @@
+[
+  {
+    "name": "Remeras: agregar 20, ID estable en URL y recuperación al recargar",
+    "passed": true
+  },
+  {
+    "name": "Editar desde Mi consulta: guardar sólo esa selección y conservar contacto en memoria",
+    "passed": true
+  },
+  {
+    "name": "Cancelar edición vuelve sin sobrescribir y conserva los datos del cliente",
+    "passed": true
+  },
+  {
+    "name": "Dos personalizaciones de Remeras independientes, sin selector ni demostración",
+    "passed": true
+  },
+  {
+    "name": "Lonas: medidas, unidad, asesoramiento, recarga y edición desde Mi consulta",
+    "passed": true
+  },
+  {
+    "name": "Mensaje único real de prueba, copia y alternativa manual sin número comercial",
+    "passed": true
+  },
+  {
+    "name": "Editar segunda variante no modifica la primera ni Lonas",
+    "passed": true
+  },
+  {
+    "name": "Regresión de R4: editar la taza anterior sin perder datos del cliente",
+    "passed": true
+  },
+  {
+    "name": "Dos pestañas: borrador de 2.000 caracteres intacto y resolución local explícita",
+    "passed": true,
+    "evidence": {
+      "buttonContrast": 15.941061911196314
+    }
+  },
+  {
+    "name": "Conflicto: elegir versión remota conserva exactamente espacios y saltos",
+    "passed": true
+  },
+  {
+    "name": "Eliminación temporal no reaparece al cambiar remotamente; resolución local por identidad",
+    "passed": true
+  },
+  {
+    "name": "Validaciones, foco y guardado en memoria cuando localStorage rechaza escrituras",
+    "passed": true
+  },
+  {
+    "name": "Lonas: ancho inválido se explica y enfoca sin perder cantidad",
+    "passed": true
+  },
+  {
+    "name": "Datos corruptos: aviso sin sobrescritura; consulta vacía sin formulario de contacto",
+    "passed": true
+  },
+  {
+    "name": "V10.1: orden DOM, disposición, resumen único y teclado a seis anchos",
+    "passed": true,
+    "evidence": [
+      {
+        "width": 320,
+        "overflow": false,
+        "dom": true,
+        "gallery": {
+          "x": 16,
+          "y": 431.71875,
+          "bottom": 651.71875
+        },
+        "form": {
+          "x": 16,
+          "y": 671.71875,
+          "bottom": 1418.5625
+        },
+        "summary": {
+          "x": 16,
+          "y": 1438.5625
+        },
+        "summaries": 1,
+        "selector": false,
+        "demo": false
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "dom": true,
+        "gallery": {
+          "x": 16,
+          "y": 394.96875,
+          "bottom": 614.96875
+        },
+        "form": {
+          "x": 16,
+          "y": 634.96875,
+          "bottom": 1323.84375
+        },
+        "summary": {
+          "x": 16,
+          "y": 1343.84375
+        },
+        "summaries": 1,
+        "selector": false,
+        "demo": false
+      },
+      {
+        "width": 768,
+        "overflow": false,
+        "dom": true,
+        "gallery": {
+          "x": 28,
+          "y": 351.875,
+          "bottom": 651.875
+        },
+        "form": {
+          "x": 318.796875,
+          "y": 351.875,
+          "bottom": 909.8125
+        },
+        "summary": {
+          "x": 28,
+          "y": 675.875
+        },
+        "summaries": 1,
+        "selector": false,
+        "demo": false
+      },
+      {
+        "width": 1024,
+        "overflow": false,
+        "dom": true,
+        "gallery": {
+          "x": 28,
+          "y": 363.5,
+          "bottom": 718.5
+        },
+        "form": {
+          "x": 470.046875,
+          "y": 363.5,
+          "bottom": 933.4375
+        },
+        "summary": {
+          "x": 28,
+          "y": 742.5
+        },
+        "summaries": 1,
+        "selector": false,
+        "demo": false
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "dom": true,
+        "gallery": {
+          "x": 104.5,
+          "y": 377.515625,
+          "bottom": 732.515625
+        },
+        "form": {
+          "x": 664.890625,
+          "y": 377.515625,
+          "bottom": 904.578125
+        },
+        "summary": {
+          "x": 104.5,
+          "y": 756.515625
+        },
+        "summaries": 1,
+        "selector": false,
+        "demo": false
+      },
+      {
+        "width": 1670,
+        "overflow": false,
+        "dom": true,
+        "gallery": {
+          "x": 219.5,
+          "y": 377.515625,
+          "bottom": 732.515625
+        },
+        "form": {
+          "x": 779.890625,
+          "y": 377.515625,
+          "bottom": 904.578125
+        },
+        "summary": {
+          "x": 219.5,
+          "y": 756.515625
+        },
+        "summaries": 1,
+        "selector": false,
+        "demo": false
+      }
+    ]
+  },
+  {
+    "name": "Producción segura y consola sin excepciones de la aplicación",
+    "passed": true
+  }
+]

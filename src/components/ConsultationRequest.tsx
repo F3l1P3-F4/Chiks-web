@@ -5,7 +5,8 @@ import type { MouseEvent } from 'react';
 import Button from './Button';
 import ConsultationCustomerDetails from './ConsultationCustomerDetails';
 import { useConsultation } from './ConsultationProvider';
-import { emptyCustomerDetails, validateCustomerDetails } from '@/lib/customerDetails';
+import { validateCustomerDetails } from '@/lib/customerDetails';
+import { useConsultationCustomerDraft } from './ConsultationCustomerDraft';
 import { buildConsultationMessage, validateConsultationProducts } from '@/lib/consultationMessage';
 import { buildWhatsAppAction, whatsAppNumber } from '@/lib/whatsapp';
 
@@ -14,30 +15,30 @@ const draftHelp = 'Guardá los cambios de productos o resolvé sus borradores an
 const externalLinkStyle = 'inline-flex items-center justify-center px-6 py-4 text-xs font-bold uppercase tracking-widest max-w-full text-center';
 
 export default function ConsultationRequest({ hasProductDrafts }: { hasProductDrafts: boolean }) {
-  const { items, ready, conflicts, readCurrent } = useConsultation();
-  // Solo memoria de esta página; estos datos nunca se pasan al estado persistente.
-  const [customer, setCustomer] = useState(() => ({ ...emptyCustomerDetails }));
+  const { items, ready, conflicts, readCurrent, storageIssue, demoCatalog } = useConsultation();
+  // Se conserva al ir a una ficha y volver; nunca se pasa al store persistente.
+  const { customer, setCustomer } = useConsultationCustomerDraft();
   const [reviewedMessage, setReviewedMessage] = useState<string | null>(null);
   const [authorizedMessage, setAuthorizedMessage] = useState<string | null>(null);
   const [notice, setNotice] = useState<{ text: string; message: string | null; error: boolean } | null>(null);
   const [copying, setCopying] = useState(false);
   const previewTitle = useRef<HTMLHeadingElement>(null);
   const previewText = useRef<HTMLTextAreaElement>(null);
-  const blockingReason = conflicts.length ? conflictHelp : hasProductDrafts ? draftHelp : validateConsultationProducts(items);
+  const blockingReason = storageIssue ?? (conflicts.length ? conflictHelp : hasProductDrafts ? draftHelp : validateConsultationProducts(items, demoCatalog));
   const validCustomer = Object.keys(validateCustomerDetails(customer)).length === 0;
-  const currentMessage = ready && !blockingReason && validCustomer ? buildConsultationMessage(items, customer) : null;
+  const currentMessage = ready && !blockingReason && validCustomer ? buildConsultationMessage(items, customer, demoCatalog) : null;
   const previewCurrent = reviewedMessage !== null && reviewedMessage === currentMessage;
   const authorized = previewCurrent && authorizedMessage === reviewedMessage;
-  const action = whatsAppNumber && previewCurrent ? buildWhatsAppAction(whatsAppNumber, reviewedMessage!) : null;
+  const action = !demoCatalog && whatsAppNumber && previewCurrent ? buildWhatsAppAction(whatsAppNumber, reviewedMessage!) : null;
 
   function latestMessage(): string | null {
     const current = readCurrent();
-    const reason = current.conflicts.length ? conflictHelp : hasProductDrafts ? draftHelp : validateConsultationProducts(current.items);
+    const reason = current.storageIssue ?? (current.conflicts.length ? conflictHelp : hasProductDrafts ? draftHelp : validateConsultationProducts(current.items, demoCatalog));
     if (reason || !validCustomer) {
       setNotice({ text: reason ?? 'Revisá los datos de contacto antes de continuar.', message: null, error: true });
       return null;
     }
-    return buildConsultationMessage(current.items, customer);
+    return buildConsultationMessage(current.items, customer, demoCatalog);
   }
 
   function review() {
@@ -61,7 +62,7 @@ export default function ConsultationRequest({ hasProductDrafts }: { hasProductDr
 
   async function copy() {
     const message = checkedMessage();
-    if (message === null) return;
+    if (message === null || demoCatalog) return;
     setCopying(true);
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Portapapeles no disponible.');
@@ -77,7 +78,7 @@ export default function ConsultationRequest({ hasProductDrafts }: { hasProductDr
   }
 
   function beforeOpen(event: MouseEvent<HTMLAnchorElement>) {
-    if (checkedMessage() === null || !authorized || !whatsAppNumber) event.preventDefault();
+    if (demoCatalog || checkedMessage() === null || !authorized || !whatsAppNumber) event.preventDefault();
   }
 
   const visible = ready && items.length > 0;
@@ -85,10 +86,10 @@ export default function ConsultationRequest({ hasProductDrafts }: { hasProductDr
 
   return (
     <>
-      <ConsultationCustomerDetails visible={visible} values={customer} onChange={setCustomer} onReview={review} />
+      <ConsultationCustomerDetails visible={visible} values={customer} onChange={setCustomer} onReview={review} demonstration={!!demoCatalog} />
       {visible && <>
         {blockingReason && <p role="alert" className="mb-5 text-sm font-semibold">{blockingReason}</p>}
-        {!whatsAppNumber && <p role="status" className="mb-5 text-sm">El canal de WhatsApp está pendiente de configuración. Podés revisar y copiar el resumen completo.</p>}
+        {demoCatalog ? <p role="note" className="mb-5 text-sm">Prueba aislada. El resumen es ilustrativo; no se permite copiarlo ni abrir WhatsApp desde esta demostración.</p> : !whatsAppNumber && <p role="status" className="mb-5 text-sm">El canal de WhatsApp está pendiente de configuración. Podés revisar y copiar el resumen completo.</p>}
         {activeNotice && <p role={activeNotice.error ? 'alert' : 'status'} className="mb-5 text-sm font-semibold">{activeNotice.text}</p>}
         {reviewedMessage !== null && <section aria-labelledby="resumen-solicitud-title" className="internal-surface border border-divider p-6 mb-8 space-y-5">
           <h2 id="resumen-solicitud-title" tabIndex={-1} ref={previewTitle} className="text-xl focus-visible:outline-2 focus-visible:outline-offset-2">Revisá tu solicitud</h2>
@@ -99,7 +100,7 @@ export default function ConsultationRequest({ hasProductDrafts }: { hasProductDr
                 className="w-full min-w-0 rounded-lg border border-divider bg-white p-3 text-sm text-[#07134b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#005bea]" />
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button showArrow={false} className="max-w-full text-center" disabled={copying} onClick={copy}>{copying ? 'Copiando…' : 'Copiar resumen completo'}</Button>
+              {!demoCatalog && <Button showArrow={false} className="max-w-full text-center" disabled={copying} onClick={copy}>{copying ? 'Copiando…' : 'Copiar resumen completo'}</Button>}
               <Button showArrow={false} className="max-w-full text-center" onClick={() => {
                 setReviewedMessage(null);
                 setAuthorizedMessage(null);

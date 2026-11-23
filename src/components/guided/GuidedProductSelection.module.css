@@ -1,0 +1,25 @@
+.root { min-width: 0; color: #07134b; }
+.full { grid-column: 2; grid-row: 1 / span 2; }
+.picker { color: #fff; margin-bottom: 20px; }
+.picker label { display: block; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.root select { width: 100%; min-width: 0; min-height: 48px; border: 1px solid #8c9bb4; border-radius: 8px; background: white; color: #07134b; padding: 12px; font: inherit; }
+.picker p { color: #c8daf2; font-size: 13px; line-height: 1.6; margin-top: 10px; }
+.picker button { color: #fff; }
+.workspace, .inlineWorkspace { display: flex; flex-direction: column; gap: 20px; }
+.panel { width: 100%; min-width: 0; padding: 28px; }
+.panel h2 { font-size: 24px; line-height: 1.25; }
+.fields { min-width: 0; margin: 0; padding: 0; border: 0; }
+.measurements { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 16px; }
+.draftBar { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: #fff; font-size: 14px; }
+.draftBar button { color: inherit; }
+.feedback { font-size: 14px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+.full > .feedback { color: #fff; }
+.embedded .draftBar { color: #07134b; }
+.conflict { background: #fff1f8; border: 1px solid #c2638f; border-radius: 12px; padding: 20px; margin-bottom: 20px; overflow-wrap: anywhere; }
+.conflict h3 { font-size: 17px; margin-top: 24px; }
+.conflict [data-button-variant] { color: #07134b; border-color: #8c9bb4; }
+.conflict [data-button-variant]:hover { border-color: #07134b; background: #fff; }
+.root :is(button,select):focus-visible { outline: 3px solid #005bea; outline-offset: 3px; }
+.picker :is(button,select):focus-visible { outline-color: #8aeaff; }
+@media (max-width: 767px) { .panel { padding: 22px; } .measurements { grid-template-columns: 1fr; } }
+@media (max-width: 359px) { .panel { padding-inline: 16px; } }
