@@ -9,7 +9,7 @@ export const catalogFamilies = [
 // Conserva los textos de las nueve tarjetas destacadas que ya tenía el catálogo.
 export const catalogHighlights = {
   indumentaria: [
-    { slug: 'remeras-personalizadas', description: 'Algodón o poliéster. Estampadas en serigrafía o sublimación.' },
+    { slug: 'remeras-personalizadas', description: 'Remeras personalizadas con tu logo o diseño para uniformes, egresados y eventos.' },
     { slug: 'camperas' },
     { slug: 'conjuntos-deportivos' },
   ],

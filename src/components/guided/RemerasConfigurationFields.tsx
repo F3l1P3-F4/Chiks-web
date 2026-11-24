@@ -53,7 +53,7 @@ export default function RemerasConfigurationFields({ step, prefix, catalog, requ
           <div className={styles.formField}><label htmlFor={`${prefix}-size-${size.id}`}>Cantidad</label><input id={`${prefix}-size-${size.id}`} type="number" inputMode="numeric" min={1} step={1} value={size.quantity} onChange={e=>onSizes(sizes.map(s=>s.id===size.id?{...s,quantity:e.target.value}:s))} aria-invalid={error?.id===`${prefix}-size-${size.id}`||undefined} aria-describedby={error?.id===`${prefix}-size-${size.id}`?`${prefix}-error`:undefined} /></div>
           <button type="button" className={styles.smallLink} aria-label={`Quitar talle solicitado ${index+1}`} onClick={()=>onSizes(sizes.filter(s=>s.id!==size.id))}>Quitar</button>
         </div>)}</div>
-        <button id={`${prefix}-add-size`} type="button" className={styles.smallLink} disabled={sizes.length>=40} onClick={()=>onSizes([...sizes,{id:`solicitado-${crypto.randomUUID()}`,label:'',quantity:'1',requested:true}])}>Agregar talle solicitado</button>
+        <button id={`${prefix}-add-size`} type="button" className={styles.smallLink} disabled={sizes.length>=40} onClick={()=>onSizes([...sizes,{id:`solicitado-${crypto.randomUUID()}`,label:'',quantity:'',requested:true}])}>Agregar talle solicitado</button>
       </>}
     </>}
     {advisory('sizes','Necesito ayuda para definir los talles')}
