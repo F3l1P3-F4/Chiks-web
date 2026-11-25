@@ -1,11 +1,15 @@
-.info {
+.page h2, .page h3 { text-transform: none; letter-spacing: -.025em; line-height: 1.25; }
+.heading { margin: 24px 0 32px; }
+.heading > p { max-width: 65ch; margin-top: 16px; font-size: 17px; line-height: 1.65; }
+.heading .price { font-size: 15px; font-weight: 700; color: #8aeaff; }
+.heading {
   container-type: inline-size;
 }
 
-.info .title {
+.heading .title {
   /* Respaldo para navegadores sin unidades de contenedor. */
-  font-size: clamp(1.625rem, 4.2vw, 3.5rem);
-  font-size: clamp(1.875rem, min(5.1vw, 10cqi), 4.25rem);
+  font-size: clamp(1.75rem, 4.2vw, 3.5rem);
+  font-size: clamp(1.75rem, min(4.2vw, 10cqi), 3.5rem);
   line-height: 1.04;
   text-wrap: balance;
   word-break: normal;
@@ -15,7 +19,40 @@
 }
 
 @container (max-width: 19rem) {
-  .info .title {
+  .heading .title {
     font-size: 1.625rem;
   }
+}
+.workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 24px; margin-bottom: 32px; }
+.visualColumn { min-width: 0; }
+.gallery [id='product-main-image'] { border: 0; background: #f5f8fd; box-shadow: none; }
+.gallery button:focus-visible { outline-color: #8aeaff; }
+.page .knownInfo { margin-top: 20px; padding: 24px; box-shadow: none; }
+.knownInfo > div + div { margin-top: 20px; }
+.knownInfo h2 { font-size: 16px; margin-bottom: 8px; }
+.knownInfo p { font-size: 14px; line-height: 1.65; color: #43516c; }
+.page .consultation { min-width: 0; padding: 28px; overflow: visible; }
+.page .consultation > section:first-child { margin: 0; padding: 0; border: 0; border-radius: 0; box-shadow: none; overflow: visible; }
+.consultation > section:first-child > h2 { font-size: 24px; margin-bottom: 24px; }
+.consultation :is(input,textarea) { border-color: #8c9bb4; caret-color: #a90062; min-width: 0; font: inherit; }
+.consultation input { min-height: 48px; font-variant-numeric: tabular-nums; }
+.consultation textarea { min-height: 112px; resize: vertical; }
+.consultation :is(input,textarea):focus-visible { outline: 3px solid #005bea; outline-offset: 3px; }
+.consultation section[aria-labelledby='consulta-producto'] { margin-top: 24px; padding-top: 24px; border-top: 1px solid #cbd7e8; }
+.consultation section[aria-labelledby='consulta-producto'] h2 { font-size: 17px; }
+.consultation [data-button-variant] { padding-inline: 18px; letter-spacing: .04em; line-height: 1.5; }
+.page .productFacts { margin-bottom: 40px; padding: 0 24px; box-shadow: none; overflow: visible; }
+.productFacts > summary { min-height: 56px; display: list-item; padding-block: 16px; cursor: pointer; font-size: 15px; font-weight: 700; }
+.specifications { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-bottom: 24px; font-size: 14px; line-height: 1.65; color: #43516c; }
+.specifications h2 { font-size: 16px; margin-bottom: 12px; color: #07134b; }
+.followUp { margin-top: 40px; margin-bottom: 48px; }
+@media (max-width: 1023px) {
+  .workspace { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 639px) {
+  .heading .title { font-size: clamp(1.75rem, 7.7vw, 2.5rem); }
+  .page .consultation { padding: 24px 20px; }
+  .page .knownInfo { padding: 20px; }
+  .specifications { grid-template-columns: minmax(0, 1fr); }
+  .page .productFacts { padding-inline: 20px; }
 }

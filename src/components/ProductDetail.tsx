@@ -51,55 +51,12 @@ export default function ProductDetail({ product, path, renderWorkspace }: Produc
 
 
   const gallery = <ProductGallery key={product.title} photos={photos} />;
-  const commercialInfo = (
-        <div className={`${styles.info} flex flex-col min-w-0`}>
-          <h1 className={`${styles.title} font-extrabold uppercase tracking-tighter mb-6`}>
-            {product.title}
-          </h1>
-          
-          <p className="mb-8 text-xl font-bold text-brand">Precio: Consultar</p>
-
-          <div className="mb-8">
-            <h2 className="text-xl mb-3">Descripción general</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">{description || 'Descripción pendiente de validación comercial.'}</p>
-          </div>
-
-          <div className="mb-8">
-            <h2 className="text-xl mb-3">Usos y aplicaciones</h2>
-            <p className="text-gray-700 leading-relaxed">{product.applications ?? pending}</p>
-          </div>
-
-          {knownSpecifications.length > 0 && <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-            {knownSpecifications.map(({ title, values }) => (
-              <div key={title}>
-                <h2 className="font-bold uppercase tracking-widest text-xs text-gray-500 mb-4 border-b border-divider pb-2">{title}</h2>
-                  <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                    {values?.map((value) => <li key={value}>{value}</li>)}
-                  </ul>
-              </div>
-            ))}
-          </div>}
-
-          <div className="internal-surface p-6 border border-divider mb-12 text-sm text-gray-700 space-y-2">
-            {product.customization && <>
-              <h2 className="text-base mb-2">Opciones de personalización</h2>
-              <p>{product.customization}</p>
-            </>}
-            {product.minQuantity && <p><strong>Cantidad mínima de pedido</strong> {product.minQuantity}</p>}
-            {pendingFields.length > 0 && <>
-              <h2 className="text-base mb-2">Datos pendientes de confirmación</h2>
-              <ul className="list-disc pl-5 space-y-1">
-                {pendingFields.map((field) => <li key={field}>{field}</li>)}
-              </ul>
-            </>}
-          </div>
-
-          <ProductSelection product={{ id: path.split('/').pop()!, name: product.title, path }} showConsultation />
-        </div>
-  );
+  const commercialInfo = <div className={`internal-surface ${styles.consultation}`} data-general-consultation>
+    <ProductSelection product={{ id: path.split('/').pop()!, name: product.title, path }} heading="Prepará tu consulta" showConsultation />
+  </div>;
 
   return (
-    <div className="internal-page container mx-auto px-4 lg:px-8 py-12">
+    <div className={`internal-page container mx-auto px-4 lg:px-8 py-12 ${styles.page}`}>
       <Breadcrumb currentPath={path} wrap items={[
         { label: 'Productos', href: '/productos' },
         { label: product.categorySlug === 'grafica' ? 'Gráfica' : product.category, href: `/productos/${product.categorySlug}` },
@@ -107,14 +64,38 @@ export default function ProductDetail({ product, path, renderWorkspace }: Produc
         { label: product.title }
       ]} />
 
-      {renderWorkspace ? renderWorkspace(gallery, commercialInfo) : <div className="grid grid-cols-1 gap-12 mb-24 lg:grid-cols-2 lg:gap-24">
-        {gallery}
+      <header className={styles.heading}>
+        <h1 className={styles.title}>{product.title}</h1>
+        <p>{description || 'Descripción pendiente de validación comercial.'}</p>
+        <p className={styles.price}>Precio: Consultar</p>
+      </header>
+
+      {renderWorkspace ? renderWorkspace(gallery, commercialInfo) : <div className={styles.workspace} data-general-product>
+        <div className={styles.visualColumn}>
+          <div className={styles.gallery}>{gallery}</div>
+          {(product.applications || product.customization) && <section className={`internal-surface ${styles.knownInfo}`} aria-label="Información del producto">
+            {product.applications && <div><h2>Usos y aplicaciones</h2><p>{product.applications}</p></div>}
+            {product.customization && <div><h2>Opciones de personalización</h2><p>{product.customization}</p></div>}
+          </section>}
+        </div>
         {commercialInfo}
       </div>}
 
+      <details className={`internal-surface ${styles.productFacts}`} data-product-facts>
+        <summary>Características y datos por confirmar</summary>
+        <div className={styles.specifications}>
+          {knownSpecifications.map(({ title, values }) => <div key={title}>
+            <h2>{title}</h2><ul className="list-disc pl-5 space-y-2">{values?.map(value=><li key={value}>{value}</li>)}</ul>
+          </div>)}
+          {!product.applications && <div><h2>Usos y aplicaciones</h2><p>{pending}</p></div>}
+          {product.minQuantity && <div><h2>Cantidad mínima de pedido</h2><p>{product.minQuantity}</p></div>}
+          {pendingFields.length>0 && <div><h2>Datos pendientes de confirmación</h2><ul className="list-disc pl-5 space-y-2">{pendingFields.map(field=><li key={field}>{field}</li>)}</ul></div>}
+        </div>
+      </details>
+
       {/* Relacionados */}
       {product.relatedProducts && product.relatedProducts.length > 0 && (
-        <section className="mb-32">
+        <section className={styles.followUp}>
           <SectionDivider text="TE PUEDE INTERESAR" metadata="PRODUCTOS RELACIONADOS" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {product.relatedProducts.map((related) => (
@@ -125,7 +106,7 @@ export default function ProductDetail({ product, path, renderWorkspace }: Produc
       )}
 
       {/* FAQ Específica */}
-      <section className="mb-24">
+      <section className={styles.followUp}>
         <SectionDivider text="DUDAS FRECUENTES" metadata="SOBRE ESTE PRODUCTO" />
         <div className="max-w-3xl">
           {faqs.length === 0 && <p className="text-gray-700">Preguntas específicas sobre {product.title.toLocaleLowerCase('es')} pendientes de validación comercial.</p>}
