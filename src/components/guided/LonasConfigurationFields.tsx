@@ -4,6 +4,8 @@ import type {ProductConfiguration} from '@/lib/consultationConfiguration';
 import {GuidedChoiceField} from './GuidedPreview';
 import styles from './GuidedPreview.module.css';
 import local from './LonasConfigurationFields.module.css';
+import RequestedPreferenceField from './RequestedPreferenceField';
+import { guidedPreferences } from '@/data/guidedPreferences';
 
 export default function LonasConfigurationFields({step,prefix,catalog,choices,request,advice,width,height,dimensions,onChoices,onRequest,onAdvice,onDimensions}:{
   step:number;prefix:string;catalog:GuidedCatalog;choices:ProductConfiguration['choices'];request:NonNullable<ProductConfiguration['lonaRequest']>;advice:AdviceField[];
@@ -18,7 +20,7 @@ export default function LonasConfigurationFields({step,prefix,catalog,choices,re
     }}/>
     {choices.material&&<button type="button" className={styles.smallLink} onClick={()=>{const next={...choices};delete next.material;onChoices(next);}}>Quitar material solicitado</button>}
     <p className={styles.fieldHelp}>Material y disponibilidad sujetos a confirmación al presupuestar.</p>
-    {text('use','Uso previsto (opcional)','Contanos dónde y para qué querés utilizar la lona.')}
+    <RequestedPreferenceField idPrefix={prefix} field="use" title="Uso previsto" options={guidedPreferences.use} value={request.use??''} onChange={use=>onRequest({...request,use})} adviceText="Necesito asesoramiento sobre el uso" limit={500}/>
     <details className={styles.contextHelp}><summary>¿Cómo elijo el material?</summary><p>Podés indicar una preferencia o pedir asesoramiento. El uso, la ubicación y la forma de colocación ayudan al equipo a confirmar una alternativa adecuada.</p></details>
   </div>;
   if(step===1){const w=Number(width.replace(',','.')),h=Number(height.replace(',','.'));const known=dimensions&&Number.isFinite(w)&&Number.isFinite(h)&&w>0&&h>0;const ratio=known?w/h:1.6;const rw=Math.min(160,100*ratio),rh=Math.min(100,160/ratio);
@@ -33,7 +35,7 @@ export default function LonasConfigurationFields({step,prefix,catalog,choices,re
     </div>;
   }
   return <div className={local.fields}>
-    {text('finish','Terminación deseada (opcional)','Describí cómo necesitás colocarla o terminarla. Las terminaciones disponibles se confirman al presupuestar.')}
+    <RequestedPreferenceField idPrefix={prefix} field="finish" title="Terminación solicitada" options={guidedPreferences.finish} value={request.finish??''} onChange={finish=>onRequest({...request,finish})} advice={advice.includes('finish')} onAdvice={asking=>onAdvice(asking?[...advice.filter(f=>f!=='finish'),'finish']:advice.filter(f=>f!=='finish'))} adviceText="Necesito asesoramiento sobre la terminación" limit={500}/>
     <GuidedChoiceField idPrefix={prefix} field="design-status" label="¿Tenés un diseño preparado?" options={[
       ['preparado','Tengo un diseño preparado','Podrás coordinarlo con el equipo; aquí no se suben archivos.'],
       ['pendiente','Todavía no tengo un diseño preparado','Podés contar tu idea en las observaciones.'],

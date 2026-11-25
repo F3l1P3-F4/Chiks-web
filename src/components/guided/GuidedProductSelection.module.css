@@ -11,6 +11,13 @@
 .fields { min-width: 0; margin: 0; padding: 0; border: 0; }
 .measurements { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 16px; }
 .requestFields { display: grid; gap: 18px; }
+.sizeChoices { display: flex; flex-wrap: wrap; gap: 10px; }
+.sizeChoices button { min-width: 54px; min-height: 48px; padding: 10px 16px; border: 1px solid #8c9bb4; border-radius: 10px; background: #fff; color: #07134b; font: inherit; font-weight: 700; cursor: pointer; }
+.sizeChoices button[aria-pressed='true'] { background: #fff3f9; border-color: #a90062; color: #970055; }
+.sizeChoices button:hover { border-color: #a90062; }
+.sizeChoices button:disabled { opacity: .6; cursor: not-allowed; }
+.sizeLabel { display: block; padding-block: 12px; }
+.preferenceField label:has(input[value='otra']) { grid-column: 1 / -1; align-items: center; min-height: 48px; padding-block: 12px; }
 .sizeRequest { display: grid; grid-template-columns: minmax(0, 1fr) minmax(70px, .6fr) auto; gap: 10px; align-items: end; }
 .sizeRequest button { align-self: end; }
 @media (max-width: 420px) { .sizeRequest { grid-template-columns: minmax(0, 1fr) minmax(70px, .6fr); } .sizeRequest button { grid-column: 1 / -1; justify-self: end; } }

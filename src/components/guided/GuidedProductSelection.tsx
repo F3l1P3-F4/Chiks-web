@@ -183,7 +183,7 @@ function ConfigurationForm({ product, selectedKey, catalog, embedded, onDirty, o
   }
   function toggleDistribution(distribute:boolean) {
     const sum=validSizesTotal(value.sizes);
-    patch({distribute,sizes:value.sizes.length?value.sizes:[{id:`solicitado-${crypto.randomUUID()}`,label:'',quantity:'',requested:true}]});
+    patch({distribute});
     setAnnouncement(distribute ? sum!==null ? `Distribución recuperada: ${sum} unidades. El total se calcula con esas cantidades.` : 'Completá los talles y las cantidades. Se conserva el último total válido para volver al modo de cantidad total.' : `Distribución desactivada. Cantidad total conservada: ${value.quantity}.`);
   }
   function cancel() { setDraft(null);onDirty(false);setFeedback('Edición cancelada. La selección guardada no cambió.');moveStep(0); }

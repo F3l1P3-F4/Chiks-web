@@ -37,6 +37,12 @@ export default function ConsultationReview({ photos }: { photos: Record<string, 
 
   return (
     <div className={styles.review}>
+      <details open className={`internal-surface ${styles.panel}`} id="consulta-panel">
+        <summary className={styles.toggle} id="consulta-panel-toggle">
+          <span><strong>Productos y datos de tu consulta</strong><span className={styles.count}>{ready ? `${reviewItems.length} ${reviewItems.length===1?'selección':'selecciones'}` : 'Cargando selección…'}</span></span>
+          <span className={styles.toggleAction} aria-hidden="true"><span className={styles.whenOpen}>Contraer</span><span className={styles.whenClosed}>Expandir</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg></span>
+        </summary>
+        <div className={styles.contents}>
       <p role="status" aria-live="polite" className="mb-4 text-sm font-semibold">{feedback}</p>
       {!ready ? <p role="status" className="mb-8">Cargando tu consulta…</p> : reviewItems.length === 0 ? (
         <p className="mb-8 text-lg text-gray-600">Tu consulta está vacía. Explorá el catálogo y agregá los productos que te interesan.</p>
@@ -81,6 +87,8 @@ export default function ConsultationReview({ photos }: { photos: Record<string, 
       )}
       <ConsultationRequest hasProductDrafts={held.size > 0} />
       <Button href="/productos" className="max-w-full text-center">Seguir explorando productos</Button>
+        </div>
+      </details>
     </div>
   );
 }

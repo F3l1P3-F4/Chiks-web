@@ -14,16 +14,16 @@ async function validate(Page, origin, base, dir) {
   async function test(name, action) { await action();results.push({name,passed:true});console.log(name+': correcto'); }
   async function next() { await page.click('#'+p+'-next'); }
   async function query() { await page.click('header a[href$="/mi-consulta"]');await page.wait("!!document.getElementById('cliente-fullName')"); }
-  async function edit(id) { await page.click(`li[data-selection-key="${id}"] a[href*="#configuracion="]`);await page.wait(`!!document.getElementById('${p}-request-model')`); }
+  async function edit(id) { await page.click(`li[data-selection-key="${id}"] a[href*="#configuracion="]`);await page.wait(`!!document.getElementById('${p}-preference-model-recto')`); }
   let id;
   try {
-    await page.goto('/mi-consulta');await page.eval(`localStorage.setItem('${key}',JSON.stringify({version:1,items:[]}))`);await page.goto(product);await page.wait(`!!document.getElementById('${p}-request-model')`);
-    await test('Modelo y material libres; asesoramiento sin alternativas ficticias',async()=>{
-      await page.fill('#'+p+'-request-model','Corte amplio solicitado');await page.fill('#'+p+'-request-material','Tela suave a confirmar');await page.click('#'+p+'-advice-general');
+    await page.goto('/mi-consulta');await page.eval(`localStorage.setItem('${key}',JSON.stringify({version:1,items:[]}))`);await page.goto(product);await page.wait(`!!document.getElementById('${p}-preference-model-recto')`);
+    await test('Modelo y material libres mediante Otra preferencia; asesoramiento',async()=>{
+      await page.click('#'+p+'-preference-model-otra');await page.fill('#'+p+'-request-model','Corte amplio solicitado');await page.click('#'+p+'-preference-material-otra');await page.fill('#'+p+'-request-material','Tela suave a confirmar');await page.click('#'+p+'-advice-general');
       assert(!await page.eval("document.querySelector('main').innerText.includes('opciones pendientes de confirmación')"));
     });
     await test('Talles propios, cantidades positivas y total automático',async()=>{
-      await next();await page.fill('#'+p+'-quantity',20);await page.click('#'+p+'-distribute');await next();assert(await page.eval("!!document.querySelector('main [aria-invalid=true]')"));
+      await next();await page.fill('#'+p+'-quantity',20);await page.click('#'+p+'-distribute');await next();assert.equal(await page.eval('document.activeElement.id'),p+'-add-size');await page.click('#'+p+'-add-size');
       await page.fill('input[id*="-label-solicitado-"]','Referencia A');await page.fill('input[id*="-size-solicitado-"]',8);await page.click('#'+p+'-add-size');
       const labels=await page.eval("[...document.querySelectorAll('input[id*=\"-label-solicitado-\"]')].map(e=>e.id)");const quantities=await page.eval("[...document.querySelectorAll('input[id*=\"-size-solicitado-\"]')].map(e=>e.id)");
       await page.fill('#'+labels[1],'Referencia B');await page.fill('#'+quantities[1],12);await page.fill('#'+p+'-request-sizesNotes','Confirmar equivalencias de talles');

@@ -6,6 +6,8 @@ import { GuidedChoiceField } from './GuidedPreview';
 import type { GuidedStepError } from './useGuidedSteps';
 import styles from './GuidedPreview.module.css';
 import local from './GuidedProductSelection.module.css';
+import RequestedPreferenceField from './RequestedPreferenceField';
+import { guidedPreferences, referenceSizes } from '@/data/guidedPreferences';
 
 export type RequestedSize = { id: string; label: string; quantity: string; requested?: true };
 export default function RemerasConfigurationFields({ step, prefix, catalog, requests, choices, placements, advice, sizes, distribute, error, onRequests, onChoices, onPlacements, onAdvice, onSizes, onDistribute }: {
@@ -38,8 +40,7 @@ export default function RemerasConfigurationFields({ step, prefix, catalog, requ
     }} />{choices[field] && <button type="button" className={styles.smallLink} onClick={()=>{const next={...choices};delete next[field];onChoices(next);}}>Quitar selección de {title.toLowerCase()}</button>}</div>;
   }
   if(step===0) return <div className={local.requestFields}>
-    {catalog.fields.model?.length ? choice('model','Modelo') : request('model','Modelo que te gustaría (opcional)','Describí el corte o estilo que buscás. Es una solicitud, sujeta a confirmación.')}
-    {catalog.fields.material?.length ? choice('material','Material') : request('material','Material que buscás (opcional)','Si no conocés el nombre, contanos qué necesitás de la prenda. Podés dejarlo sin definir.')}
+    {(['model','material'] as const).map(field => catalog.fields[field]?.length ? <div key={field}>{choice(field,field==='model'?'Modelo':'Material')}</div> : <RequestedPreferenceField key={field} idPrefix={prefix} field={field} title={field==='model'?'Modelo solicitado':'Material solicitado'} value={requests[field]??''} options={guidedPreferences[field]} advice={advice.includes(field)} adviceText={`Necesito asesoramiento sobre ${field==='model'?'el modelo':'el material'}`} onAdvice={asking=>onAdvice(asking?[...advice.filter(f=>f!==field),field]:advice.filter(f=>f!==field))} onChange={text=>onRequests({...requests,[field]:text})} />)}
     {advisory('general','No estoy seguro, necesito asesoramiento')}
     <details className={styles.contextHelp}><summary>¿Cómo describo el modelo y el material?</summary><p>Contanos cómo te gustaría que sea la remera y para qué la vas a usar. El equipo te ayudará a definir la opción adecuada; no hace falta conocer términos técnicos.</p></details>
   </div>;
@@ -47,10 +48,13 @@ export default function RemerasConfigurationFields({ step, prefix, catalog, requ
     {catalog.sizes.length===0 && <>
       <label className={styles.checkLine}><input id={`${prefix}-distribute`} type="checkbox" checked={distribute} onChange={e=>onDistribute(e.target.checked)} />Conozco los talles y quiero repartir las cantidades</label>
       {distribute && <>
-        <p className={styles.fieldHelp}>Ingresá tus propias referencias de talle. Son talles solicitados, no una tabla de disponibilidad confirmada. El total se calcula sumando las filas.</p>
+        <fieldset className={styles.fieldset}><legend>Talles de referencia</legend><div className={local.sizeChoices}>{referenceSizes.map(label=>{
+          const selected=sizes.find(size=>size.label.trim().toLocaleUpperCase('es')===label);
+          return <button key={label} type="button" id={`${prefix}-reference-size-${label}`} disabled={!selected&&sizes.length>=40} aria-pressed={!!selected} aria-label={`${selected?'Quitar':'Seleccionar'} talle ${label}`} onClick={()=>onSizes(selected?sizes.filter(size=>size.id!==selected.id):[...sizes,{id:`solicitado-${crypto.randomUUID()}`,label,quantity:'',requested:true}])}>{label}</button>;
+        })}</div><p className={styles.fieldHelp}>S, M, L y XL son referencias solicitadas, sin equivalencias de medidas. La disponibilidad se confirma al presupuestar.</p></fieldset>
         <div className={local.requestFields}>{sizes.map((size,index)=><div key={size.id} className={local.sizeRequest}>
-          <div className={styles.formField}><label htmlFor={`${prefix}-label-${size.id}`}>Talle solicitado {index+1}</label><input id={`${prefix}-label-${size.id}`} maxLength={120} value={size.label} onChange={e=>onSizes(sizes.map(s=>s.id===size.id?{...s,label:e.target.value}:s))} aria-invalid={error?.id===`${prefix}-label-${size.id}`||undefined} aria-describedby={error?.id===`${prefix}-label-${size.id}`?`${prefix}-error`:undefined} /></div>
-          <div className={styles.formField}><label htmlFor={`${prefix}-size-${size.id}`}>Cantidad</label><input id={`${prefix}-size-${size.id}`} type="number" inputMode="numeric" min={1} step={1} value={size.quantity} onChange={e=>onSizes(sizes.map(s=>s.id===size.id?{...s,quantity:e.target.value}:s))} aria-invalid={error?.id===`${prefix}-size-${size.id}`||undefined} aria-describedby={error?.id===`${prefix}-size-${size.id}`?`${prefix}-error`:undefined} /></div>
+          <div className={styles.formField}>{referenceSizes.some(label=>label===size.label) ? <strong className={local.sizeLabel}>Talle {size.label}</strong> : <><label htmlFor={`${prefix}-label-${size.id}`}>Talle solicitado {index+1}</label><input id={`${prefix}-label-${size.id}`} maxLength={120} value={size.label} onChange={e=>onSizes(sizes.map(s=>s.id===size.id?{...s,label:e.target.value}:s))} aria-invalid={error?.id===`${prefix}-label-${size.id}`||undefined} aria-describedby={error?.id===`${prefix}-label-${size.id}`?`${prefix}-error`:undefined} /></>}</div>
+          <div className={styles.formField}><label htmlFor={`${prefix}-size-${size.id}`}>Cantidad{size.label?` · ${size.label}`:''}</label><input id={`${prefix}-size-${size.id}`} type="number" inputMode="numeric" min={1} step={1} value={size.quantity} onChange={e=>onSizes(sizes.map(s=>s.id===size.id?{...s,quantity:e.target.value}:s))} aria-invalid={error?.id===`${prefix}-size-${size.id}`||undefined} aria-describedby={error?.id===`${prefix}-size-${size.id}`?`${prefix}-error`:undefined} /></div>
           <button type="button" className={styles.smallLink} aria-label={`Quitar talle solicitado ${index+1}`} onClick={()=>onSizes(sizes.filter(s=>s.id!==size.id))}>Quitar</button>
         </div>)}</div>
         <button id={`${prefix}-add-size`} type="button" className={styles.smallLink} disabled={sizes.length>=40} onClick={()=>onSizes([...sizes,{id:`solicitado-${crypto.randomUUID()}`,label:'',quantity:'',requested:true}])}>Agregar talle solicitado</button>

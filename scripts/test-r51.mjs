@@ -38,11 +38,11 @@ async function verify(Page,base,dir){
  try{
   await load(shirt,r);await page.eval(`localStorage.setItem('${key}',JSON.stringify({version:1,items:[{id:'tazas',name:'Tazas',path:'/productos/ficha/tazas',quantity:30,notes:'Consulta anterior R4'}]}));true`);await load(shirt,r);
   await test('Remeras: 20 → distribución 30 → desactivar conserva 30; un solo control',async()=>{
-   await page.fill('#'+r+'-request-model','Modelo solicitado de prueba');await next(r);await page.fill('#'+r+'-quantity',20);
+   await page.click('#'+r+'-preference-model-otra');await page.fill('#'+r+'-request-model','Modelo solicitado de prueba');await next(r);await page.fill('#'+r+'-quantity',20);
    await page.click('#'+r+'-distribute');
    assert.equal(await page.eval("[...document.querySelectorAll('input[id*=\"-size-solicitado-\"]')].map(e=>e.value).join('')"),'');
    assert.equal(await page.eval("[...document.querySelectorAll('label')].filter(e=>/repartir las cantidades|Distribuir cantidades por talle/.test(e.textContent)).length"),1);
-   await page.fill('input[id*="-label-solicitado-"]','Talle solicitado A');await page.fill('input[id*="-size-solicitado-"]',30);
+   await page.click('#'+r+'-add-size');await page.fill('input[id*="-label-solicitado-"]','Talle solicitado A');await page.fill('input[id*="-size-solicitado-"]',30);
    assert((await summary(r)).includes('30'));await page.click('#'+r+'-distribute');assert.equal(await value(r+'-quantity'),'30');
    await page.click('#'+r+'-distribute');assert.equal(await page.eval("document.querySelector('input[id*=\"-size-solicitado-\"]').value"),'30');
    return {initial:20,distributed:30,afterDisabling:30};
@@ -76,7 +76,7 @@ async function verify(Page,base,dir){
   });
   await load(lona,l);
   await test('Lonas: medidas positivas, modo exclusivo y recuperación del borrador',async()=>{
-   await page.click('#'+l+'-material-frontlit');await page.fill('#'+l+'-request-use','Cartel solicitado');await next(l);
+   await page.click('#'+l+'-material-frontlit');await page.click('#'+l+'-preference-use-otra');await page.fill('#'+l+'-request-use','Cartel solicitado');await next(l);
    await page.fill('#'+l+'-quantity',2);await page.fill('#'+l+'-width','-1');await next(l);assert.equal(await page.eval('document.activeElement.id'),l+'-width');
    await page.fill('#'+l+'-width','150,5');await page.fill('#'+l+'-height',200);
    assert(await page.eval("document.querySelector('main figure').textContent.includes('150.5 × 200 cm')"));
@@ -85,8 +85,8 @@ async function verify(Page,base,dir){
    assert(await page.eval(`document.getElementById('${l}-measure-known').checked`));assert.equal(await value(l+'-width'),'150,5');assert.equal(await value(l+'-height'),'200');
    assert(await page.eval("getComputedStyle(document.activeElement.closest('label')).outlineStyle!=='none'"));
    await page.fill('#'+l+'-width','');await page.fill('#'+l+'-height','');await page.click('#'+l+'-measure-advice');await next(l);
-   assert(await page.eval(`!!document.getElementById('${l}-request-finish')`));
-   await page.fill('#'+l+'-request-finish','Terminación a consultar');await page.click('#'+l+'-design-status-preparado');await page.fill('#'+l+'-notes','Observaciones de lona');
+   assert(await page.eval(`!!document.getElementById('${l}-preference-finish-ojales')`));
+   await page.click('#'+l+'-preference-finish-otra');await page.fill('#'+l+'-request-finish','Terminación a consultar');await page.click('#'+l+'-design-status-preparado');await page.fill('#'+l+'-notes','Observaciones de lona');
    assert((await summary(l)).includes('Medidas'));assert(!(await summary(l)).includes('150.5'));
   });
   await test('Lonas: responsive y foco a 390/1440',()=>layout(l,'lonas'));
